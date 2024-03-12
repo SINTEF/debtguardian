@@ -51,7 +51,7 @@ Update OpenAI engine information in main.py. It's currently set to our OpenAI ru
 
 Command to find technical and security debts
 
->python3 main.py <GitHub-Repo-Address> <Start-Commit-Hash> <End-Commit-Hash> OPENAI
+>python3 main.py GitHub-Repo-Address Start-Commit-Hash End-Commit-Hash OPENAI
 
 
 ### Usage of Ollama Models
@@ -66,11 +66,11 @@ This can be done using the terminal command:
 After this you will need to download the Model you would like to use. A list of valid models is available here: https://ollama.com/library
 
 The model can be downloaded with this command:
-> ollama pull <model_name>
+> ollama pull model_name
 
 After the model is downloaded you can execute the **DebtGuardian.AI**
 
->python3 main.py <GitHub-Repo-Address> <Start-Commit-Hash> <End-Commit-Hash> <model_name>
+>python3 main.py GitHub-Repo-Address Start-Commit-Hash End-Commit-Hash model_name
 
 
 ## Output
