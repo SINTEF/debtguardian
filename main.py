@@ -10,101 +10,16 @@ Contact: aleksander.aaboen@stinef.no,  sagar.sen@sintef.no
 import argparse
 import json
 import os
-import re
-import textwrap
-from typing import List
-import logging
 
 import guardrails as gd
 from langchain_community.llms import Ollama
-from guardrails.validators import ValidChoices
-from pydantic import BaseModel, Field
 from pydriller import Repository
 from rich import print
+import logging
 
-
-class TechnicalDebt(BaseModel):
-    """
-    Identified technical debts in the code snippet. Each technical debt is an instance of the TechnicalDebt class.
-    """
-    type: str = Field(
-        description="What type of technical debt is identified in this code snippet?",
-        validators=[
-            ValidChoices(
-                choices=[
-                    'Nested flow statements',
-                    'Duplicated string literals',
-                    'Long method',
-                    'Duplicated code blocks',
-                    'Insufficient Logging of Exceptions',
-                    'Improper Exception Handling',
-                    'Poor Code Formatting',
-                    'Commented out code',
-                    'Inappropriate Handling of Floating-Point Operations',
-                    'Insufficient Logging Mechanism',
-                    'Too many lines in switch case',
-                    'Long parameter list',
-                    'Using old Classes Vector, hashtable, stack and stringBuffer',
-                    'Empty methods',
-                ],
-                on_fail="reask"
-            )
-        ])
-    symptom: str = Field(..., description="Technical debt in the code snippet.")
-    affected_area: str = Field(...,
-                               description="Provide the exact lines of code that contain the technical debt. Include "
-                                           "the raw code snippet from the file without any summarization or "
-                                           "modification.")
-    suggested_repair: str = Field(..., description="Generate code to refactor or repair the technical debt")
-
-
-class SecurityDebt(BaseModel):
-    type: str = Field(
-        description="What is the security debt in this code snippet?",
-        validators=[
-            ValidChoices(
-                choices=[
-                    'Hardcoded Secrets',
-                    'Insecure Dependencies',
-                    'Lack of Input Validation',
-                    'Insufficient Error Handling',
-                    'Inadequate Encryption',
-                    'Improper Session Management',
-                    'Insecure Default Settings',
-                    'Lack of Principle of Least Privilege',
-                    'Insecure Direct Object References',
-                    'Cross-Site Request Forgery (CSRF)',
-                    'Ignoring Security Warnings',
-                    'Not Adhering to Secure Coding Standards'
-                ],
-            )
-        ], on_fail="reask")
-    symptom: str = Field(description="Security debt in the code snippet.")
-    affected_area: str = Field(description="What are the code snippet with the security debt?")
-    suggested_repair: str = Field(description="Generate code to refactor or repair the security debt")
-
-
-class CodeInfo(BaseModel):
-    """
-    A model representing various aspects of a code snippet, including its functionality, size, and associated debts.
-
-    This class is designed to encapsulate information about a code snippet, such as its purpose, the number of lines it contains,
-    and any identified technical or security debts. It uses the Pydantic library for data validation and settings management.
-
-    Attributes:
-    - snippet_functionality (str): Describes the functionality of the code snippet.
-    - number_of_lines (int): Indicates the total number of lines in the code snippet.
-    - securityDebts (List[SecurityDebt]): A list of identified security debts in the code snippet. Each security debt is an instance of the SecurityDebt class.
-    - technicalDebts (List[TechnicalDebt]): A list of identified technical debts in the code snippet. Each technical debt is an instance of the TechnicalDebt class.
-    """
-    snippet_functionality: str = Field(description="What is the functionality of this code snippet?")
-    number_of_lines: int = Field(description="What is the number of lines of code in this code snippet?")
-    securityDebts: List[SecurityDebt] = Field(
-        description="Are there security debts in the code snippet? Each security debt should be classified into  "
-                    "separate item in the list.")
-    technicalDebts: List[TechnicalDebt] = Field(
-        description="Are there technical debts in the code snippet? Each technical debt should be classified into  "
-                    "separate item in the list.")
+from Helpers import url_to_filename, should_skip_commit, print_bar, is_source_code, enumerate_file, \
+    print_file_analysis_start
+from Technical_Schema import CodeInfo
 
 
 def createGuard(code_changes):
@@ -218,108 +133,6 @@ def debtDetect(code_changes, guard, model_type):
         raise
 
 
-def is_source_code(filename):
-    logging.debug("Checking if %s is a source code file", filename)
-
-    """
-    Determine if a given filename corresponds to a source code file.
-
-    This function checks the file extension against a predefined list of common
-    source code file extensions. It's a simple way to guess if a file is a source code file.
-
-    Args:
-    - filename (str): The name of the file to check.
-
-    Returns:
-    - bool: True if the file extension matches a known source code extension, False otherwise.
-    """
-
-    try:
-        # A basic list of source code extensions; can be expanded based on requirements
-        source_code_extensions = [
-            '.c', '.cpp', '.h', '.java', '.py', '.js', '.php',
-            '.cs', '.rb', '.go', '.rs', '.ts', '.m', '.swift',
-            '.f', '.f90', '.perl', '.sh', '.bash'
-        ]
-
-        # Extract the extension and check if it's in our list
-        _, ext = os.path.splitext(filename)
-        result = ext in source_code_extensions
-        logging.debug("File %s is source code: %s", filename, result)
-        return result
-    except Exception as e:
-        logging.error("Error in is_source_code for file %s: %s", filename, str(e))
-        raise
-
-
-def print_bar(length=200, char='█'):
-    """
-    Print a horizontal bar with a given length and character.
-
-    :param length: Length of the bar to be printed
-    :param char: Character to use for printing the bar
-    """
-    print(char * length)
-
-
-def wrap_text(text, width=200):
-    """
-    Wrap the given text to the specified width.
-
-    :param text: Text to wrap
-    :param width: Width at which to wrap the text
-    :return: Wrapped text
-    """
-    return textwrap.fill(text, width)
-
-
-def url_to_filename(url):
-    """
-    converts the GitHub url to a valid file name
-    Args:
-        url: Url to the GitHub repository
-
-    Returns: a sanitized file name
-
-    """
-
-    filename = re.sub(r'[\\/*?"<>|:]', '_', url)
-    return filename
-
-
-def enumerate_file(code_content: str):
-    """
-    The function will enumerate the file containing code
-
-    This will help the LLM in determining which line contains technical debt
-    Args:
-        code_content: The code content that needs to be enumerated
-
-    Returns: The enumerated file containing code.
-
-    """
-    lines = code_content.split('\n')
-    enumerated_string = ""
-
-    for index, line in enumerate(lines, start=1):
-        enumerated_string += f"{index}. {line}\n"
-
-    enumerated_string = enumerated_string.rstrip('\n')
-    return enumerated_string
-
-
-def extract_json(response: str):
-    """
-    The function will extract the json response that is given from the language model
-    :param response: from the large language model
-    :return: only the JSON response from the large language model
-    """
-    start = response.find('{')
-    end = response.rfind('}') + 1
-    json_data = response[start:end]
-    return json_data
-
-
 def initialize_file(repo_url, model_type, resume=False):
     """
     The function will open or create the file that the data is being saved into
@@ -369,21 +182,6 @@ def analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts
         analyze_modifications(commit, debts, debts_file, repo_url, model_type)
 
 
-def should_skip_commit(commit, debts):
-    """
-    Function that will determine if the system should skip the commits if it has already been analysed for a
-    previous session
-
-    :param commit: The commit hash that will be analysed
-    :param debts: Content of the debts that already has been analysed
-    :return: The condition to skip or not skip the commit
-    """
-    if commit.hash in debts and debts[commit.hash]:
-        logging.info("Skipping commit: %s", commit.hash)
-        return True
-    return False
-
-
 def print_commit_analysis_start(commit, commit_count, repo_url):
     """
     Function that will print where in the process the system is.
@@ -398,14 +196,6 @@ def print_commit_analysis_start(commit, commit_count, repo_url):
     print_bar()
     print(f"\nAnalyzing Commit: {commit.hash} in {repo_url}\n")
     print(f"\nStarting on Commit no: {commit_count}\n")
-
-
-def print_bar():
-    """
-    Function that will print a process bar
-    :return:
-    """
-    print("=" * 40)
 
 
 def analyze_modifications(commit, debts, debts_file, repo_url, model_type):
@@ -434,17 +224,6 @@ def analyze_modifications(commit, debts, debts_file, repo_url, model_type):
 
         if debt:
             update_debts_and_save(debt, debts, commit, debts_file, modification.new_path, repo_url)
-
-
-def print_file_analysis_start(commit_hash):
-    """
-    Function that will print a bar and what file that it is analysing.
-
-    :param commit_hash: of the commit that is being analyzed
-    :return:
-    """
-    print_bar()
-    print(f"\nAnalyzing {commit_hash}\n")
 
 
 def update_debts_and_save(debt, debts, commit, debts_file, file_path, repo_url):
