@@ -1,0 +1,10 @@
+pydriller
+requests
+openai==1.6.1
+langchain-community
+pygments
+pydantic==2.4.0
+guardrails-ai
+typing
+rich
+tiktoken
