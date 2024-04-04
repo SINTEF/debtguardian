@@ -4,7 +4,7 @@ openai==1.6.1
 langchain-community
 pygments
 pydantic==2.4.0
-guardrails-ai
+guardrails-ai==0.4.1
 typing
 rich
 tiktoken
