@@ -40,7 +40,7 @@ def createGuard(code_changes):
 
         ${gr.complete_json_suffix_v2} <!-- (3)! -->
         """
-        guard = gd.Guard.from_pydantic(output_class=CodeInfo, prompt=prompt)
+        guard = gd.Guard.from_rail('technical_schema/Few-shot_p1_Java.xml')
         logging.debug("Guard object created successfully")
         return guard
     except Exception as e:

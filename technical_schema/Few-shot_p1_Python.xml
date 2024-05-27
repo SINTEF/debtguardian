@@ -1,0 +1,293 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Deeply nested control flow statements',
+                        'Duplicated string literals',
+                        'Throw generic exceptions',
+                        'Collapsible if statements',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="StartLine"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="EndLine"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+Please review each snippet and identify any technical debt present related to:
+1. Deeply nested control flow statements (e.g., if, for, while, switch, try)
+2. Duplicated string literals
+3. Throw generic exceptions
+4. Collapsible if statements
+
+Below, you will find code snippets organized into categories.
+Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where the technical debt has been resolved.
+
+######################################################
+Technical Debt 1. Deeply nested control flow statements (e.g., if, for, while, switch, try)
+Explanation: It refers to situations where control structures like loops or conditional statements (e.g., for, while, if-else) are placed within one another, often to several levels of depth.
+        This nesting can lead to code that is difficult to read, understand, and maintain. It can make debugging challenging and increase the risk of errors,
+        as understanding the logic flow becomes more complex with each added level. Minimizing the depth of nesting improves code readability and maintainability, thereby reducing technical debt.
+
+Bad Example 1.1: Deeply nested control flow statements
+<![CDATA[
+def main():
+    x = 10
+    if x > 0:
+        for i in range(x):
+            if i % 2 == 0:
+                try:
+                    print("Even index:", i)
+                except Exception as e:
+                    print(e)
+]]>
+- Issue: The code contains overly deep nesting of control flow statements, making it difficult to read and maintain. This complexity should be reduced by breaking the code into multiple methods.
+
+Good Example 1.2: Minimal nested control flow statements
+<![CDATA[
+def main():
+    x = 10
+    process_numbers(x)
+
+def process_numbers(x):
+    if x <= 0:
+        return
+    for i in range(x):
+        if i % 2 == 0:
+            print_even_index(i)
+
+def print_even_index(index):
+    try:
+        print("Even index:", index)
+    except Exception as e:
+        print("Error printing even index:", index, e)
+
+]]>
+- Benefit: This code minimizes nesting by utilizing separate methods for specific tasks, significantly improving readability and maintainability.
+
+Bad Example 1.3: Deeply nested control flow statements
+ <![CDATA[
+def main():
+    x, y = 10, 20
+    if x > 5:
+        if y < 25:
+            for i in range(10):
+                if i % 2 == 0:
+                    print("Nested level 4:", i)
+
+
+]]>
+- Issue: The code demonstrates excessive depth in nesting control flow statements, which complicates understanding and maintenance. Refactoring to reduce nesting is advised.
+
+Good Example 1.4: Minimal nested control flow statements
+ <![CDATA[
+def main():
+    x, y = 10, 20
+    if x > 5 and y < 25:
+        print_even_numbers_up_to(10)
+
+def print_even_numbers_up_to(max_num):
+    for i in range(max_num):
+        if i % 2 == 0:
+            print("Even number:", i)
+
+]]>
+- Benefit: By consolidating conditions and extracting repetitive logic into a separate method, this code reduces complexity and enhances clarity, making it easier to follow and modify.
+
+######################################################
+Technical Debt 2. Duplicated string literals
+Explanation: It refers to the repetitive use of identical string literals scattered throughout the codebase.
+        This practice can lead to inconsistencies and maintenance challenges, especially if the text needs to be updated or localized.
+        It is more efficient to use a single constant or resource for such literals, which ensures uniformity and simplifies updates,
+        thereby reducing technical debt. This approach not only cleans up the code but also makes it more manageable and less error-prone.
+
+Bad Example 2.1: Duplicated string literals
+<![CDATA[
+def main():
+    message = "Hello, World!"
+    print("Hello, World!")
+    greet("Hello, World!")
+
+def greet(message):
+    print("Greeting:", message)
+
+]]>
+- Issue: The code contains technical debt with duplicated string literals. The string "Hello, World!" is hard-coded multiple times.
+
+Good Example 2.2: No Duplicated String Literals
+<![CDATA[
+class HelloWorld:
+    MESSAGE = "Hello, World!"
+
+    @staticmethod
+    def main():
+        print(HelloWorld.MESSAGE)
+        HelloWorld.greet(HelloWorld.MESSAGE)
+
+    @staticmethod
+    def greet(message):
+        print("Greeting:", message)
+
+]]>
+- Benefit: This code avoids technical debt related to duplicated string literals by using a constant, 'MESSAGE'. This approach ensures consistency and ease of maintenance.
+
+Bad Example 2.3: Duplicated string literals
+<![CDATA[
+def main():
+    print("Login failed")
+    # Later in the code
+    print("Login failed")
+
+]]>
+- Issue: The code contains technical debt with duplicated string literals. The string "Login failed" is hard-coded multiple times.
+
+Good Example 2.4: No Duplicated String Literals
+<![CDATA[
+class NoDuplicatedStrings:
+    LOGIN_FAILED = "Login failed"
+
+    @staticmethod
+    def main():
+        print(NoDuplicatedStrings.LOGIN_FAILED)
+        # Later in the code
+        print(NoDuplicatedStrings.LOGIN_FAILED)
+
+]]>
+- Benefit: The code effectively manages technical debt related to duplicated string literals by defining "Login failed" only once as 'LOGIN_FAILED', enhancing maintainability and reducing error risks.
+
+######################################################
+Technical Debt 3. Throw generic exceptions
+Explanation: It refers to using broad, non-specific exception types in error handling rather than more specific, descriptive exceptions.
+        This practice can make error diagnosis and handling less effective, as it doesn't provide clear insight into the exact nature of an error.
+        Using specific exceptions helps accurately identify the root cause of issues and allows for more precise and effective error handling, leading to more robust and maintainable code.
+
+Bad Example 3.1: Throw Generic Exceptions
+<![CDATA[
+def process(value):
+    if value < 10:
+        raise Exception("Value too low")
+    print("Value is sufficient")
+
+]]>
+- Issue: Uses a generic 'Exception', which masks specific issues and complicates error handling.
+
+Good Example 3.2: Throw Specific Exceptions
+<![CDATA[
+def process(value):
+    if value < 10:
+        raise ValueError("Value too low")
+    print("Value is sufficient")
+
+]]>
+- Benefit: Using 'IllegalArgumentException' clarifies the nature of the error and aids in precise error handling.
+
+Bad Example 3.3: Throw Generic Exceptions
+<![CDATA[
+def divide(num, num2):
+    if num2 == 0:
+        raise Exception("Cannot divide by zero")
+    result = num / num2  # Perform the division
+    print("Result of division:", result)
+
+]]>
+- Issue: Uses a generic 'Exception', which masks specific issues and complicates error handling.
+
+Good Example 3.4: Throw Specific Exceptions
+<![CDATA[
+def divide(num, num2):
+    if num2 == 0:
+        raise ZeroDivisionError("Cannot divide by zero")
+    result = num / num2  # Perform the division
+    print("Result of division:", result)
+]]>
+- Benefit: 'ArithmeticException' specifically indicates division errors, enhancing clarity and error management.
+
+######################################################
+Technical Debt 4. Collapsible if statements.
+Explanation: It refers to scenarios where multiple sequential "if" statements are nested inside the other but could be combined into a more streamlined and efficient conditional structure.
+        This nesting often occurs when different conditions are checked in a series of "if" statements, which can be simplified by using logical operators (AND, OR)
+        to combine these conditions into a single "if" statement. Reducing the number of nested "if" statements can enhance code readability and maintainability and reduce complexity.
+
+Bad Example 4.1: Collapsible if statements
+<![CDATA[
+def main():
+    hasInvitation = True
+    onGuestList = True
+    hasValidID = True
+
+    if hasInvitation:
+        if onGuestList:
+            if hasValidID:
+                print("Welcome to the party!")
+
+]]>
+- Issue: The code unnecessarily nests multiple if statements which could be combined into a single conditional. This excessive nesting increases the complexity and reduces the code's readability.
+
+Good Example 4.2: Collapsible if statements
+<![CDATA[
+def main():
+    hasInvitation = True
+    onGuestList = True
+    hasValidID = True
+
+    if hasInvitation and onGuestList and hasValidID:
+        print("Welcome to the party!")
+
+]]>
+- Benefit: By combining the conditions into a single if statement using logical AND operators, the code becomes much clearer and simpler.
+
+Bad Example 4.3: Collapsible if statements
+<![CDATA[
+def main():
+    active = True
+    admin = True
+    if active:
+        if admin:
+            print("Access granted to admin panel.")
+
+
+]]>
+- Issue: The code contains nested if statements that could be collapsed for clarity and simplicity. This nesting can obscure the conditions under which code is executed and increase maintenance difficulty.
+
+Good Example 4.4: Collapsible if statements
+<![CDATA[
+def main():
+    active = True
+    admin = True
+    if active and admin:
+        print("Access granted to admin panel.")
+
+]]>
+- Benefit: By collapsing nested if statements into one, this version simplifies the logic and makes the conditions under which actions are taken more transparent and easier to maintain.
+
+######################################################
+Please analyze the following code snippets and report any technical debt identified according to the categories previously described.
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
+

@@ -1,0 +1,559 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Long method',
+                        'Duplicated code blocks',
+                        'Preserve original exceptions',
+                        'Statements on separate lines',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="StartLine"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="EndLine"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+        You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+        Please review each snippet and identify any technical debt present related to:
+        1. Long Methods
+        2. Duplicated code blocks
+        3. Preserving original exceptions
+        4. Statements on separate lines
+
+        Below, you will find code snippets organized into categories.
+        Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where
+        the technical debt has been resolved.
+
+        ######################################################
+        Technical Debt 1. Long Method
+        Explanation: It refers to method in software that is overly long. A method that contains too
+        many lines of code, violates principles like Single Responsibility and leading to code that's hard to
+        understand, maintain, and test. Such methods often encapsulate multiple functionalities, making them prone to
+        bugs and difficult to modify. Simplifying these methods or breaking down into smaller, more cohesive units can
+        enhance code readability and maintainability.
+
+        Bad Example 1.1: Long Method
+        <![CDATA[
+class UserManager:
+    def process_user(self, user_id):
+        # Validate user ID
+        if user_id <= 0:
+            print("Invalid user ID provided.")
+            return
+
+        # Load user data
+        user_data = self.load_user_data(user_id)
+        if user_data is None:
+            print(f"No user found with ID: {user_id}")
+            return
+
+        # Process user orders
+        orders = self.get_user_orders(user_id)
+        if not orders:
+            print("User has no orders.")
+            return
+
+        for order in orders:
+            if order.is_delivered():
+                print(f"Order {order.id} already delivered.")
+            else:
+                self.process_order(order)
+                print(f"Processed order: {order.id}")
+
+        # Update user activity log
+        self.update_user_activity_log(user_id, "Processed orders.")
+
+    def load_user_data(self, user_id):
+        # Assume this method returns user data as a string or None if not found
+        return "UserData"
+
+    def get_user_orders(self, user_id):
+        # Assume this method returns a list of user orders
+        return []
+
+    def process_order(self, order):
+        # Assume this processes the order
+        pass
+
+    def update_user_activity_log(self, user_id, activity):
+        # Log user activity
+        pass
+
+]]>
+        - Issue: The method handles multiple tasks such as user validation, loading user data, and processing user
+        orders all in one. This makes it long and complex which makes it hard to maintain.
+
+        Good Example 1.2: Short method
+        <![CDATA[
+class UserManager:
+    def process_user(self, user_id):
+        if not self.validate_user_id(user_id):
+            return
+
+        user_data = self.load_user_data(user_id)
+        if user_data is None:
+            print(f"No user found with ID: {user_id}")
+            return
+
+        self.process_user_orders(user_id)
+        self.update_user_activity_log(user_id, "Processed orders.")
+
+    def validate_user_id(self, user_id):
+        if user_id <= 0:
+            print("Invalid user ID provided.")
+            return False
+        return True
+
+    def load_user_data(self, user_id):
+        # Assume this method returns user data or None if not found
+        return "UserData"
+
+    def process_user_orders(self, user_id):
+        orders = self.get_user_orders(user_id)
+        if not orders:
+            print("User has no orders.")
+            return
+
+        for order in orders:
+            self.process_order(order)
+
+    def get_user_orders(self, user_id):
+        # Assume this method returns a list of user orders
+        return []
+
+    def process_order(self, order):
+        if order.is_delivered():
+            print(f"Order {order.id} already delivered.")
+        else:
+            print(f"Processed order: {order.id}")
+            # Assume this processes the order
+
+    def update_user_activity_log(self, user_id, activity):
+        # Log user activity
+        pass
+
+]]>
+        - Benefit: The long method is broken down into smaller methods, each handling a specific part of the process.
+        This improves readability and makes the code easier to maintain.
+
+        Bad Example 1.3: Long Method
+        <![CDATA[
+class CustomerService:
+    def setup_new_customer(self, email, name, address):
+        # Initial input validation
+        if not self.validate_email(email):
+            print("Invalid email address.")
+            return
+
+        if not self.validate_name(name):
+            print("Invalid name.")
+            return
+
+        if not self.validate_address(address):
+            print("Invalid address.")
+            return
+
+        # Create a new customer account
+        customer_id = self.create_new_customer_account(email, name, address)
+        if customer_id == -1:
+            print("Failed to create customer account.")
+            return
+
+        # Send a welcome email to the new customer
+        self.send_welcome_email(email)
+
+        # Add to mailing list
+        if not self.add_to_mailing_list(email):
+            print("Failed to add customer to mailing list.")
+        else:
+            print("Customer added to mailing list.")
+
+        # Log the creation of the new account
+        print(f"New customer account created successfully with ID: {customer_id}")
+
+        # Optional: Perform additional setup tasks
+        self.setup_customer_preferences(customer_id)
+        print("Customer preferences setup completed.")
+
+    def validate_email(self, email):
+        return email is not None and email.strip() and "@" in email and "." in email
+
+    def validate_name(self, name):
+        return name is not None and name.strip() and len(name) > 1
+
+    def validate_address(self, address):
+        return address is not None and address.strip() and len(address) > 5
+
+    def create_new_customer_account(self, email, name, address):
+        # Simulate account creation logic
+        from random import randint
+        return randint(1, 1000)
+
+    def send_welcome_email(self, email):
+        # Simulate sending an email
+        print(f"Welcome email sent to: {email}")
+
+    def add_to_mailing_list(self, email):
+        # Simulate adding to a mailing list
+        return True
+
+    def setup_customer_preferences(self, customer_id):
+        # Simulate setting up customer preferences
+        pass
+
+
+]]>
+        - Issue: The method handles setting up a new customer account, including data validation, account creation, and
+        sending a welcome email and more, all in one overly complex method.
+
+        Good Example 1.4: Short Method
+        <![CDATA[
+class CustomerValidation:
+    @staticmethod
+    def validate_email(email):
+        return email is not None and email.strip() and "@" in email and "." in email
+
+    @staticmethod
+    def validate_name(name):
+        return name is not None and name.strip() and len(name) > 1
+
+    @staticmethod
+    def validate_address(address):
+        return address is not None and address.strip() and len(address) > 5
+
+
+class CustomerService:
+    def setup_new_customer(self, email, name, address):
+        if not self.validate_customer_details(email, name, address):
+            return
+
+        customer_id = self.create_new_customer_account(email, name, address)
+        if customer_id == -1:
+            print("Failed to create customer account.")
+            return
+
+        self.complete_customer_setup(email, customer_id)
+
+    def validate_customer_details(self, email, name, address):
+        if not CustomerValidation.validate_email(email):
+            print("Invalid email address.")
+            return False
+        if not CustomerValidation.validate_name(name):
+            print("Invalid name.")
+            return False
+        if not CustomerValidation.validate_address(address):
+            print("Invalid address.")
+            return False
+        return True
+
+    def create_new_customer_account(self, email, name, address):
+        from random import randint
+        return randint(1, 1000)  # Simulate account creation logic
+
+    def complete_customer_setup(self, email, customer_id):
+        self.send_welcome_email(email)
+        if self.add_to_mailing_list(email):
+            print("Customer added to mailing list.")
+        else:
+            print("Failed to add customer to mailing list.")
+        print(f"New customer account created successfully with ID: {customer_id}")
+        self.setup_customer_preferences(customer_id)
+
+    def send_welcome_email(self, email):
+        print(f"Welcome email sent to: {email}")
+
+    def add_to_mailing_list(self, email):
+        return True  # Simulate adding to a mailing list
+
+    def setup_customer_preferences(self, customer_id):
+        print("Customer preferences setup completed.")  # Simulate preference setup
+
+]]>
+        - Benefit: The large method is broken down into smaller methods, improving readability and maintainability. Each
+        method now handles a specific task, enhancing modularity and ease of testing.
+
+        ######################################################
+        Technical Debt 2. Duplicated code blocks
+        Explanation: It refers to instances where the same or very similar code blocks appear in multiple locations
+        within a software project. It can lead to maintenance challenges, as any change to the logic would need to be
+        replicated across all instances to maintain consistency. It also increases the codebase size unnecessarily and
+        can lead to bugs if the copies diverge over time. Refactoring to remove duplicated code, often by creating
+        shared functions or classes, can reduce this debt, improving maintainability and reducing the potential for
+        errors.
+
+        Bad Example 2.1: Duplicated code blocks
+        <![CDATA[
+class TransactionProcessor:
+    def process_deposit(self, amount, account):
+        if amount <= 0:
+            raise ValueError("Amount must be positive")
+        fee = self.calculate_fee(amount, "deposit")
+        account.deposit(amount - fee)
+        return fee
+
+    def process_withdrawal(self, amount, account):
+        if amount <= 0:
+            raise ValueError("Amount must be positive")
+        if account.get_balance() < amount:
+            raise ValueError("Insufficient funds")
+        fee = self.calculate_fee(amount, "withdrawal")
+        account.withdraw(amount + fee)
+        return fee
+
+    def calculate_fee(self, amount, type):
+        fee_rate = 0.005 if type == "deposit" else 0.01
+        return amount * fee_rate
+
+]]>
+        - Issue: Duplicated code is spread across multiple methods for processing different types of transactions in a
+        financial application. Each method checks various conditions and applies transaction fees differently based on
+        the transaction type.
+
+        Good Example 2.2: No Duplicated code blocks
+        <![CDATA[
+class TransactionProcessor:
+    def process_transaction(self, amount, account, type):
+        self.validate_amount(amount)
+        fee = self.calculate_fee(amount, type)
+        if type == "deposit":
+            account.deposit(amount - fee)
+        elif type == "withdrawal":
+            self.validate_funds(amount, account)
+            account.withdraw(amount + fee)
+        else:
+            raise ValueError("Unsupported transaction type")
+
+    def validate_amount(self, amount):
+        if amount <= 0:
+            raise ValueError("Amount must be positive")
+
+    def validate_funds(self, amount, account):
+        if account.get_balance() < amount:
+            raise ValueError("Insufficient funds")
+
+    def calculate_fee(self, amount, type):
+        fee_rate = 0.005 if type == "deposit" else 0.01
+        return amount * fee_rate
+
+]]>
+        - Benefit: This code avoids technical debt related to duplicated code blocks by eliminating duplicated condition
+        checking and fee calculation by centralizing the transaction processing logic.
+
+
+        Bad Example 2.3: Duplicated code blocks
+        <![CDATA[
+class ReportGenerator:
+    def generate_sales_report(self, date):
+        query = f"SELECT * FROM sales WHERE date = '{date}'"
+        results = self.database.execute_query(query)
+        return [self.convert_to_data_point(record) for record in results]
+
+    def generate_inventory_report(self, date):
+        query = f"SELECT * FROM inventory WHERE date = '{date}'"
+        results = self.database.execute_query(query)
+        return [self.convert_to_data_point(record) for record in results]
+
+    def convert_to_data_point(self, record):
+        return {'date': record['date'], 'value': record['value']}
+
+]]>
+        - Issue: Duplicated code blocks of database query and data processing logic across methods that retrieve
+        different datasets from a database for reporting purposes.
+
+        Good Example 2.4: No Duplicated code blocks
+        <![CDATA[
+class ReportGenerator:
+    def generate_report(self, type, date):
+        query = self.build_query(type, date)
+        results = self.database.execute_query(query)
+        return [self.convert_to_data_point(record) for record in results]
+
+    def build_query(self, type, date):
+        if type == 'sales':
+            return f"SELECT * FROM sales WHERE date = '{date}'"
+        elif type == 'inventory':
+            return f"SELECT * FROM inventory WHERE date = '{date}'"
+        else:
+            raise ValueError("Unsupported report type")
+
+    def convert_to_data_point(self, record):
+        return {'date': record['date'], 'value': record['value']}
+
+]]>
+        - Benefit: This refactoring centralizes the data retrieval logic into a single method, reducing duplication and
+        simplifying the addition of new reports.
+
+        ######################################################
+        Technical Debt 3. Preserve original exceptions
+        Explanation: Effective exception handling is crucial for maintaining robust and maintainable software.
+        Inadequate handling of exceptions, where original error messages are not logged or preserved, can significantly
+        obscure the underlying cause of an exception. This lack of clarity complicates debugging and error resolution,
+        potentially leading to prolonged system downtime and increased maintenance complexity. Neglecting to preserve
+        and log the full details of original exceptions can exacerbate technical debt, as developers spend more time
+        identifying and fixing issues without clear error information.
+
+        Bad Example 3.1: Not preserving original exceptions
+        <![CDATA[
+class FileProcessor:
+    def process_file(self, path):
+        try:
+            content = self.read_file(path)
+            # Further processing
+        except IOError as e:
+            raise Exception("Failed to process the file.")  # Not Preserving exception
+
+    def read_file(self, path):
+        # Read file logic
+        with open(path, 'r') as file:
+            return file.read()
+
+]]>
+        - Issue: When an error occurs during the processing of a file, the original exception is discarded, and a new,
+        less informative exception is thrown.
+
+        Good Example 3.2: Preserving original exceptions
+        <![CDATA[
+class FileProcessor:
+    def process_file(self, path):
+        try:
+            content = self.read_file(path)
+            # Further processing
+        except IOError as e:
+            raise Exception("Failed to process the file.") from e
+
+    def read_file(self, path):
+        # Read file logic
+        with open(path, 'r') as file:
+            return file.read()
+
+]]>
+        - Benefit: In this refactored version, the original IOException is preserved by including it as the cause in the
+        newly thrown exception. This maintains the stack trace and the root cause details.
+
+        Bad Example 3.3: Not preserving original exceptions
+        <![CDATA[
+import sqlite3
+
+class DataImporter:
+    def import_data(self):
+        try:
+            # Data import logic, assuming it involves a database operation
+            self.connect_database_and_execute()
+        except sqlite3.DatabaseError as e:
+            logging.error("Database error: %s", str(e))
+            raise ValueError("Import failed due to database error")  # Losing original exception context
+
+    def connect_database_and_execute(self):
+        # Simulate database connection and operation
+        raise sqlite3.DatabaseError("Unable to connect to database")
+
+]]>
+        - Issue: the original exception is logged, but then a new exception is thrown without linking the original
+        cause, leading to potential loss of valuable debugging information.
+
+        Good Example 3.4: Preserving original exceptions
+        <![CDATA[
+import sqlite3
+
+class DataImporter:
+    def import_data(self):
+        try:
+            # Data import logic, assuming it involves a database operation
+            self.connect_database_and_execute()
+        except sqlite3.DatabaseError as e:
+            logging.error("Database error: %s", str(e))
+            raise ValueError("Import failed due to database error") from e
+
+    def connect_database_and_execute(self):
+        # Simulate database connection and operation
+        raise sqlite3.DatabaseError("Unable to connect to database")
+]]>
+        - Benefit: This improved version includes the original DatabaseError in the new exception, thus preserving the
+        entire exception chain which aids in troubleshooting and understanding the full context of the error.
+
+        ######################################################
+        Technical Debt 4. Statements on separate lines
+        Explanation: It emphasizes the importance of code readability and organization. This principal advocates for
+        proper indentation, limiting the length of each line in the code and avoiding multiple declarations or
+        statements on a single line. Adhering to this practice enhances readability, makes the code easier to understand
+        and maintain, and reduces the likelihood of errors. It is a key aspect of writing clean, well-structured code,
+        and ignoring it can contribute to technical debt by making the codebase more cumbersome and error-prone.
+
+        Bad Example 4.1: Statements on a Single Line
+        <![CDATA[
+class AccountManager:
+    def update_account_balance(self, account, amount):
+        if account and account.is_active(): account.set_balance(account.get_balance() + amount); account.set_last_update_timestamp(time.time())
+
+]]>
+        - Issue: Multiple operations are unnecessarily condensed onto single lines, which can make debugging and
+        understanding the code flow more difficult.
+
+
+        Good Example 4.2: Statements on Separate Lines
+        <![CDATA[
+class AccountManager:
+    def update_account_balance(self, account, amount):
+        if account and account.is_active():
+            account.set_balance(account.get_balance() + amount)
+            account.set_last_update_timestamp(time.time())
+
+]]>
+        - Benefit:Refactoring the code to place statements on separate lines improves readability and makes it easier to
+        set breakpoints during debugging.
+
+
+        Bad Example 4.3: Statements on a Single Line
+        <![CDATA[
+class OrderProcessor:
+    def process_order(self, order):
+        if order and order.is_valid() and not order.is_processed(): order.set_processed(True); print("Order processed")
+
+]]>
+        - Issue: Logic that performs a series of checks and operations is all placed on a single line, complicating the
+        readability and maintenance of the code.
+
+        Good Example 4.4: Statements on Separate Lines
+        <![CDATA[
+class OrderProcessor:
+    def process_order(self, order):
+        if order and order.is_valid() and not order.is_processed():
+            order.set_processed(True)
+            print("Order processed")
+
+]]>
+        - Benefit: Expanding the logic into a more structured format with each statement on its own line makes the code
+        cleaner and more understandable.
+
+        ######################################################
+        Please analyze the following code snippets and report any technical debt identified according to the categories
+        previously described.
+        ######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
+

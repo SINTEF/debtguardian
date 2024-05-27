@@ -1,0 +1,571 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Long method',
+                        'Duplicated blocks',
+                        'Preserve original exceptions',
+                        'Statements on separate lines',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="StartLine"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="EndLine"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+        You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+        Please review each snippet and identify any technical debt present related to:
+        1. Long Methods
+        2. Duplicated blocks
+        3. Preserving original exceptions
+        4. Statements on separate lines
+
+        Below, you will find code snippets organized into categories.
+        Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where
+        the technical debt has been resolved.
+
+        ######################################################
+        Technical Debt 1. Long Method
+        Explanation: It refers to method in software that is overly long. A method that contains too
+        many lines of code, violates principles like Single Responsibility and leading to code that's hard to
+        understand, maintain, and test. Such methods often encapsulate multiple functionalities, making them prone to
+        bugs and difficult to modify. Simplifying these methods or breaking down into smaller, more cohesive units can
+        enhance code readability and maintainability.
+
+        Bad Example 1.1: Long Method
+        <![CDATA[
+public class UserManager {
+    public void processUser(int userId) {
+        // Validate user ID
+        if (userId <= 0) {
+            System.out.println("Invalid user ID provided.");
+            return;
+        }
+
+        // Load user data
+        String userData = loadUserData(userId);
+        if (userData == null) {
+            System.out.println("No user found with ID: " + userId);
+            return;
+        }
+
+        // Process user orders
+        List<Order> orders = getUserOrders(userId);
+        if (orders.isEmpty()) {
+            System.out.println("User has no orders.");
+            return;
+        }
+
+        for (Order order : orders) {
+            if (order.isDelivered()) {
+                System.out.println("Order " + order.getId() + " already delivered.");
+            } else {
+                // Assume processOrder is a method that processes the order
+                processOrder(order);
+                System.out.println("Processed order: " + order.getId());
+            }
+        }
+
+        // Update user activity log
+        updateUserActivityLog(userId, "Processed orders.");
+    }
+
+    private String loadUserData(int userId) {
+        // Assume this method returns user data as String or null if not found
+        return "UserData";
+    }
+
+    private List<Order> getUserOrders(int userId) {
+        // Assume this method returns a list of user orders
+        return new ArrayList<>();
+    }
+
+    private void processOrder(Order order) {
+        // Assume this processes the order
+    }
+
+    private void updateUserActivityLog(int userId, String activity) {
+        // Log user activity
+    }
+}
+]]>
+        - Issue: The method handles multiple tasks such as user validation, loading user data, and processing user
+        orders all in one. This makes it long and complex which makes it hard to maintain.
+
+        Good Example 1.2: Short method
+        <![CDATA[
+public class UserManager {
+    public void processUser(int userId) {
+        if (!validateUserId(userId)) {
+            return;
+        }
+
+        String userData = loadUserData(userId);
+        if (userData == null) {
+            System.out.println("No user found with ID: " + userId);
+            return;
+        }
+
+        processUserOrders(userId);
+        updateUserActivityLog(userId, "Processed orders.");
+    }
+
+    private boolean validateUserId(int userId) {
+        if (userId <= 0) {
+            System.out.println("Invalid user ID provided.");
+            return false;
+        }
+        return true;
+    }
+
+    private String loadUserData(int userId) {
+        // Assume this method returns user data or null if not found
+        return "UserData";
+    }
+
+    private void processUserOrders(int userId) {
+        List<Order> orders = getUserOrders(userId);
+        if (orders.isEmpty()) {
+            System.out.println("User has no orders.");
+            return;
+        }
+
+        for (Order order : orders) {
+            processOrder(order);
+        }
+    }
+
+    private List<Order> getUserOrders(int userId) {
+        // Assume this method returns a list of user orders
+        return new ArrayList<>();
+    }
+
+    private void processOrder(Order order) {
+        if (order.isDelivered()) {
+            System.out.println("Order " + order.getId() + " already delivered.");
+        } else {
+            System.out.println("Processed order: " + order.getId());
+            // Assume this processes the order
+        }
+    }
+
+    private void updateUserActivityLog(int userId, String activity) {
+        // Log user activity
+    }
+}
+]]>
+        - Benefit: The long method is broken down into smaller methods, each handling a specific part of the process.
+        This improves readability and makes the code easier to maintain.
+
+        Bad Example 1.3: Long Method
+        <![CDATA[
+public class CustomerService {
+    public void setupNewCustomer(String email, String name, String address) {
+        if (email == null || email.isEmpty() || !email.contains("@")) {
+            System.out.println("Invalid email address.");
+            return;
+        }
+
+        if (name == null || name.isEmpty()) {
+            System.out.println("Invalid name.");
+            return;
+        }
+
+        if (address == null || address.isEmpty()) {
+            System.out.println("Invalid address.");
+            return;
+        }
+
+        int customerId = createNewCustomerAccount(email, name, address);
+        if (customerId <= 0) {
+            System.out.println("Failed to create customer account.");
+            return;
+        }
+
+        sendWelcomeEmail(email);
+        System.out.println("New customer account created successfully with ID: " + customerId);
+    }
+
+    private int createNewCustomerAccount(String email, String name, String address) {
+        // Simulate account creation logic
+        return (int) (Math.random() * 1000);
+    }
+
+    private void sendWelcomeEmail(String email) {
+        // Simulate sending an email
+        System.out.println("Welcome email sent to: " + email);
+    }
+}
+]]>
+        - Issue: The method handles setting up a new customer account, including data validation, account creation, and
+        sending a welcome email, all in one overly long and complex method.
+
+        Good Example 1.4: Short Method
+        <![CDATA[
+public class CustomerService {
+    public void setupNewCustomer(String email, String name, String address) {
+        if (!isValidCustomerData(email, name, address)) {
+            return;
+        }
+
+        int customerId = createNewCustomerAccount(email, name, address);
+        if (customerId <= 0) {
+            System.out.println("Failed to create customer account.");
+            return;
+        }
+
+        sendWelcomeEmail(email);
+        System.out.println("New customer account created successfully with ID: " + customerId);
+    }
+
+    private boolean isValidCustomerData(String email, String name, String address) {
+        if (email == null || email.isEmpty() || !email.contains("@")) {
+            System.out.println("Invalid email address.");
+            return false;
+        }
+        if (name == null || name.isEmpty()) {
+            System.out.println("Invalid name.");
+            return false;
+        }
+        if (address == null || address.isEmpty()) {
+            System.out.println("Invalid address.");
+            return false;
+        }
+        return true;
+    }
+
+    private int createNewCustomerAccount(String email, String name, String address) {
+        // Simulate account creation logic
+        return (int) (Math.random() * 1000);
+    }
+
+    private void sendWelcomeEmail(String email) {
+        // Simulate sending an email
+        System.out.println("Welcome email sent to: " + email);
+    }
+}
+
+]]>
+        - Benefit: The large method is broken down into smaller methods, improving readability and maintainability. Each
+        method now handles a specific task, enhancing modularity and ease of testing.
+
+        ######################################################
+        Technical Debt 2. Duplicated code blocks
+        Explanation: It refers to instances where the same or very similar code blocks appear in multiple locations
+        within a software project. It can lead to maintenance challenges, as any change to the logic would need to be
+        replicated across all instances to maintain consistency. It also increases the codebase size unnecessarily and
+        can lead to bugs if the copies diverge over time. Refactoring to remove duplicated code, often by creating
+        shared functions or classes, can reduce this debt, improving maintainability and reducing the potential for
+        errors.
+
+        Bad Example 2.1: Duplicated code blocks
+        <![CDATA[
+public class TransactionProcessor {
+    public double processDeposit(double amount, Account account) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        double fee = calculateFee(amount, "deposit");
+        account.deposit(amount - fee);
+        return fee;
+    }
+
+    public double processWithdrawal(double amount, Account account) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (account.getBalance() < amount) {
+            throw new IllegalStateException("Insufficient funds");
+        }
+        double fee = calculateFee(amount, "withdrawal");
+        account.withdraw(amount + fee);
+        return fee;
+    }
+
+    private double calculateFee(double amount, String type) {
+        double feeRate = type.equals("deposit") ? 0.005 : 0.01; // Different fee rates for deposit and withdrawal
+        return amount * feeRate;
+    }
+}
+
+
+]]>
+        - Issue: Duplicated code is spread across multiple methods for processing different types of transactions in a
+        financial application. Each method checks various conditions and applies transaction fees differently based on
+        the transaction type.
+
+        Good Example 2.2: No Duplicated code blocks
+        <![CDATA[
+public class TransactionProcessor {
+    public void processTransaction(double amount, Account account, TransactionType type) {
+        validateAmount(amount);
+        double fee = calculateFee(amount, type);
+        switch (type) {
+            case DEPOSIT:
+                account.deposit(amount - fee);
+                break;
+            case WITHDRAWAL:
+                validateFunds(amount, account);
+                account.withdraw(amount + fee);
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported transaction type");
+        }
+    }
+
+    private void validateAmount(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+    }
+
+    private void validateFunds(double amount, Account account) {
+        if (account.getBalance() < amount) {
+            throw new IllegalStateException("Insufficient funds");
+        }
+    }
+
+    private double calculateFee(double amount, TransactionType type) {
+        double feeRate = type == TransactionType.DEPOSIT ? 0.005 : 0.01;
+        return amount * feeRate;
+    }
+}
+
+enum TransactionType {
+    DEPOSIT, WITHDRAWAL
+}
+
+]]>
+        - Benefit: This code avoids technical debt related to duplicated code blocks by eliminating duplicated condition
+        checking and fee calculation by centralizing the transaction processing logic.
+
+
+        Bad Example 2.3: Duplicated code blocks
+        <![CDATA[
+public class ReportGenerator {
+    public List<DataPoint> generateSalesReport(String date) {
+        String query = "SELECT * FROM sales WHERE date = '" + date + "'";
+        List<Map<String, Object>> results = database.executeQuery(query);
+        return results.stream().map(this::convertToDataPoint).collect(Collectors.toList());
+    }
+
+    public List<DataPoint> generateInventoryReport(String date) {
+        String query = "SELECT * FROM inventory WHERE date = '" + date + "'";
+        List<Map<String, Object>> results = database.executeQuery(query);
+        return results.stream().map(this::convertToDataPoint).collect(Collectors.toList());
+    }
+
+    private DataPoint convertToDataPoint(Map<String, Object> record) {
+        return new DataPoint((String) record.get("date"), (Integer) record.get("value"));
+    }
+}
+]]>
+        - Issue: Duplicated code blocks of database query and data processing logic across methods that retrieve
+        different datasets from a database for reporting purposes.
+
+        Good Example 2.4: No Duplicated code blocks
+        <![CDATA[
+public class ReportGenerator {
+    public List<DataPoint> generateReport(ReportType type, String date) {
+        String query = buildQuery(type, date);
+        List<Map<String, Object>> results = database.executeQuery(query);
+        return results.stream().map(this::convertToDataPoint).collect(Collectors.toList());
+    }
+
+    private String buildQuery(ReportType type, String date) {
+        switch (type) {
+            case SALES:
+                return "SELECT * FROM sales WHERE date = '" + date + "'";
+            case INVENTORY:
+                return "SELECT * FROM inventory WHERE date = '" + date + "'";
+            default:
+                throw new IllegalArgumentException("Unsupported report type");
+        }
+    }
+
+    private DataPoint convertToDataPoint(Map<String, Object> record) {
+        return new DataPoint((String) record.get("date"), (Integer) record.get("value"));
+    }
+}
+
+enum ReportType {
+    SALES, INVENTORY
+}
+
+]]>
+        - Benefit: This refactoring centralizes the data retrieval logic into a single method, reducing duplication and
+        simplifying the addition of new reports.
+
+        ######################################################
+        Technical Debt 3. Preserve original exceptions
+        Explanation: Effective exception handling is crucial for maintaining robust and maintainable software.
+        Inadequate handling of exceptions, where original error messages are not logged or preserved, can significantly
+        obscure the underlying cause of an exception. This lack of clarity complicates debugging and error resolution,
+        potentially leading to prolonged system downtime and increased maintenance complexity. Neglecting to preserve
+        and log the full details of original exceptions can exacerbate technical debt, as developers spend more time
+        identifying and fixing issues without clear error information.
+
+        Bad Example 3.1: Not preserving original exceptions
+        <![CDATA[
+public class FileProcessor {
+    public void processFile(String path) {
+        try {
+            String content = readFile(path);
+            // Further processing
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to process the file."); //Not Preserving exception
+        }
+    }
+
+    private String readFile(String path) throws IOException {
+        // Read file logic
+        return new String(Files.readAllBytes(Paths.get(path)));
+    }
+}
+
+]]>
+        - Issue: When an error occurs during the processing of a file, the original exception is discarded, and a new,
+        less informative exception is thrown.
+
+        Good Example 3.2: Preserving original exceptions
+        <![CDATA[
+public class FileProcessor {
+    public void processFile(String path) {
+        try {
+            String content = readFile(path);
+            // Further processing
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to process the file.", e);
+        }
+    }
+
+    private String readFile(String path) throws IOException {
+        // Read file logic
+        return new String(Files.readAllBytes(Paths.get(path)));
+    }
+}
+]]>
+        - Benefit: In this refactored version, the original IOException is preserved by including it as the cause in the
+        newly thrown exception. This maintains the stack trace and the root cause details.
+
+        Bad Example 3.3: Not preserving original exceptions
+        <![CDATA[
+public class DataImporter {
+    public void importData() {
+        try {
+            // Data import logic
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            throw new IllegalStateException("Import failed due to database error");
+        }
+    }
+}
+]]>
+        - Issue: The original exception is logged, but then a new exception is thrown without linking the original
+        cause, leading to potential loss of valuable debugging information.
+
+        Good Example 3.4: Preserving original exceptions
+        <![CDATA[
+public class DataImporter {
+    public void importData() {
+        try {
+            // Data import logic
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            throw new IllegalStateException("Import failed due to database error", e);
+        }
+    }
+}
+]]>
+        - Benefit: This improved version includes the original SQLException in the new exception, thus preserving the
+        entire exception chain which aids in troubleshooting and understanding the full context of the error.
+
+        ######################################################
+        Technical Debt 4. Statements on separate lines
+        Explanation: It emphasizes the importance of code readability and organization. This principle advocates for
+        proper indentation, limiting the length of each line in the code and avoiding multiple declarations or
+        statements on a single line. Adhering to this practice enhances readability, makes the code easier to understand
+        and maintain, and reduces the likelihood of errors. It is a key aspect of writing clean, well-structured code,
+        and ignoring it can contribute to technical debt by making the codebase more cumbersome and error-prone.
+
+        Bad Example 4.1: Statements on a Single Line
+        <![CDATA[
+public class AccountManager {
+    public void updateAccountBalance(Account account, double amount) {
+        if (account != null && account.isActive()) { account.setBalance(account.getBalance() + amount); account.setLastUpdateTimestamp(System.currentTimeMillis()); }
+    }
+}
+]]>
+        - Issue: Multiple operations are unnecessarily condensed onto single lines, which can make debugging and
+        understanding the code flow more difficult.
+
+        Good Example 4.2: Statements on Separate Lines
+        <![CDATA[
+public class AccountManager {
+    public void updateAccountBalance(Account account, double amount) {
+        if (account != null && account.isActive()) {
+            account.setBalance(account.getBalance() + amount);
+            account.setLastUpdateTimestamp(System.currentTimeMillis());
+        }
+    }
+}
+]]>
+        - Benefit:Refactoring the code to place statements on separate lines improves readability and makes it easier to
+        set breakpoints during debugging.
+
+        Bad Example 4.3: Statements on a Single Line
+        <![CDATA[
+public class OrderProcessor {
+    public void processOrder(Order order) { if (order != null && order.isValid() && !order.isProcessed()) order.setProcessed(true); System.out.println("Order processed"); }
+}
+]]>
+        - Issue: Logic that performs a series of checks and operations is all placed on a single line, complicating the
+        readability and maintenance of the code.
+
+        Good Example 4.4: Statements on Separate Lines
+        <![CDATA[
+public class OrderProcessor {
+    public void processOrder(Order order) {
+        if (order != null && order.isValid() && !order.isProcessed()) {
+            order.setProcessed(true);
+            System.out.println("Order processed");
+        }
+    }
+}
+
+]]>
+        - Benefit: Expanding the logic into a more structured format with each statement on its own line makes the code
+        cleaner and more understandable.
+
+        ######################################################
+        Please analyze the following code snippets and report any technical debt identified according to the categories
+        previously described.
+        ######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
+
