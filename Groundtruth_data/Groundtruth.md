@@ -39,33 +39,31 @@ The following technical debt were inspected through the repositories.
 
 The number for technical debt identified within the repositories are the following:
 
-| Category                                       | Batik | JXPath | Airflow |
-|------------------------------------------------|-------|--------|---------|
-| **Duplicated String literals**                 | 113   | 66     | 486     |
-| **Duplicated code blocks**                     | 0     | 0      | 0       |
-| **Nested flow statements**                     | 149   | 142    | 21      |
-| **Collapsible "if" statements**                | 29    | 22     | 0       |
-| **Long method**                                | 149   | 125    | 58      |
-| **Complex Method**                             | 98    | 103    | 32      |
-| **Long parameter list**                        | 24    | 9      | 32      |
-| **Too many lines in switch case**              | 49    | 40     | 0       |
-| **Poor Code Formatting**                       | 0     | 0      | 0       |
-| **Commented out code**                         | 0     | 0      | 16      |
-| **Exception handlers**                         | 273   | 151    | 51      |
-| **Generic exceptions**                         | 55    | 35     | 54      |
-| **Floating point equality**                    | 0     | 0      | 0       |
-| **Direct use of standard outputs for logging** | 1     | 0      | 2       |
-| **Synchronized classes**                       | 11    | 20     | 0       |
-| **Empty methods**                              | 80    | 3      | 10      |
-| **Hardcoded secrets**                          | 0     | 0      | 0       |
-| **Insecure Dependencies**                      | 0     | 0      | 0       |
-| **Lack of Input Validation**                   | 0     | 2      | 0       |
-| **Insufficient Error Handling**                | 0     | 0      | 0       |
-| **Inadequate Encryption**                      | 0     | 0      | 0       |
-| **Improper Session Management**                | 0     | 0      | 5       |
-| **Insecure Default Settings**                  | 0     | 0      | 0       |
-| **Lack of Principle of Least Privilege**       | 0     | 0      | 0       |
-| **Insecure Direct Object References**          | 0     | 0      | 0       |
-| **Cross-Site Request Forgery (CSRF)**          | 0     | 0      | 0       |
-| **Ignoring Security Warnings**                 | 0     | 0      | 0       |
-| **Not Adhering to Secure Coding**              | 0     | 0      | 0       |
+| Category                                       | Batik | JXPath | Airflow | Total |
+|------------------------------------------------|-------|--------|---------|-------|
+| **Duplicated String literals**                 | 358   | 252    | 866     | 1476  |
+| **Duplicated code blocks**                     | 0     | 0      | 0       | 0     |
+| **Nested flow statements**                     | 393   | 193    | 54      | 640   |
+| **Collapsible "if" statements**                | 110   | 32     | 2       | 144   |
+| **Long method**                                | 439   | 149    | 141     | 729   |
+| **Complex Method**                             | 301   | 117    | 82      | 500   |
+| **Long parameter list**                        | 53    | 15     | 68      | 136   |
+| **Too many lines in switch case**              | 284   | 42     | 0       | 326   |
+| **Poor Code Formatting**                       | 0     | 0      | 0       | 0     |
+| **Commented out code**                         | 0     | 0      | 51      | 51    |
+| **Exception handlers**                         | 586   | 177    | 145     | 908   |
+| **Generic exceptions**                         | 134   | 66     | 84      | 284   |
+| **Floating point equality**                    | 0     | 0      | 0       | 0     |
+| **Direct use of standard outputs for logging** | 3     | 0      | 2       | 5     |
+| **Synchronized classes**                       | 51    | 28     | 0       | 79    |
+| **Empty methods**                              | 133   | 4      | 22      | 159   |
+| **Hardcoded secrets**                          | 0     | 0      | 0       | 0     |
+| **Lack of Input Validation**                   | 29    | 2      | 0       | 31    |
+| **Insufficient Error Handling**                | 0     | 0      | 0       | 0     |
+| **Improper Session Management**                | 0     | 0      | 10      | 10    |
+| **Insecure Default Settings**                  | 0     | 0      | 0       | 0     |
+| **Lack of Principle of Least Privilege**       | 0     | 0      | 0       | 0     |
+| **Insecure Direct Object References**          | 0     | 0      | 0       | 0     |
+| **Cross-Site Request Forgery (CSRF)**          | 0     | 0      | 0       | 0     |
+| **Ignoring Security Warnings**                 | 0     | 0      | 0       | 0     |
+| **Not Adhering to Secure Coding**              | 0     | 0      | 0       | 0     |
