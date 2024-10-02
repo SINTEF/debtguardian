@@ -1,0 +1,230 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Long parameter list',
+                        'Complex method'
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="StartLine"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="EndLine"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+        You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+        Please review each snippet and identify any technical debt present related to:
+        1. Long parameter list
+        2. Complex method
+
+        Below, you will find code snippets organized into categories.
+        Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where
+        the technical debt has been resolved.
+
+        ######################################################
+        Technical Debt 1. Long parameter list
+        Explanation: It refers to methods or functions with a high number of parameters, which can make the code difficult to understand and maintain.
+        Such methods are often a sign that the function is doing too much or that the parameters could be grouped more logically.
+        It is better to refactor these methods, e.g., by using objects to encapsulate related parameters. 
+
+    Bad Example 1.1: : Long parameter list   
+<![CDATA[
+        public void scheduleMeeting(String title, String date, String startTime, String endTime, String location, String[] participants, boolean isRecurring, String recurrencePattern) {
+    // Method implementation
+}
+]]>
+
+        - Issue: The issue with the method is that it has a long parameter list, which makes the code harder to read, understand, and maintain. 
+        This complexity can lead to errors when calling the method, as the order and number of parameters must be precisely followed.
+
+
+Good Example 1.2: Fixed code
+
+<![CDATA[
+public void scheduleMeeting(Meeting meeting) {
+    // Method implementation
+}
+
+public class Meeting {
+    private String title;
+    private String date;
+    private String startTime;
+    private String endTime;
+    private String location;
+    private String[] participants;
+    private boolean isRecurring;
+    private String recurrencePattern;
+
+    // Getters and setters
+}
+
+]]>
+
+        - Benefit:
+        The code has been refactored to use an object instead.
+
+
+        ######################################################
+        Technical Debt 2. Complex method
+        Explanation: It refers to methods or classes in software that are overly long or complex.
+        A method contains too many lines of code, or a class has too many responsibilities, violating principles like Single Responsibility and leading to code that's hard to understand, maintain, and test.
+        Such methods or classes often encapsulate multiple functionalities, making them prone to bugs and difficult to modify.
+        Simplifying these methods or breaking down complex classes into smaller, more cohesive units can enhance code readability and maintainability.
+        
+        Bad Example 1.1: Complex Method    
+<![CDATA[
+public class OrderProcessor {
+
+    public void processOrder(Order order) {
+        // Validate order
+        if (order == null) {
+            System.out.println("Order is null");
+            return;
+        }
+        if (order.getItems() == null || order.getItems().isEmpty()) {
+            System.out.println("Order has no items");
+            return;
+        }
+
+        // Calculate total price
+        double totalPrice = 0;
+        for (Item item : order.getItems()) {
+            if (item.getPrice() < 0) {
+                System.out.println("Invalid item price");
+                return;
+            }
+            totalPrice += item.getPrice() * item.getQuantity();
+        }
+
+        // Apply discounts
+        if (order.getCustomer().isPremiumMember()) {
+            totalPrice *= 0.9; // 10% discount for premium members
+        } else if (totalPrice > 100) {
+            totalPrice *= 0.95; // 5% discount for orders over $100
+        }
+
+        // Process payment
+        PaymentProcessor paymentProcessor = new PaymentProcessor();
+        boolean paymentSuccess = paymentProcessor.processPayment(order.getCustomer(), totalPrice);
+        if (!paymentSuccess) {
+            System.out.println("Payment failed");
+            return;
+        }
+
+        // Update order status
+        order.setStatus("Processed");
+        System.out.println("Order processed successfully");
+    }
+}
+]]>
+
+        - Issue: 
+        Excessive length: The method is long and handles multiple tasks.
+        High cyclomatic complexity: There are several conditional checks and loops.
+        Poor modularity: The method does not delegate tasks to smaller, more focused methods.
+        Mixed responsibilities: The method handles validation, calculation, discount application, payment processing, and status updating all in one place.
+
+
+        Good Example 1.2: Fixed code
+<![CDATA[
+
+        public class OrderProcessor {
+
+    public void processOrder(Order order) {
+        if (!validateOrder(order)) {
+            return;
+        }
+
+        double totalPrice = calculateTotalPrice(order);
+        totalPrice = applyDiscounts(order, totalPrice);
+
+        if (!processPayment(order.getCustomer(), totalPrice)) {
+            System.out.println("Payment failed");
+            return;
+        }
+
+        updateOrderStatus(order);
+        System.out.println("Order processed successfully");
+    }
+
+    private boolean validateOrder(Order order) {
+        if (order == null) {
+            System.out.println("Order is null");
+            return false;
+        }
+        if (order.getItems() == null || order.getItems().isEmpty()) {
+            System.out.println("Order has no items");
+            return false;
+        }
+        return true;
+    }
+
+    private double calculateTotalPrice(Order order) {
+        double totalPrice = 0;
+        for (Item item : order.getItems()) {
+            if (item.getPrice() < 0) {
+                System.out.println("Invalid item price");
+                return 0;
+            }
+            totalPrice += item.getPrice() * item.getQuantity();
+        }
+        return totalPrice;
+    }
+
+    private double applyDiscounts(Order order, double totalPrice) {
+        if (order.getCustomer().isPremiumMember()) {
+            return totalPrice * 0.9; // 10% discount for premium members
+        } else if (totalPrice > 100) {
+            return totalPrice * 0.95; // 5% discount for orders over $100
+        }
+        return totalPrice;
+    }
+
+    private boolean processPayment(Customer customer, double totalPrice) {
+        PaymentProcessor paymentProcessor = new PaymentProcessor();
+        return paymentProcessor.processPayment(customer, totalPrice);
+    }
+
+    private void updateOrderStatus(Order order) {
+        order.setStatus("Processed");
+    }
+}
+]]>
+        - Benefit: 
+        Modularity: The method is broken down into smaller, focused methods (validateOrder, calculateTotalPrice, applyDiscounts, processPayment, updateOrderStatus).
+        Readability: Each method has a clear, single responsibility, making the code easier to read and understand.
+        Maintainability: Smaller methods are easier to test and modify independently.
+
+        This refactoring reduces the complexity of the original method, making it more maintainable and easier to understand.
+
+        ######################################################
+        Please analyze the following code snippets and report any technical debt identified according to the categories
+        previously described.
+        ######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
+
