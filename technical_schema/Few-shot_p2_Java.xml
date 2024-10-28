@@ -10,7 +10,7 @@
                 <string name="type" description="What type of technical debt is identified in this code snippet?"
                         format="valid-choices: {[
                         'Long method',
-                        'Duplicated blocks',
+                        'Duplicated code blocks',
                         'Preserve original exceptions',
                         'Statements on separate lines',
                         ]}" on-fail-valid-choices="reask" required="true"/>

@@ -1,7 +1,43 @@
 import re
-import textwrap
+import datetime
 import logging
 import os
+import json
+from pathlib import Path
+from settings import ROOT_DIR, RESULT_DIR
+
+def initialize_file(repo_url, model_type, resume=False):
+    """
+    The function will open or create the file that the data is being saved into
+    :param repo_url: The url for the GitHub repository
+    :param model_type: The model type used for the analysis
+    :param resume: flagging whether to resume the analysis after a commit
+    :return:
+        debts: The content of previous analysis
+        debts_file: The file containing the debts for the analysis
+    """
+    logging.info("Starting analysis for repo: %s", repo_url)
+    
+    Path(RESULT_DIR).mkdir(parents=True, exist_ok=True)
+
+    now_time = datetime.datetime.now()
+    date_str = now_time.strftime('%Y%m%d%H%M%S')
+
+    debt_file_name =  f'{date_str}_' + url_to_filename(repo_url) + f'_debts_{model_type}' + '.json'
+
+    debts_file_path = os.path.join(RESULT_DIR, debt_file_name)
+    debts = {}
+
+    if resume and os.path.exists(debts_file_path):
+        logging.info("Resuming scan with file: %s", debts_file_path)
+        with open(debts_file_path, 'r') as file:
+            debts = json.load(file)
+    else:
+        with open(debts_file_path, 'w') as file:
+            json.dump({}, file)
+
+    return debts, debts_file_path
+
 
 def is_source_code(filename):
     logging.debug("Checking if %s is a source code file", filename)
@@ -35,27 +71,6 @@ def is_source_code(filename):
     except Exception as e:
         logging.error("Error in is_source_code for file %s: %s", filename, str(e))
         raise
-
-
-def print_bar(length=200, char='█'):
-    """
-    Print a horizontal bar with a given length and character.
-
-    :param length: Length of the bar to be printed
-    :param char: Character to use for printing the bar
-    """
-    print(char * length)
-
-
-def wrap_text(text, width=200):
-    """
-    Wrap the given text to the specified width.
-
-    :param text: Text to wrap
-    :param width: Width at which to wrap the text
-    :return: Wrapped text
-    """
-    return textwrap.fill(text, width)
 
 
 def url_to_filename(url):
@@ -103,35 +118,3 @@ def extract_json(response: str):
     end = response.rfind('}') + 1
     json_data = response[start:end]
     return json_data
-
-def should_skip_commit(commit, debts):
-    """
-    Function that will determine if the system should skip the commits if it has already been analysed for a
-    previous session
-
-    :param commit: The commit hash that will be analysed
-    :param debts: Content of the debts that already has been analysed
-    :return: The condition to skip or not skip the commit
-    """
-    if commit.hash in debts and debts[commit.hash]:
-        logging.info("Skipping commit: %s", commit.hash)
-        return True
-    return False
-
-def print_bar():
-    """
-    Function that will print a process bar
-    :return:
-    """
-    print("=" * 40)
-
-
-def print_file_analysis_start(commit_hash):
-    """
-    Function that will print a bar and what file that it is analysing.
-
-    :param commit_hash: of the commit that is being analyzed
-    :return:
-    """
-    print_bar()
-    print(f"\nAnalyzing {commit_hash}\n")

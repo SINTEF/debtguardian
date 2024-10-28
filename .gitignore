@@ -1,1 +1,13 @@
 /myenv/
+# Ignore by default all files in the results directory
+results/
+logs/
+__pycache__/
+assets/
+.idea/
+config.ini
+.neptune
+tests/
+
+
+
