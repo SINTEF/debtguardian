@@ -1,0 +1,84 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Deeply nested control flow statements',
+                        'Duplicated string literals',
+                        'Throw generic exceptions',
+                        'Collapsible if statements',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="StartLine"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="EndLine"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+Please review each snippet and identify any technical debt present related to:
+1. Deeply nested control flow statements (e.g., if, for, while, switch, try)
+2. Duplicated string literals
+3. Throw generic exceptions
+4. Collapsible if statements
+
+Below, you will find code snippets organized into categories.
+Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where the technical debt has been resolved.
+
+######################################################
+Technical Debt 1. Deeply nested control flow statements (e.g., if, for, while, switch, try)
+Explanation: It refers to situations where control structures like loops or conditional statements (e.g., for, while, if-else) are placed within one another, often to several levels of depth.
+        This nesting can lead to code that is difficult to read, understand, and maintain. It can make debugging challenging and increase the risk of errors,
+        as understanding the logic flow becomes more complex with each added level. Minimizing the depth of nesting improves code readability and maintainability, thereby reducing technical debt.
+
+######################################################
+Technical Debt 2. Duplicated string literals
+Explanation: It refers to the repetitive use of identical string literals scattered throughout the codebase.
+        This practice can lead to inconsistencies and maintenance challenges, especially if the text needs to be updated or localized.
+        It is more efficient to use a single constant or resource for such literals, which ensures uniformity and simplifies updates,
+        thereby reducing technical debt. This approach not only cleans up the code but also makes it more manageable and less error-prone.
+
+######################################################
+Technical Debt 3. Throw generic exceptions
+Explanation: It refers to using broad, non-specific exception types in error handling rather than more specific, descriptive exceptions.
+        This practice can make error diagnosis and handling less effective, as it doesn't provide clear insight into the exact nature of an error.
+        Using specific exceptions helps accurately identify the root cause of issues and allows for more precise and effective error handling,
+        leading to more robust and maintainable code. 
+
+
+######################################################
+Technical Debt 4. Collapsible if statements
+Explanation: It refers to scenarios where multiple sequential "if" statements are nested inside the other but could be combined into 
+        a more streamlined and efficient conditional structure. This nesting often occurs when different conditions are checked 
+        in a series of "if" statements, which can be simplified by using logical operators (AND, OR) to combine these conditions 
+        into a single "if" statement. Reducing the number of nested "if" statements can enhance code readability and maintainability and reduce complexity.
+
+######################################################
+Please analyze the following code snippets and report any technical debt identified according to the categories previously described.
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
+
