@@ -1,10 +1,6 @@
 import json
 from collections import defaultdict
-
-# Function to load JSON files
-def load_json(file_path):
-    with open(file_path, 'r') as f:
-        return json.load(f)
+from utils.file_utils import load_json
 
 # Evaluation function discarding line-level detection and multi-class classification
 # This version only checks if the file contains technical debt or not

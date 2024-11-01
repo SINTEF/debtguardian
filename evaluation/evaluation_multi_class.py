@@ -1,14 +1,7 @@
 import json
 from collections import defaultdict
-
-# Function to load JSON files
-def load_json(file_path):
-    with open(file_path, 'r') as f:
-        return json.load(f)
-
-# Function to normalize debt types (case insensitive)
-def normalize_debt_type(debt_type):
-    return debt_type.strip().lower()
+from utils.string_utils import normalize_debt_type
+from utils.file_utils import load_json
 
 # Function to check if two technical debts match based on their type and file location (ignoring line-level info)
 def debts_match_type_only(debt1, debt2):

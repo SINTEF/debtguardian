@@ -118,3 +118,9 @@ def extract_json(response: str):
     end = response.rfind('}') + 1
     json_data = response[start:end]
     return json_data
+
+# Function to load JSON files
+def load_json(file_path):
+    with open(file_path, 'r') as f:
+        return json.load(f)
+
