@@ -1,0 +1,85 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Long method',
+                        'Duplicated blocks',
+                        'Preserve original exceptions',
+                        'Statements on separate lines',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="StartLine"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="EndLine"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+        You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+        Please review each snippet and identify any technical debt present related to:
+        1. Long Methods
+        2. Duplicated blocks
+        3. Preserving original exceptions
+        4. Statements on separate lines
+
+        Below, you will find descriptions of each type of technical debt.
+
+        Technical Debt 1. Long Method
+        Explanation: It refers to method in software that is overly long. A method that contains too
+        many lines of code, violates principles like Single Responsibility and leading to code that's hard to
+        understand, maintain, and test. Such methods often encapsulate multiple functionalities, making them prone to
+        bugs and difficult to modify. Simplifying these methods or breaking down into smaller, more cohesive units can
+        enhance code readability and maintainability.
+       
+        Technical Debt 2. Duplicated code blocks
+        Explanation: It refers to instances where the same or very similar code blocks appear in multiple locations
+        within a software project. It can lead to maintenance challenges, as any change to the logic would need to be
+        replicated across all instances to maintain consistency. It also increases the codebase size unnecessarily and
+        can lead to bugs if the copies diverge over time. Refactoring to remove duplicated code, often by creating
+        shared functions or classes, can reduce this debt, improving maintainability and reducing the potential for
+        errors.
+
+        Technical Debt 3. Preserve original exceptions
+        Explanation: Effective exception handling is crucial for maintaining robust and maintainable software.
+        Inadequate handling of exceptions, where original error messages are not logged or preserved, can significantly
+        obscure the underlying cause of an exception. This lack of clarity complicates debugging and error resolution,
+        potentially leading to prolonged system downtime and increased maintenance complexity. Neglecting to preserve
+        and log the full details of original exceptions can exacerbate technical debt, as developers spend more time
+        identifying and fixing issues without clear error information.
+
+        Technical Debt 4. Statements on separate lines
+        Explanation: It emphasizes the importance of code readability and organization. This principle advocates for
+        proper indentation, limiting the length of each line in the code and avoiding multiple declarations or
+        statements on a single line. Adhering to this practice enhances readability, makes the code easier to understand
+        and maintain, and reduces the likelihood of errors. It is a key aspect of writing clean, well-structured code,
+        and ignoring it can contribute to technical debt by making the codebase more cumbersome and error-prone.
+
+        Please analyze the following code snippets and report any technical debt identified according to the categories
+        previously described.
+
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
+
