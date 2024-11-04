@@ -1,0 +1,390 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number is the technical debt located?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there technical debts in the code snippet? Each technical debt should be classified into  separate item in the list. Only present debts that you deem are present in the code. If no debts are found, skip file">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'Long method',
+                        'Duplicated blocks',
+                        'Preserve original exceptions',
+                        'Statements on separate lines',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the Code file is the technical debt item Located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the technical debt item begins in code-file"/>
+                        <integer name="end_line"
+                                 description="The line number where the technical debt item ends in code-file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt"
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+        You are a code reviewer tasked with identifying technical debt in the provided code snippets.
+        Please review each snippet and identify any technical debt present related to:
+        1. Long Methods
+        2. Duplicated blocks
+        3. Preserving original exceptions
+        4. Statements on separate lines
+
+        Below, you will find code snippets organized into categories.
+        Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where
+        the technical debt has been resolved.
+
+        ######################################################
+        Technical Debt 1. Long Method
+        Explanation: It refers to method in software that is overly long. A method that contains too
+        many lines of code, violates principles like Single Responsibility and leading to code that's hard to
+        understand, maintain, and test. Such methods often encapsulate multiple functionalities, making them prone to
+        bugs and difficult to modify. Simplifying these methods or breaking down into smaller, more cohesive units can
+        enhance code readability and maintainability.
+
+        Bad Example 1.1: Long Method
+        <![CDATA[
+public class UserManager {
+    public void ProcessUser(int userId) {
+        if (userId <= 0) {
+            Console.WriteLine("Invalid user ID provided.");
+            return;
+        }
+
+        string userData = LoadUserData(userId);
+        if (userData == null) {
+            Console.WriteLine("No user found with ID: " + userId);
+            return;
+        }
+
+        List<Order> orders = GetUserOrders(userId);
+        if (orders.Count == 0) {
+            Console.WriteLine("User has no orders.");
+            return;
+        }
+
+        foreach (Order order in orders) {
+            if (order.IsDelivered) {
+                Console.WriteLine("Order " + order.Id + " already delivered.");
+            } else {
+                ProcessOrder(order);
+                Console.WriteLine("Processed order: " + order.Id);
+            }
+        }
+
+        UpdateUserActivityLog(userId, "Processed orders.");
+    }
+
+    private string LoadUserData(int userId) {
+        // Assume this method returns user data as string or null if not found
+        return "UserData";
+    }
+
+    private List<Order> GetUserOrders(int userId) {
+        // Assume this method returns a list of user orders
+        return new List<Order>();
+    }
+
+    private void ProcessOrder(Order order) {
+        // Assume this processes the order
+    }
+
+    private void UpdateUserActivityLog(int userId, string activity) {
+        // Log user activity
+    }
+}
+]]>
+        - Issue: The method handles multiple tasks such as user validation, loading user data, and processing user
+        orders all in one. This makes it long and complex which makes it hard to maintain.
+
+        Good Example 1.2: Short method
+        <![CDATA[
+public class UserManager {
+    public void ProcessUser(int userId) {
+        if (!ValidateUserId(userId)) {
+            return;
+        }
+
+        string userData = LoadUserData(userId);
+        if (userData == null) {
+            Console.WriteLine("No user found with ID: " + userId);
+            return;
+        }
+
+        ProcessUserOrders(userId);
+        UpdateUserActivityLog(userId, "Processed orders.");
+    }
+
+    private bool ValidateUserId(int userId) {
+        if (userId <= 0) {
+            Console.WriteLine("Invalid user ID provided.");
+            return false;
+        }
+        return true;
+    }
+
+    private string LoadUserData(int userId) {
+        // Assume this method returns user data or null if not found
+        return "UserData";
+    }
+
+    private void ProcessUserOrders(int userId) {
+        List<Order> orders = GetUserOrders(userId);
+        if (orders.Count == 0) {
+            Console.WriteLine("User has no orders.");
+            return;
+        }
+
+        foreach (Order order in orders) {
+            ProcessOrder(order);
+        }
+    }
+
+    private List<Order> GetUserOrders(int userId) {
+        // Assume this method returns a list of user orders
+        return new List<Order>();
+    }
+
+    private void ProcessOrder(Order order) {
+        if (order.IsDelivered) {
+            Console.WriteLine("Order " + order.Id + " already delivered.");
+        } else {
+            Console.WriteLine("Processed order: " + order.Id);
+            // Assume this processes the order
+        }
+    }
+
+    private void UpdateUserActivityLog(int userId, string activity) {
+        // Log user activity
+    }
+}
+]]>
+        - Benefit: The long method is broken down into smaller methods, each handling a specific part of the process.
+        This improves readability and makes the code easier to maintain.
+
+        ######################################################
+        Technical Debt 2. Duplicated code blocks
+        Explanation: It refers to instances where the same or very similar code blocks appear in multiple locations
+        within a software project. It can lead to maintenance challenges, as any change to the logic would need to be
+        replicated across all instances to maintain consistency. It also increases the codebase size unnecessarily and
+        can lead to bugs if the copies diverge over time. Refactoring to remove duplicated code, often by creating
+        shared functions or classes, can reduce this debt, improving maintainability and reducing the potential for
+        errors.
+
+        Bad Example 2.1: Duplicated code blocks
+        <![CDATA[
+    public class TransactionProcessor {
+        public double ProcessDeposit(double amount, Account account) {
+        if (amount <= 0) {
+            throw new ArgumentException("Amount must be positive");
+        }
+        double fee = CalculateFee(amount, "deposit");
+        account.Deposit(amount - fee);
+        return fee;
+        }
+
+        public double ProcessWithdrawal(double amount, Account account) {
+        if (amount <= 0) {
+            throw new ArgumentException("Amount must be positive");
+        }
+        if (account.GetBalance() < amount) {
+            throw new InvalidOperationException("Insufficient funds");
+        }
+        double fee = CalculateFee(amount, "withdrawal");
+        account.Withdraw(amount + fee);
+        return fee;
+        }
+
+        private double CalculateFee(double amount, string type) {
+        double feeRate = type == "deposit" ? 0.005 : 0.01; // Different fee rates for deposit and withdrawal
+        return amount * feeRate;
+        }
+    }
+
+    public class Account {
+        private double balance;
+
+        public void Deposit(double amount) {
+        balance += amount;
+        }
+
+        public void Withdraw(double amount) {
+        balance -= amount;
+        }
+
+        public double GetBalance() {
+        return balance;
+        }
+    }
+    ]]>
+        - Issue: Duplicated code is spread across multiple methods for processing different types of transactions in a
+        financial application. Each method checks various conditions and applies transaction fees differently based on
+        the transaction type.
+
+        Good Example 2.2: No Duplicated code blocks
+        <![CDATA[
+    public class TransactionProcessor {
+        public void ProcessTransaction(double amount, Account account, TransactionType type) {
+        ValidateAmount(amount);
+        double fee = CalculateFee(amount, type);
+        switch (type) {
+            case TransactionType.DEPOSIT:
+            account.Deposit(amount - fee);
+            break;
+            case TransactionType.WITHDRAWAL:
+            ValidateFunds(amount, account);
+            account.Withdraw(amount + fee);
+            break;
+            default:
+            throw new ArgumentException("Unsupported transaction type");
+        }
+        }
+
+        private void ValidateAmount(double amount) {
+        if (amount <= 0) {
+            throw new ArgumentException("Amount must be positive");
+        }
+        }
+
+        private void ValidateFunds(double amount, Account account) {
+        if (account.GetBalance() < amount) {
+            throw new InvalidOperationException("Insufficient funds");
+        }
+        }
+
+        private double CalculateFee(double amount, TransactionType type) {
+        double feeRate = type == TransactionType.DEPOSIT ? 0.005 : 0.01;
+        return amount * feeRate;
+        }
+    }
+
+    public enum TransactionType {
+        DEPOSIT, WITHDRAWAL
+    }
+
+    public class Account {
+        private double balance;
+
+        public void Deposit(double amount) {
+        balance += amount;
+        }
+
+        public void Withdraw(double amount) {
+        balance -= amount;
+        }
+
+        public double GetBalance() {
+        return balance;
+        }
+    }
+    ]]>
+        - Benefit: This code avoids technical debt related to duplicated code blocks by eliminating duplicated condition
+        checking and fee calculation by centralizing the transaction processing logic.
+
+        ######################################################
+        Technical Debt 3. Preserve original exceptions
+        Explanation: Effective exception handling is crucial for maintaining robust and maintainable software.
+        Inadequate handling of exceptions, where original error messages are not logged or preserved, can significantly
+        obscure the underlying cause of an exception. This lack of clarity complicates debugging and error resolution,
+        potentially leading to prolonged system downtime and increased maintenance complexity. Neglecting to preserve
+        and log the full details of original exceptions can exacerbate technical debt, as developers spend more time
+        identifying and fixing issues without clear error information.
+
+        Bad Example 3.1: Not preserving original exceptions
+        <![CDATA[
+public class FileProcessor {
+    public void ProcessFile(string path) {
+        try {
+            string content = ReadFile(path);
+            // Further processing
+        } catch (IOException e) {
+            throw new Exception("Failed to process the file.", e); // Not preserving exception
+        }
+    }
+
+    private string ReadFile(string path) {
+        // Read file logic
+        return File.ReadAllText(path);
+    }
+}
+
+]]>
+        - Issue: When an error occurs during the processing of a file, the original exception is discarded, and a new,
+        less informative exception is thrown.
+
+        
+        Good Example 3.2: Preserving original exceptions
+        <![CDATA[
+public class FileProcessor {
+    public void ProcessFile(string path) {
+        try {
+            string content = ReadFile(path);
+            // Further processing
+        } catch (IOException e) {
+            throw new Exception("Failed to process the file.", e);
+        }
+    }
+
+    private string ReadFile(string path) {
+        // Read file logic
+        return File.ReadAllText(path);
+    }
+}
+]]>
+        - Benefit: In this refactored version, the original IOException is preserved by including it as the cause in the
+        newly thrown exception. This maintains the stack trace and the root cause details.
+
+        ######################################################
+        Technical Debt 4. Statements on separate lines
+        Explanation: It emphasizes the importance of code readability and organization. This principle advocates for
+        proper indentation, limiting the length of each line in the code and avoiding multiple declarations or
+        statements on a single line. Adhering to this practice enhances readability, makes the code easier to understand
+        and maintain, and reduces the likelihood of errors. It is a key aspect of writing clean, well-structured code,
+        and ignoring it can contribute to technical debt by making the codebase more cumbersome and error-prone.
+
+        Bad Example 4.1: Statements on a Single Line
+        <![CDATA[
+public class AccountManager {
+    public void UpdateAccountBalance(Account account, double amount) {
+        if (account != null && account.IsActive()) { account.SetBalance(account.GetBalance() + amount); account.SetLastUpdateTimestamp(System.currentTimeMillis()); }
+    }
+}
+]]>
+        - Issue: Multiple operations are unnecessarily condensed onto single lines, which can make debugging and
+        understanding the code flow more difficult.
+
+        Good Example 4.2: Statements on Separate Lines
+        <![CDATA[
+public class AccountManager {
+    public void UpdateAccountBalance(Account account, double amount) {
+        if (account != null && account.IsActive()) {
+            account.SetBalance(account.GetBalance() + amount);
+            account.SetLastUpdateTimestamp(System.currentTimeMillis());
+        }
+    }
+}
+]]>
+        - Benefit:Refactoring the code to place statements on separate lines improves readability and makes it easier to
+        set breakpoints during debugging.
+
+        ######################################################
+        Please analyze the following code snippets and report any technical debt identified according to the categories
+        previously described.
+        ######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
