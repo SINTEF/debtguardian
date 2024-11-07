@@ -32,6 +32,8 @@ def debtDetect(code_changes, guard, model_type):
             temperature = 0,
         )
         logging.debug("Debt detection completed")
+        #logging.info(f"Raw LLM output: {res.raw_llm_output}")
+        #logging.info(f"Validated output: {res.validated_output}")
         
         return res.validated_output
 

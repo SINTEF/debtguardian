@@ -26,6 +26,7 @@ def createGuard(code_changes, schema):
         logging.info("The path of the technical schema:" + str(schema_path))
         guard = gd.Guard.from_rail(schema_path)
         logging.info("Guard object created successfully")
+        logging.info(f"Guard base prompt: {guard.base_prompt}")
         return guard
     except Exception as e:
         logging.error("Error creating guard object: %s", str(e))
