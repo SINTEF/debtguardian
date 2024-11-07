@@ -20,7 +20,7 @@ from analysis.commit_analysis import analyze_commits
 from evaluation.evaluate_results import evaluate_results
 import config
 
-def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume=False, 
+def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume=False, schema = 'Few-shot_p5_Java.xml',
          commit=None, commit_list=None, begin_commit=None, end_commit=None):
     """
     The main function that runs the program for one commit, a list of commits, or a range of commits.
@@ -63,7 +63,7 @@ def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume
     # Use Case 1: Single commit
     if commit:
         logging.info(f"Analyzing single commit: {commit}")
-        analyze_commits(repo_url, commit, commit, model_type, debts, debts_file)
+        analyze_commits(repo_url, commit, commit, model_type, debts, debts_file, schema)
         run[f"commit/{commit}"] = "completed"
 
         # Evaluation for a single commit
@@ -74,7 +74,7 @@ def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume
     elif commit_list:
         for commit_hash in commit_list:
             logging.info(f"Analyzing commit: {commit_hash}")
-            analyze_commits(repo_url, commit_hash, commit_hash, model_type, debts, debts_file)
+            analyze_commits(repo_url, commit_hash, commit_hash, model_type, debts, debts_file, schema)
             run[f"commit/{commit_hash}"] = "completed"
 
         # Evaluation for a list of commits
@@ -86,7 +86,7 @@ def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume
         logging.info(f"Analyzing commit range: {begin_commit} to {end_commit}")
 
         # Analyze commits in the range
-        analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts_file)
+        analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts_file, schema)
         run[f"commit/{begin_commit}_to_{end_commit}"] = "completed"
 
         # Evaluation for the commit range using PyDriller to handle the range traversal

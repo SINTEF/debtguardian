@@ -26,7 +26,7 @@ def should_skip_commit(commit, debts):
 
 
 
-def analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts_file):
+def analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts_file, schema):
     """
     The function will iterate through the commits and fetch the changed content from the previous commit.
 
@@ -47,11 +47,11 @@ def analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts
             continue
 
         print_commit_analysis_start(commit, commit_count, repo_url)
-        analyze_modifications(commit, debts, debts_file, repo_url, model_type)
+        analyze_modifications(commit, debts, debts_file, repo_url, model_type, schema)
 
 
 
-def analyze_modifications(commit, debts, debts_file, repo_url, model_type):
+def analyze_modifications(commit, debts, debts_file, repo_url, model_type, schema):
     """
     The function will go thorugh each commit in the repo and analyze.
 
@@ -72,7 +72,7 @@ def analyze_modifications(commit, debts, debts_file, repo_url, model_type):
         enumerated_content = enumerate_file(modification.source_code)
         print_file_analysis_start(modification.new_path)
 
-        guard = createGuard(enumerated_content)
+        guard = createGuard(enumerated_content, schema)
         debt = debtDetect(enumerated_content, guard, model_type)
 
         if debt:
