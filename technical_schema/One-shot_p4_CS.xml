@@ -362,6 +362,7 @@
         It often becomes overly complex, containing an excessive number of fields and methods, and performing too many responsibilities that should ideally be distributed across multiple smaller, more cohesive classes. 
         Such classes violate the Single Responsibility Principle and make the codebase difficult to understand, maintain, and extend. 
         Blob classes increase the risk of bugs and reduce the overall readability and modularity of the software. 
+        As a class-level technical debt type, it pertains to the structure and organization of classes, rather than individual methods. 
         To address this, Blob classes are refactored by extracting related responsibilities into smaller, well-defined classes and promote better object-oriented practices.
 
         Bad Example 4.1: Blob
