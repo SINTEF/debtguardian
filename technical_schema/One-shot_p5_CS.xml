@@ -31,24 +31,17 @@
         </list>
     </output>
     <prompt>
-        You are a code reviewer tasked with identifying technical debt in the provided code snippets.
-        Please review each snippet and identify any technical debt present related to:
+        Here is a list of technical debts that I want you to identify within the provided code snippets.  
         1. Long method
         2. Deeply nested control flow statements (e.g., if, for, while, switch, try)
         3. Throw generic exceptions
         4. Large class
-
-        Below, you will find sample code snippets organized into categories.
-        Each pair of code snippets consists of a "Bad Example" that includes technical debt, and a "Good Example" where
-        the technical debt has been resolved.
+        Below, you will find the explanations for each type of the technical debts along with sample code snippets.
+        Each example pair consists of a "Bad Example" that demonstrates the technical debt, and a "Good Example" where the technical debt has been resolved.
 
         ######################################################
         Technical Debt 1. Long Method
-        Explanation: It refers to methods in software that is overly long or complex. A method that contains too
-        many lines of code, violates principles like Single Responsibility and leading to code that's hard to
-        understand, maintain, and test. Such methods often encapsulate multiple functionalities, making them prone to
-        bugs and difficult to modify. Simplifying these methods or breaking down into smaller, more cohesive units can
-        enhance code readability and maintainability.
+        Explanation: A "Long Method" refers to a method that is excessively lengthy or complex. Such methods often violate the Single Responsibility Principle, as they try to handle multiple tasks. This can lead to code that is difficult to understand, maintain, and test. Breaking down long methods into smaller, more focused ones enhances code readability and makes the codebase easier to manage and modify.
 
         Bad Example 1.1: Long Method
         <![CDATA[
@@ -102,8 +95,7 @@
             }
         }
         ]]>
-        - Issue: The method handles multiple tasks such as user validation, loading user data, and processing user
-        orders all in one. This makes it long and complex which makes it hard to maintain.
+        - Issue: The method handles multiple tasks such as user validation, loading user data, and processing user orders all in one. This makes it long and complex which makes it hard to maintain.
 
         Good Example 1.2: Short method
         <![CDATA[
@@ -167,17 +159,12 @@
             }
         }
         ]]>
-        - Benefit: The long method is broken down into smaller methods, each handling a specific part of the process.
-        This improves readability and makes the code easier to maintain.
+        - Benefit: The long method is broken down into smaller methods, each handling a specific part of the process. This improves readability and makes the code easier to maintain.
 
         ######################################################
         Technical Debt 2. Deeply nested control flow statements (e.g., if, for, while, switch, try)
-        Explanation: It refers to situations where control structures like loops or conditional statements (e.g., for, while, if-else) are placed within one another, often to several levels of depth.
-        It occurs when the code has multiple layers of nested conditions or loops (e.g., if inside a for loop inside another if, etc.), making the logic flow very complex and hard to follow. 
-        Having a series of control flow statements does not cause this type of technical debt if they are not nested within each other to a deep or excessive level.
-        Having multiple layers of nested conditions or loops can lead to code that is difficult to read, understand, and maintain. It can make debugging challenging and increase the risk of errors,
-        as understanding the logic flow becomes more complex with each added level. Minimizing the depth of nesting improves code readability and maintainability, thereby reducing technical debt.
-
+        Explanation: It refers to situations where control structures like loops or conditional statements (e.g., for, while, if-else) are placed within one another, often to several levels of depth. It occurs when the code has multiple layers of nested conditions or loops (e.g., an if inside a for loop, which is inside another if statement, etc.).This creates complex logic flows that can be challenging to follow, making the code difficult to read, maintain, and debug. Having a series of control flow statements does not cause this type of technical debt if they are not nested within each other to a deep or excessive level. However, excessive nesting introduces unnecessary complexity. By minimizing the depth of nested conditions or loops, you can improve code readability, reduce maintenance effort, and lower the risk of introducing bugs.
+        
         Bad Example 2.1: Deeply nested control flow statements
         <![CDATA[
         public class NestedExample
@@ -293,9 +280,7 @@
 
         ######################################################
         Technical Debt 3. Throw generic exceptions
-        Explanation: It refers to using broad, non-specific exception types in error handling rather than more specific, descriptive exceptions.
-                This practice can make error diagnosis and handling less effective, as it doesn't provide clear insight into the exact nature of an error.
-                Using specific exceptions helps accurately identify the root cause of issues and allows for more precise and effective error handling, leading to more robust and maintainable code.
+        Explanation: It refers to using broad, non-specific exception types (such as Exception) in error handling, instead of more specific, descriptive exceptions. This approach makes it harder to diagnose and handle errors effectively, as it doesn't provide enough information about the exact nature of the problem. Using specific exceptions (e.g., FileNotFoundException, InvalidOperationException) allows developers to pinpoint the root cause of an issue more accurately and handle errors in a more targeted way. This leads to more robust, maintainable code and improves the overall reliability of the application by making error handling clearer and more precise.
 
         Bad Example 3.1: Throw Generic Exceptions
         <![CDATA[
@@ -358,12 +343,7 @@
 
         ######################################################
         Technical Debt 4. Large Class
-        A Large Class, also referred to as a God Class, or Brain Class, is a class that centralizes too much functionality. 
-        It often becomes overly complex, containing an excessive number of fields and methods, and performing too many responsibilities that should ideally be distributed across multiple smaller, more cohesive classes. 
-        Such classes violate the Single Responsibility Principle and make the codebase difficult to understand, maintain, and extend. 
-        Large classes increase the risk of bugs and reduce the overall readability and modularity of the software. 
-        As a class-level technical debt type, it pertains to the structure and organization of classes, rather than individual methods. 
-        To address this, Large classes are refactored by extracting related responsibilities into smaller, well-defined classes and promote better object-oriented practices.
+        Explanation: A Large Class, also referred to as a God Class, or Brain Class, is a class that centralizes too much functionality. It often becomes overly complex, containing an excessive number of fields and methods, and performing too many responsibilities that should ideally be distributed across multiple smaller, more cohesive classes. Such classes violate the Single Responsibility Principle and make the codebase difficult to understand, maintain, and extend. Large classes increase the risk of bugs and reduce the overall readability and modularity of the software. As a class-level technical debt type, it pertains to the structure and organization of classes, rather than individual methods. To address this, Large classes should be refactored by extracting related responsibilities into smaller, well-defined classes and promote better object-oriented practices.
 
         Bad Example 4.1: Large class
         <![CDATA[
@@ -461,12 +441,10 @@
             }
         }
         ]]>
-        - Benefit: Responsibilities of the SystemManager class have been split into three separate classes: UserManager, ProductManager, and OrderManager. 
-        This refactoring improves cohesion and makes each class easier to understand and maintain.
+        - Benefit: Responsibilities of the SystemManager class have been split into three separate classes: UserManager, ProductManager, and OrderManager. This refactoring improves cohesion and makes each class easier to understand and maintain.
 
         ######################################################
-        Please analyze the following code snippets and report any technical debt identified according to the categories
-        previously described.
+        Please analyze the following code snippets and report any technical debt identified according to the categories previously described.
         ######################################################
         ${code_changes}
 
