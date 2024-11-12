@@ -20,7 +20,7 @@ from analysis.commit_analysis import analyze_commits
 from evaluation.evaluate_results import evaluate_results
 import config
 
-def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume=False, schema = 'Few-shot_p5_Java.xml',
+def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume=False, schema = 'One-shot_p5_CS.xml',
          commit=None, commit_list=None, begin_commit=None, end_commit=None):
     """
     The main function that runs the program for one commit, a list of commits, or a range of commits.
@@ -107,24 +107,36 @@ def main(repo_url, model_type, eval_mode='file_level', ground_truth=None, resume
 
 
 if __name__ == "__main__":
+    # Create an argument parser
     parser = argparse.ArgumentParser(description="Analyze a GitHub repository for technical debts.")
+    
+    # Required positional arguments
     parser.add_argument("repo_url", help="URL of the GitHub repository to analyze")
     parser.add_argument("model_type", help="Type of LLM model. Valid choices are OPENAI or a valid list of Ollama models")
-    parser.add_argument("begin_commit", help="Start commit hash", nargs='?', default=None)
-    parser.add_argument("end_commit", help="End commit hash", nargs='?', default=None)
+
+    # Optional parameters
+    parser.add_argument("--schema", help="Type of prompt schema.", default='One-shot_p5_CS.xml')
+    parser.add_argument("--eval_mode", help="Evaluation mode (e.g., file_level, multi_class, or line_level)", default='file_level')
+    parser.add_argument("--ground_truth", help="Path to the ground truth file", default=None)
     parser.add_argument("--commit", help="Analyze a single commit hash", default=None)
     parser.add_argument("--commit_list", help="List of commit hashes to analyze", nargs='*', default=None)
+    parser.add_argument("--begin_commit", help="Start commit hash", default=None)
+    parser.add_argument("--end_commit", help="End commit hash", default=None)
     parser.add_argument("--resume", action="store_true", help="Resume from the last saved state")
+    
+    # Parse the arguments
     args = parser.parse_args()
 
-    # Model type
-    config.model_type = args.model_type
-
     # Call the main function with the appropriate arguments
-    main(repo_url=args.repo_url, 
-         model_type=args.model_type, 
-         begin_commit=args.begin_commit, 
-         end_commit=args.end_commit, 
-         commit=args.commit, 
-         commit_list=args.commit_list, 
-         resume=args.resume)
+    main(
+        repo_url=args.repo_url, 
+        model_type=args.model_type, 
+        schema=args.schema,
+        eval_mode=args.eval_mode,
+        ground_truth=args.ground_truth,
+        commit=args.commit, 
+        commit_list=args.commit_list, 
+        begin_commit=args.begin_commit, 
+        end_commit=args.end_commit, 
+        resume=args.resume
+    )
