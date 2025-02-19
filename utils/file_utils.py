@@ -3,6 +3,7 @@ import datetime
 import logging
 import os
 import json
+import config
 from pathlib import Path
 from settings import ROOT_DIR, RESULT_DIR
 
@@ -23,6 +24,9 @@ def initialize_file(repo_url, model_type, resume=False):
     now_time = datetime.datetime.now()
     date_str = now_time.strftime('%Y%m%d%H%M%S')
 
+    schema = config.schema
+    logging.info(f'Model(initialize_file): {model_type}')
+
     debt_file_name =  f'{date_str}_' + url_to_filename(repo_url) + f'_debts_{model_type}' + '.json'
 
     debts_file_path = os.path.join(RESULT_DIR, debt_file_name)
@@ -30,6 +34,41 @@ def initialize_file(repo_url, model_type, resume=False):
 
     if resume and os.path.exists(debts_file_path):
         logging.info("Resuming scan with file: %s", debts_file_path)
+        with open(debts_file_path, 'r') as file:
+            debts = json.load(file)
+    else:
+        with open(debts_file_path, 'w') as file:
+            json.dump({}, file)
+
+    return debts, debts_file_path
+
+def initialize_file_for_all_repos(schema, model_type, resume=False):
+    """
+    The function will open or create the file that the data is being saved into
+    :param repo_url: The url for the GitHub repository
+    :param model_type: The model type used for the analysis
+    :param resume: flagging whether to resume the analysis after a commit
+    :return:
+        debts: The content of previous analysis
+        debts_file: The file containing the debts for the analysis
+    """
+    #logging.info("Starting analysis for repo: %s", repo_url)
+    
+    Path(RESULT_DIR).mkdir(parents=True, exist_ok=True)
+
+    now_time = datetime.datetime.now()
+    date_str = now_time.strftime('%Y%m%d%H%M%S')
+
+    schema_name = os.path.splitext(schema)[0]
+
+    debt_file_name =  f'{date_str}_' + schema_name + f'_debts_{model_type}' + '.json'
+
+    debts_file_path = os.path.join(RESULT_DIR, debt_file_name)
+    logging.info(f"The debts will be saved to: {debts_file_path}")
+    debts = {}
+
+    if resume and os.path.exists(debts_file_path):
+        logging.info("Resuming scan with file: %s",{model_type} )
         with open(debts_file_path, 'r') as file:
             debts = json.load(file)
     else:
