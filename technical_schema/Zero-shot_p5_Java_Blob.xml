@@ -1,0 +1,55 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number contains the blob?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there any instances of blob (god class) technical debt in the code snippet? Each blob (god class) should be classified into separate items in the list. Only present blob (god class) type technical debts in the code. If no blobs (god classes) are found, skip the file.">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'blob',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Blob in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the code file is the blob (god class) technical debt located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the blob (god class) begins in code file."/>
+                        <integer name="end_line"
+                                 description="The line number where the blob (god class) ends in code file."/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the blob (god class) technical debt."
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying "Blob" technical debt in the provided code snippets.
+Please review the code snippet and identify any instances of Blob technical debt.
+
+Below, you will find a definition of "Blob" technical debt.
+
+######################################################
+Technical Debt: Blob - A Blob, also referred to as a God Class, Large Class, or Brain Class, is a class that centralizes too much functionality. 
+        It often becomes overly complex, containing an excessive number of fields and methods, and performing too many responsibilities that should ideally be distributed across multiple smaller, more cohesive classes. 
+        Such classes violate the Single Responsibility Principle and make the codebase difficult to understand, maintain, and extend. 
+        Blob classes increase the risk of bugs and reduce the overall readability and modularity of the software. 
+        To address this, Blob classes are refactored by extracting related responsibilities into smaller, well-defined classes and promote better object-oriented practices.
+
+######################################################
+Please analyze the following code snippets and report any blobs present in the code snippet.
+
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>

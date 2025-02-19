@@ -1,0 +1,81 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number contains the technical debt?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there any technical debts in the code snippet? Each technical debt should be classified into separate items in the list. Only present debts that you deem are present in the code. If no debts are found, skip the file.">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'long method',
+                        'feature envy',
+                        'blob',
+                        'data class',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Technical debt in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the code file is the technical debt item located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the technical debt item begins in code file."/>
+                        <integer name="end_line"
+                                 description="The line number where the technical debt item ends in code file."/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the technical debt."
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying technical debts in the provided code snippets.
+Please review the code snippet and identify any technical debts related to the following categories:
+1. Long method
+2. Feature envy
+3. Blob
+4. Data class
+
+Below, you will find definitions of these technical debts.
+
+######################################################
+Technical Debt 1. Long Method: It refers to method in software that is overly long. 
+    A method that contains too many lines of code, violates principles like Single Responsibility and leading to code that's hard to understand, maintain, and test. 
+    Such methods often encapsulate multiple functionalities, making them prone to bugs and difficult to modify. 
+    Simplifying these methods or breaking down into smaller, more cohesive units can enhance code readability and maintainability.
+
+######################################################
+Technical Debt 2. Feature Envy: It is related to methods that use operations from external classes more often than their own operations.
+    It occurs when a method in a class is overly reliant on the data or behavior of another class, often making extensive use of that external class's properties or methods. 
+    This smell indicates that the method may be more concerned with the responsibilities of the external class than its own, leading to poor encapsulation and reduced cohesion. 
+    Feature Envy makes the code less intuitive, harder to maintain, and can increase the likelihood of bugs because the method's true "home" is misplaced. 
+    To address this, the code is refactored by moving the method to the class it is most envious of, thereby promoting better object-oriented design and ensuring clearer responsibility distribution.
+
+######################################################
+Technical Debt 3. Blob: A Blob, also referred to as a God Class, Large Class, or Brain Class, is a class that centralizes too much functionality. 
+    It often becomes overly complex, containing an excessive number of fields and methods, and performing too many responsibilities that should ideally be distributed across multiple smaller, more cohesive classes. 
+    Such classes violate the Single Responsibility Principle and make the codebase difficult to understand, maintain, and extend. 
+    Blob classes increase the risk of bugs and reduce the overall readability and modularity of the software. 
+    To address this, Blob classes are refactored by extracting related responsibilities into smaller, well-defined classes and promote better object-oriented practices.
+
+######################################################
+Technical Debt 4. Data Class: A Data Class is a class that primarily consists of fields (attributes) and lacks meaningful behavior (methods) beyond simple getters and setters. 
+    It is often used to store and transfer data, making it useful in certain situations like data transfer objects or persistence models.
+    However, in the context of object-oriented design, a Data Class becomes a code smell when it represents a domain object that should encapsulate both data and behavior. 
+    Overusing Data Classes as domain objects undermines the principles of encapsulation and responsibility distribution, leading to an anemic domain model. 
+    To resolve this smell, the class is enriched by moving relevant behaviors into it or using more cohesive design strategies to distribute responsibilities.
+
+######################################################
+Please analyze the following code snippets and report any technical debts identified according to the categories previously described.
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>

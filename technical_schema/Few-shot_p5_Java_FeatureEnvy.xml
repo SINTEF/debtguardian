@@ -1,0 +1,206 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number contains the instance of feature envy?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there any instances of feature envy technical debt in the code snippet? Each instance of feature envy should be classified into separate items in the list. Only present feature envy type technical debts in the code. If no instances of feature envy are found, skip the file.">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'feature envy',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Feature envy in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the code file is the feature envy item located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the feature envy begins in code file."/>
+                        <integer name="end_line"
+                                 description="The line number where the feature envy ends in code file."/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the feature envy technical debt."
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying "Feature Envy" technical debts in the provided code snippets.
+Please review the code snippet and identify any instances of Feature Envy technical debt.
+
+Below, you will find a definition of "Feature Envy" technical debt along with example code snippets.
+Each example pair consists of a "Bad Example" that includes "Feature Envy" technical debt and a "Good Example" where the technical debt has been resolved.
+
+######################################################
+Technical Debt: Feature Envy - It is related to methods that use operations from external classes more often than their own operations.
+    It occurs when a method in a class is overly reliant on the data or behavior of another class, often making extensive use of that external class's properties or methods. 
+    This smell indicates that the method may be more concerned with the responsibilities of the external class than its own, leading to poor encapsulation and reduced cohesion. 
+    Feature Envy makes the code less intuitive, harder to maintain, and can increase the likelihood of bugs because the method's true "home" is misplaced. 
+    To address this, the code is refactored by moving the method to the class it is most envious of, thereby promoting better object-oriented design and ensuring clearer responsibility distribution.
+
+Bad Example 2.1: Feature Envy
+<![CDATA[
+class Order {
+    private Customer customer;
+
+    public double calculateDiscount() {
+        // The method is more interested in the Customer class details than the Order itself
+        if (customer.isLoyalCustomer() && customer.getMembershipDuration() > 5) {
+            return customer.getPurchaseHistory().getTotalPurchases() * 0.1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+class Customer {
+    private String name;
+    private int membershipDuration;
+    private PurchaseHistory purchaseHistory;
+
+    public boolean isLoyalCustomer() {
+        return membershipDuration > 3;
+    }
+
+    public int getMembershipDuration() {
+        return membershipDuration;
+    }
+
+    public PurchaseHistory getPurchaseHistory() {
+        return purchaseHistory;
+    }
+}
+
+class PurchaseHistory {
+    private double totalPurchases;
+
+    public double getTotalPurchases() {
+        return totalPurchases;
+    }
+}
+]]>
+    - Issue: The calculateDiscount method of the Order class accesses several fields and methods from the Customer class, indicating that it is more interested in the data and behavior of Customer than Order.
+
+Good Example 2.2: No Feature Envy
+<![CDATA[
+class Customer {
+    private String name;
+    private int membershipDuration;
+    private PurchaseHistory purchaseHistory;
+
+    public double calculateDiscount() {
+        if (isLoyalCustomer() && membershipDuration > 5) {
+            return purchaseHistory.getTotalPurchases() * 0.1;
+        } else {
+            return 0;
+        }
+    }
+
+    public boolean isLoyalCustomer() {
+        return membershipDuration > 3;
+    }
+}
+
+class PurchaseHistory {
+    private double totalPurchases;
+
+    public double getTotalPurchases() {
+        return totalPurchases;
+    }
+}
+]]>
+    - Benefit: The calculateDiscount method has been moved to the Customer class, where it logically belongs, since it primarily deals with the data and behavior of the Customer.
+
+Bad Example 2.3: Feature Envy
+<![CDATA[
+class BankAccount {
+    private AccountHolder accountHolder;
+
+    public void notifyAccountHolder() {
+        // This method is too dependent on AccountHolder's details
+        String message = "Dear " + accountHolder.getName() + ", your account balance is: " 
+                         + accountHolder.getAccountDetails().getBalance();
+        accountHolder.getNotificationService().sendNotification(message);
+    }
+}
+
+class AccountHolder {
+    private String name;
+    private AccountDetails accountDetails;
+    private NotificationService notificationService;
+
+    public String getName() {
+        return name;
+    }
+
+    public AccountDetails getAccountDetails() {
+        return accountDetails;
+    }
+
+    public NotificationService getNotificationService() {
+        return notificationService;
+    }
+}
+
+class AccountDetails {
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class NotificationService {
+    public void sendNotification(String message) {
+        System.out.println(message);
+    }
+}
+]]>
+    - Issue: Here, the notifyAccountHolder method in BankAccount class is heavily dependent on the structure and details of the AccountHolder class, demonstrating Feature Envy.
+
+Good Example 2.4: No Feature Envy
+<![CDATA[
+class AccountHolder {
+    private String name;
+    private AccountDetails accountDetails;
+    private NotificationService notificationService;
+
+    public void notifyBalance() {
+        String message = "Dear " + name + ", your account balance is: " + accountDetails.getBalance();
+        notificationService.sendNotification(message);
+    }
+}
+
+class AccountDetails {
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class NotificationService {
+    public void sendNotification(String message) {
+        System.out.println(message);
+    }
+}
+]]>
+    - Benefit: The notifyBalance method has been moved to the AccountHolder class, as it is primarily concerned with the details of the account holder. 
+        This way, the code follows better encapsulation, and responsibilities are clearly distributed.
+    
+######################################################
+Please analyze the following code snippets and report any instances of feature envy present in the code snippet.
+
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>

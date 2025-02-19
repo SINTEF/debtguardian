@@ -1,0 +1,55 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number contains the data class?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there any instances of data class technical debt in the code snippet? Each data class should be classified into separate items in the list. Only present data class type technical debts in the code. If no data classes are found, skip the file.">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'data class',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Data class in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the code file is the data class technical debt located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the data class begins in code file"/>
+                        <integer name="end_line"
+                                 description="The line number where the data class ends in code file"/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the data class technical debt."
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying "Data Class" technical debt in the provided code snippets.
+Please review the code snippet and identify any instances of Data Class technical debt.
+
+Below, you will find a definition of "Data Class" technical debt.
+
+######################################################
+Technical Debt: Data Class - It is a class that primarily consists of fields (attributes) and lacks meaningful behavior (methods) beyond simple getters and setters. 
+        It is often used to store and transfer data, making it useful in certain situations like data transfer objects or persistence models.
+        However, in the context of object-oriented design, a Data Class becomes a code smell when it represents a domain object that should encapsulate both data and behavior. 
+        Overusing Data Classes as domain objects undermines the principles of encapsulation and responsibility distribution, leading to an anemic domain model. 
+        To resolve this smell, the class is enriched by moving relevant behaviors into it or using more cohesive design strategies to distribute responsibilities.
+    
+######################################################
+Please analyze the following code snippets and report any data classes present in the code snippet.
+
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>

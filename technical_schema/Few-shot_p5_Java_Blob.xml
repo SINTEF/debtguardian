@@ -1,0 +1,252 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number contains the blob?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there any instances of blob (god class) technical debt in the code snippet? Each blob (god class) should be classified into separate items in the list. Only present blob (god class) type technical debts in the code. If no blobs (god classes) are found, skip the file.">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'blob',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Blob in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the code file is the blob (god class) technical debt located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the blob (god class) begins in code file."/>
+                        <integer name="end_line"
+                                 description="The line number where the blob (god class) ends in code file."/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the blob (god class) technical debt."
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying "Blob" technical debt in the provided code snippets.
+Please review the code snippet and identify any instances of Blob technical debt.
+
+Below, you will find a definition of "Blob" technical debt along with example code snippets. 
+Each example pair consists of a "Bad Example" that includes "Blob" technical debt and a "Good Example" where the technical debt has been resolved.
+
+######################################################
+Technical Debt: Blob - A Blob, also referred to as a God Class, Large Class, or Brain Class, is a class that centralizes too much functionality. 
+        It often becomes overly complex, containing an excessive number of fields and methods, and performing too many responsibilities that should ideally be distributed across multiple smaller, more cohesive classes. 
+        Such classes violate the Single Responsibility Principle and make the codebase difficult to understand, maintain, and extend. 
+        Blob classes increase the risk of bugs and reduce the overall readability and modularity of the software. 
+        To address this, Blob classes are refactored by extracting related responsibilities into smaller, well-defined classes and promote better object-oriented practices.
+
+Bad Example 1.1: Blob
+<![CDATA[
+class SystemManager {
+    private List<User> users;
+    private List<Product> products;
+    private List<Order> orders;
+
+    // User-related methods
+    public void addUser(String name) {
+        // logic to add user
+    }
+
+    public void removeUser(String name) {
+        // logic to remove user
+    }
+
+    // Product-related methods
+    public void addProduct(String productName, double price) {
+        // logic to add product
+    }
+
+    public void updateProductPrice(String productName, double newPrice) {
+        // logic to update product price
+    }
+
+    // Order-related methods
+    public void placeOrder(String userName, String productName) {
+        // logic to place order
+    }
+
+    public void cancelOrder(String orderId) {
+        // logic to cancel order
+    }
+
+    public void printSummary() {
+        // logic to print a detailed summary of all users, products, and orders
+    }
+}
+]]>
+    - Issue: The SystemManager class is a Blob, as it manages too many responsibilities related to users, products, and orders. This leads to code that is hard to understand and maintain.
+
+Good Example 1.2: No Blob
+<![CDATA[
+class UserManager {
+    private List<User> users;
+
+    public void addUser(String name) {
+        // logic to add user
+    }
+
+    public void removeUser(String name) {
+        // logic to remove user
+    }
+}
+
+class ProductManager {
+    private List<Product> products;
+
+    public void addProduct(String productName, double price) {
+        // logic to add product
+    }
+
+    public void updateProductPrice(String productName, double newPrice) {
+        // logic to update product price
+    }
+}
+
+class OrderManager {
+    private List<Order> orders;
+
+    public void placeOrder(String userName, String productName) {
+        // logic to place order
+    }
+
+    public void cancelOrder(String orderId) {
+        // logic to cancel order
+    }
+}
+]]>
+    - Benefit: Responsibilities of the SystemManager class have been split into three separate classes: UserManager, ProductManager, and OrderManager. 
+        This refactoring improves cohesion and makes each class easier to understand and maintain.
+
+Bad Example 1.3: Blob
+<![CDATA[
+class MegaUtility {
+    // Fields related to multiple domains
+    private List<Document> documents;
+    private List<Report> reports;
+    private List<LogEntry> logs;
+    private DatabaseConnection dbConnection;
+    private EmailService emailService;
+
+    // Methods for managing documents
+    public void createDocument(String title, String content) {
+        // logic to create a document
+    }
+
+    public void deleteDocument(String title) {
+        // logic to delete a document
+    }
+
+    // Methods for generating reports
+    public void generateMonthlyReport() {
+        // logic to generate report
+    }
+
+    public void printReportSummary() {
+        // logic to print a report summary
+    }
+
+    // Methods for handling logs
+    public void addLogEntry(String message) {
+        // logic to add a log entry
+    }
+
+    public void clearLogs() {
+        // logic to clear all log entries
+    }
+
+    // Methods for database operations
+    public void connectToDatabase() {
+        // logic to connect to a database
+    }
+
+    public void disconnectFromDatabase() {
+        // logic to disconnect from the database
+    }
+
+    // Email-related methods
+    public void sendEmail(String recipient, String message) {
+        // logic to send an email
+    }
+}
+]]>
+    -Issue: The MegaUtility class is a prime example of a Blob class, as it handles operations related to documents, reports, logging, database connections, and email services. 
+        The class is doing too much and should be refactored.
+
+Good Example 1.4: No Blob
+<![CDATA[
+class DocumentManager {
+    private List<Document> documents;
+
+    public void createDocument(String title, String content) {
+        // logic to create a document
+    }
+
+    public void deleteDocument(String title) {
+        // logic to delete a document
+    }
+}
+
+class ReportGenerator {
+    private List<Report> reports;
+
+    public void generateMonthlyReport() {
+        // logic to generate report
+    }
+
+    public void printReportSummary() {
+        // logic to print a report summary
+    }
+}
+
+class LogManager {
+    private List<LogEntry> logs;
+
+    public void addLogEntry(String message) {
+        // logic to add a log entry
+    }
+
+    public void clearLogs() {
+        // logic to clear all log entries
+    }
+}
+
+class DatabaseManager {
+    private DatabaseConnection dbConnection;
+
+    public void connectToDatabase() {
+        // logic to connect to a database
+    }
+
+    public void disconnectFromDatabase() {
+        // logic to disconnect from the database
+    }
+}
+
+class EmailService {
+    public void sendEmail(String recipient, String message) {
+        // logic to send an email
+    }
+}
+]]>
+    - Benefit: The MegaUtility class has been broken down into specialized classes: DocumentManager, ReportGenerator, LogManager, DatabaseManager, and EmailService. 
+        Each class now has a clear, focused responsibility, improving maintainability and readability.
+    
+######################################################
+Please analyze the following code snippets and report any blobs present in the code snippet.
+
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>

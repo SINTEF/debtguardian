@@ -1,0 +1,54 @@
+<rail version="0.1">
+    <output>
+        <string name="snippet_functionality" description="What is the functionality of this code snippet?"
+                required="true"/>
+        <integer name="number_of_lines" description="Which line number contains the long method?"
+                 required="true"/>
+        <list name="technicalDebts"
+              description="Are there any instances of long method technical debt in the code snippet? Each long method should be classified into separate items in the list. Only present long method type technical debts in the code. If no long methods are found, skip the file.">
+            <object>
+                <string name="type" description="What type of technical debt is identified in this code snippet?"
+                        format="valid-choices: {[
+                        'long method',
+                        ]}" on-fail-valid-choices="reask" required="true"/>
+                <string name="symptom" description="Long method in the code snippet." required="true"/>
+                <list name="affected_area"
+                      description="Where in the code file is the long method technical debt located?"
+                >
+                    <object>
+                        <integer name="start_line"
+                                 description="The line number where the long method begins in code file."/>
+                        <integer name="end_line"
+                                 description="The line number where the long method ends in code file."/>
+                    </object>
+                </list>
+                <string name="suggested_repair" description="Generate code to refactor or repair the long method technical debt."
+                        required="true"/>
+            </object>
+        </list>
+    </output>
+    <prompt>
+You are a code reviewer tasked with identifying "Long Method" type technical debts in the provided code snippets.
+Please review the code snippet and identify any instances of Long Method technical debt.
+
+Below, you will find a definition of "Long Method" technical debt.
+
+######################################################
+Technical Debt: Long Method  - It refers to method in software that is overly long.
+    A method that contains too many lines of code, violates principles like Single Responsibility and leading to code that's hard to understand, maintain, and test. 
+    Such methods often encapsulate multiple functionalities, making them prone to bugs and difficult to modify. 
+    Simplifying these methods or breaking down into smaller, more cohesive units can enhance code readability and maintainability.
+
+######################################################
+Please analyze the following code snippets and report any long methods present in the code snippet.
+
+######################################################
+        ${code_changes}
+
+        ${output_schema}
+
+        ${gr.json_suffix_prompt}
+
+    </prompt>
+
+</rail>
