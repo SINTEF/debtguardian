@@ -829,32 +829,6 @@
             "repository": "https://github.com/eclipse/kapua.git"
         }
     ],
-    "382f0bb47fe46469995eb494c98866a07eaed971": [
-        {
-            "location": "ArgusCore/src/main/java/com/salesforce/dva/argus/entity/Trigger.java",
-            "technicalDebts": [
-                {
-                    "type": "blob",
-                    "locations": [
-                        {
-                            "start_line": 88,
-                            "end_line": 491
-                        }
-                    ]
-                },
-                {
-                    "type": "data class",
-                    "locations": [
-                        {
-                            "start_line": 88,
-                            "end_line": 491
-                        }
-                    ]
-                }
-            ],
-            "repository": "https://github.com/salesforce/Argus.git"
-        }
-    ],
     "f146ecb0cf34db0b747df925f84ba830afc2e70b": [
         {
             "location": "android/PhysicalWeb/app/src/main/java/org/physical_web/physicalweb/MainActivity.java",
