@@ -41,6 +41,7 @@ def analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts
     commit_count = 0
     for commit in Repository(repo_url, from_commit=begin_commit, to_commit=end_commit).traverse_commits():
         logging.info("Analyzing commit: %s", commit.hash)
+        logging.info("In the repo: %s", repo_url)
         commit_count += 1
 
         if should_skip_commit(commit, debts):
@@ -48,6 +49,34 @@ def analyze_commits(repo_url, begin_commit, end_commit, model_type, debts, debts
 
         print_commit_analysis_start(commit, commit_count, repo_url)
         analyze_modifications(commit, debts, debts_file, repo_url, model_type, schema)
+
+
+def analyze_commits_mlcq(repo_url, begin_commit, end_commit, model_type, debts, debts_file, schema, relevant_files):
+    """
+    Iterates through commits and fetches changed content.
+
+    :param repo_url: The URL of the repo to analyze
+    :param begin_commit: The commit-hash where analysis will begin
+    :param end_commit: The commit-hash where analysis will stop
+    :param model_type: The model type used for analysis
+    :param debts: The content of previous analysis
+    :param debts_file: The file containing debts for analysis
+    :param schema: Schema file for analysis
+    :param relevant_files: A dictionary containing relevant file paths for each commit
+    """
+    commit_count = 0
+    for commit in Repository(repo_url, from_commit=begin_commit, to_commit=end_commit).traverse_commits():
+        logging.info("Analyzing commit: %s", commit.hash)
+        logging.info("For the repo: %s", repo_url)
+        commit_count += 1
+
+        if should_skip_commit(commit, debts):
+            continue
+
+        print_commit_analysis_start(commit, commit_count, repo_url)
+
+        # Pass only relevant files for this commit
+        analyze_modifications_mlcq(commit, debts, debts_file, repo_url, model_type, schema, relevant_files)
 
 
 
@@ -68,7 +97,7 @@ def analyze_modifications(commit, debts, debts_file, repo_url, model_type, schem
         if not modification.source_code or not is_source_code(modification.new_path):
             continue
 
-        logging.debug("Analyzing file: %s", modification.new_path)
+        logging.info("Analyzing file: %s", modification.new_path)
         enumerated_content = enumerate_file(modification.source_code)
         print_file_analysis_start(modification.new_path)
 
@@ -78,3 +107,49 @@ def analyze_modifications(commit, debts, debts_file, repo_url, model_type, schem
         if debt:
             update_debts_and_save(debt, debts, commit, debts_file, modification.new_path, repo_url)
 
+
+def analyze_modifications_mlcq(commit, debts, debts_file, repo_url, model_type, schema, relevant_files):
+    """
+    The function will analyze modified files in a commit but **only** those that exist in the ground truth.
+
+    :param commit: The commit-hash that will be analyzed
+    :param debts: The content of the debts that already has been analyzed
+    :param debts_file: The file where the debts are stored
+    :param repo_url: The URL of the repo to analyze
+    :param model_type: The model type used to analyze the commit
+    :param schema: The schema used for debt detection
+    :param relevant_files: A dictionary of commit_hash -> list of relevant file paths
+    """
+    commit_hash = commit.hash
+
+    # If this commit is not in the relevant_files dictionary, skip it
+    if commit_hash not in relevant_files:
+        logging.info(f"Skipping commit {commit_hash} - No relevant files.")
+        return
+
+    relevant_paths = set(relevant_files[commit_hash])  # Get paths that should be analyzed
+
+    # **Check if commit has no modified files**
+    if not commit.modified_files:
+        logging.warning(f"Commit {commit_hash} in {repo_url} has no modified files! Skipping...")
+        return
+    
+    for modification in commit.modified_files:
+        file_path = modification.new_path
+        if not file_path or not modification.source_code or not is_source_code(file_path):
+            continue
+
+        # **Skip files not in the ground truth list**
+        if file_path not in relevant_paths:
+            logging.info(f"Skipping file: {file_path} (Not in ground truth)")
+            continue
+
+        logging.info(f"Analyzing file: {file_path}")
+        enumerated_content = enumerate_file(modification.source_code)
+        print_file_analysis_start(file_path)
+
+        guard = createGuard(enumerated_content, schema)
+        debt = debtDetect(enumerated_content, guard, model_type)
+
+        if debt:
+            update_debts_and_save(debt, debts, commit, debts_file, file_path, repo_url)

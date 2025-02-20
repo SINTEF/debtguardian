@@ -21,12 +21,12 @@ def createGuard(code_changes, schema):
 
         ${gr.complete_json_suffix_v2} <!-- (3)! -->
         """
-        logging.info('The prompt: \n' + prompt)
+        #logging.info('The prompt: \n' + prompt)
         schema_path = os.path.join(ROOT_DIR, 'technical_schema', schema)
         logging.info("The path of the technical schema:" + str(schema_path))
         guard = gd.Guard.from_rail(schema_path)
         logging.info("Guard object created successfully")
-        logging.info(f"Guard base prompt: {guard.base_prompt}")
+        #logging.info(f"Guard base prompt: {guard.base_prompt}")
         return guard
     except Exception as e:
         logging.error("Error creating guard object: %s", str(e))

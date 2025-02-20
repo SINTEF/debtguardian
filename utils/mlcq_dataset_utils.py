@@ -430,5 +430,34 @@ def extract_repo_commits_from_file(json_file):
 
 # %%
 
+def extract_unique_repo_commits(json_file):
+    """
+    Extracts unique repository URLs with their associated commit hashes and file locations.
+
+    :param json_file: Path to the JSON file containing commit data
+    :return: Dictionary mapping repository URLs to commit hashes and their respective relevant file locations
+    """
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+
+    repo_data = {}
+
+    for commit_hash, entries in data.items():
+        for entry in entries:
+            repo_url = entry.get("repository")
+            location = entry.get("location")  # The file path to be analyzed
+
+            if repo_url:
+                if repo_url not in repo_data:
+                    repo_data[repo_url] = {}
+
+                if commit_hash not in repo_data[repo_url]:
+                    repo_data[repo_url][commit_hash] = set()  # Using a set to prevent duplicate file paths
+
+                if location:
+                    repo_data[repo_url][commit_hash].add(location)  # Store only relevant file paths
+
+    # Convert sets to lists for JSON serialization
+    return {repo: {commit: list(files) for commit, files in commit_dict.items()} for repo, commit_dict in repo_data.items()}
 
 
