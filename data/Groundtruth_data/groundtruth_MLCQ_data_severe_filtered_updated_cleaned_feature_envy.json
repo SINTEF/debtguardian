@@ -1,0 +1,2119 @@
+{
+    "4cd954856eb8bdbe651338e7a1e3a61dd13d4fa2": [
+        {
+            "location": "org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/pack/PackWriter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1777,
+                            "end_line": 1995
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-jgit/jgit.git"
+        }
+    ],
+    "8d94459cff8f8af55c3109147027ab431a56f1f2": [
+        {
+            "location": "org.eclipse.nebula.widgets.nattable.core/src/org/eclipse/nebula/widgets/nattable/fillhandle/FillHandleLayerPainter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 563,
+                            "end_line": 574
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-nattable/nattable.git"
+        }
+    ],
+    "091ec1c59a2686ecd952e664dde950d0c7aaa0cd": [
+        {
+            "location": "src/com/google/javascript/rhino/jstype/AllType.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 112,
+                            "end_line": 115
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/closure-compiler.git"
+        }
+    ],
+    "01422476248d23741ff74f68e9cbd48ddf097108": [
+        {
+            "location": "pulsar-broker/src/main/java/org/apache/pulsar/broker/loadbalance/impl/SimpleLoadManagerImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1069,
+                            "end_line": 1074
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/pulsar.git"
+        }
+    ],
+    "9ab80c8180d09e034d779444c4fb62b874d9720f": [
+        {
+            "location": "pulsar-client/src/main/java/org/apache/pulsar/client/impl/ConsumerImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1442,
+                            "end_line": 1456
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/pulsar.git"
+        }
+    ],
+    "b0df8fe1e10e63aa2b268e126d109cc61ea2d33c": [
+        {
+            "location": "zookeeper-contrib/zookeeper-contrib-loggraph/src/main/java/org/apache/zookeeper/graph/JsonGenerator.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 75,
+                            "end_line": 213
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/zookeeper.git"
+        }
+    ],
+    "faa7cec71fddfb959a7d67923acffdb67d93c953": [
+        {
+            "location": "zookeeper-server/src/main/java/org/apache/zookeeper/server/auth/KerberosName.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 287,
+                            "end_line": 295
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/zookeeper.git"
+        }
+    ],
+    "5ba898f3322e32b52d2048e9cd41f4c083f85496": [
+        {
+            "location": "Android/samples/graphnotificationssample/app/src/main/java/com/microsoft/connecteddevices/graphnotifications/ConnectedDevicesManager.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 197,
+                            "end_line": 239
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/Microsoft/project-rome.git"
+        }
+    ],
+    "fecc9a8e61d6ae9033d317230f7c74bee73f3927": [
+        {
+            "location": "org.eclipse.dawnsci.analysis.dataset/src/org/eclipse/dawnsci/analysis/dataset/roi/fitting/EllipseFitter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 486,
+                            "end_line": 512
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/dawnsci.git"
+        }
+    ],
+    "05ed92cfe54925466c75fb1af5569c589c2bd54f": [
+        {
+            "location": "rpm/org.eclipse.linuxtools.rpm.ui.editor/src/org/eclipse/linuxtools/internal/rpm/ui/editor/preferences/PreferenceInitializer.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 25,
+                            "end_line": 59
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-linuxtools/org.eclipse.linuxtools.git"
+        }
+    ],
+    "7477b4b9b83925860142a45e2529b8073229209a": [
+        {
+            "location": "valgrind/org.eclipse.linuxtools.valgrind.launch/src/org/eclipse/linuxtools/internal/valgrind/launch/ValgrindOptionsTab.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 638,
+                            "end_line": 672
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-linuxtools/org.eclipse.linuxtools.git"
+        }
+    ],
+    "11287002ef9a2b87ebdf529bb624609c52a319d3": [
+        {
+            "location": "containers/org.eclipse.linuxtools.docker.integration.tests/src/org/eclipse/linuxtools/docker/integration/tests/mock/MockConsoleView.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 34,
+                            "end_line": 38
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-linuxtools/org.eclipse.linuxtools.git"
+        }
+    ],
+    "9b475f4e5d26744b58f650ee3d941bfbb347b6c2": [
+        {
+            "location": "service/security/shiro/src/main/java/org/eclipse/kapua/service/authorization/group/shiro/GroupServiceImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 203,
+                            "end_line": 212
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/kapua.git"
+        }
+    ],
+    "eca1a4bfe952fc184fe90dde50bac9b0e5293568": [
+        {
+            "location": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/tools/offlineImageViewer/OfflineImageReconstructor.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 184,
+                            "end_line": 229
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hadoop.git"
+        }
+    ],
+    "9e59da7fd96d8af0587efa2f34c89f56320d4c91": [
+        {
+            "location": "hoodie-client/src/main/java/com/uber/hoodie/HoodieWriteClient.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 928,
+                            "end_line": 957
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-hudi.git"
+        }
+    ],
+    "160afdc3d271188886913a59d976076e79c6112f": [
+        {
+            "location": "src/com/facebook/buck/cli/AuditRulesCommand.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 90,
+                            "end_line": 148
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/facebook/buck.git"
+        }
+    ],
+    "bd3f7acc1d05309ed5542dfab2532caa9e5b8fc6": [
+        {
+            "location": "src/com/facebook/buck/android/resources/ResTableTypeSpec.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 166,
+                            "end_line": 168
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/facebook/buck.git"
+        }
+    ],
+    "52cab1f8247b042598cc430a1c7ba77747160db3": [
+        {
+            "location": "src/com/facebook/buck/core/model/impl/InMemoryBuildFileTree.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 71,
+                            "end_line": 75
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/facebook/buck.git"
+        }
+    ],
+    "34c572feac0531dcdb54cbe59aea2a7676cea7e2": [
+        {
+            "location": "ambry-network/src/main/java/com.github.ambry.network/SocketServer.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 67,
+                            "end_line": 82
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/linkedin/ambry.git"
+        }
+    ],
+    "3015747f3d0ddce9287035ccba6609f497865eaf": [
+        {
+            "location": "fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/data/DepositProductDataValidator.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 413,
+                            "end_line": 547
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/fineract.git"
+        }
+    ],
+    "36c1c051b8106371d37f8a747cea0e369a8e5c84": [
+        {
+            "location": "spring-boot-project/spring-boot/src/main/java/org/springframework/boot/web/embedded/jetty/JettyReactiveWebServerFactory.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 171,
+                            "end_line": 194
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/spring-projects/spring-boot.git"
+        }
+    ],
+    "cb9ca97531eddee2cd312654bf13b0905cb3ef6e": [
+        {
+            "location": "hyracks-fullstack/hyracks/hyracks-dataflow-std/src/main/java/org/apache/hyracks/dataflow/std/join/NestedLoopJoin.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 60,
+                            "end_line": 97
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/asterixdb.git"
+        }
+    ],
+    "abcdb802150072c20ddb758fed0cac48b529e9a5": [
+        {
+            "location": "asterixdb/asterix-om/src/main/java/org/apache/asterix/dataflow/data/nontagged/serde/AGeometrySerializerDeserializer.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 63,
+                            "end_line": 75
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/asterixdb.git"
+        }
+    ],
+    "11f7c34ca9a1180b21c3d7eb1831b3a6fbe2385d": [
+        {
+            "location": "hyracks-fullstack/hyracks/hyracks-storage-am-lsm-rtree/src/main/java/org/apache/hyracks/storage/am/lsm/rtree/dataflow/LSMRTreeWithAntiMatterLocalResource.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 96,
+                            "end_line": 109
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/asterixdb.git"
+        }
+    ],
+    "5afc74bbcd1a550e37e1a54d2ac5e6c0fd31252b": [
+        {
+            "location": "bundles/org.eclipse.orion.server.cf/src/org/eclipse/orion/server/cf/loggregator/LoggregatorMessage.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 651,
+                            "end_line": 716
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/orion.server.git"
+        }
+    ],
+    "cf30059cf36cd6845333a7e73dd3522b3a728169": [
+        {
+            "location": "bundles/org.eclipse.orion.server.hosting/src/org/eclipse/orion/internal/server/hosting/SiteInfo.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 150,
+                            "end_line": 159
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/orion.server.git"
+        }
+    ],
+    "eb30ebd645cd9e9ad4b4241b85156f42b7eb9064": [
+        {
+            "location": "bundles/org.eclipse.orion.server.logs/src/org/eclipse/orion/server/logs/servlets/FileAppenderHandler.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 43,
+                            "end_line": 70
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/orion.server.git"
+        }
+    ],
+    "b41ff2c0ddf88b6bfc61e5f2536585afd87dec31": [
+        {
+            "location": "org.eclipse.jdt.core.tests.model/src/org/eclipse/jdt/core/tests/model/TypeHierarchyTests.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 2260,
+                            "end_line": 2282
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-jdt/eclipse.jdt.core.git"
+        }
+    ],
+    "9cfacbde319d519c73a466bdab100a6c9d176ba9": [
+        {
+            "location": "core/applib/src/main/java/org/apache/isis/schema/services/jaxb/JaxbServiceDefault.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 93,
+                            "end_line": 99
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/isis.git"
+        }
+    ],
+    "be73d167a1c3da3053059727e1f6f88d8d624744": [
+        {
+            "location": "ambari-server/src/main/java/org/apache/ambari/server/api/query/render/AlertSummaryRenderer.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 205,
+                            "end_line": 209
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ambari.git"
+        }
+    ],
+    "f404b0ddf9b0432429177351818da7649edf48bd": [
+        {
+            "location": "ql/src/java/org/apache/hadoop/hive/ql/optimizer/calcite/cost/HiveOnTezCostModel.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 414,
+                            "end_line": 464
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "5258c67e9558bd2d98e4887d3dd8e3eb8aa5d763": [
+        {
+            "location": "standalone-metastore/metastore-common/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/WMTrigger.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 733,
+                            "end_line": 798
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "a070a9dc658301b3224793d7dcaf02a4f4bc8606": [
+        {
+            "location": "hcatalog/core/src/main/java/org/apache/hive/hcatalog/mapreduce/FosterStorageHandler.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 107,
+                            "end_line": 150
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "673dde7b799be245f74575f605dde83ccc8fbb13": [
+        {
+            "location": "src/main/java/org/apache/commons/beanutils2/PropertyUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 458,
+                            "end_line": 464
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/commons-beanutils.git"
+        }
+    ],
+    "01be71f629baedd6cc0018b8b4305093c6c91c8a": [
+        {
+            "location": "tests/bugs1611/pr336880/Second.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 4,
+                            "end_line": 9
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/org.aspectj.git"
+        }
+    ],
+    "857b99b6ca57b7a00d69dcb4da9fdd81b4f7b4bf": [
+        {
+            "location": "modules/registry/registry-server/registry-api-service/src/main/java/org/apache/airavata/registry/api/service/handler/RegistryServerHandler.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 3124,
+                            "end_line": 3178
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/airavata.git"
+        }
+    ],
+    "20764685ecd1390508129b3df667f6392b5cc96f": [
+        {
+            "location": "spring-context/src/main/java/org/springframework/context/annotation/ConfigurationClassBeanDefinitionReader.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 426,
+                            "end_line": 430
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/spring-projects/spring-framework.git"
+        },
+        {
+            "location": "spring-webmvc/src/main/java/org/springframework/web/servlet/support/BindStatus.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 96,
+                            "end_line": 169
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/spring-projects/spring-framework.git"
+        }
+    ],
+    "83d48a321a1660097e89a899cfc2a5ed0f1056ac": [
+        {
+            "location": "org.eclipse.xtext.core.idea.tests/src-gen/org/eclipse/xtext/parser/assignments/idea/highlighting/AssignmentsTestLanguageBaseColorSettingsPage.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 13,
+                            "end_line": 16
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/xtext-idea.git"
+        }
+    ],
+    "9152a5e0aaeb08afba136793e16074e4e9d334c5": [
+        {
+            "location": "config/src/main/java/org/apache/karaf/cellar/config/shell/BlockCommand.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 56,
+                            "end_line": 132
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/karaf-cellar.git"
+        }
+    ],
+    "0d746fa2e2787a661db70d74035120ae3516ace3": [
+        {
+            "location": "zeppelin-jupyter/src/main/java/org/apache/zeppelin/jupyter/nbformat/Error.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 48,
+                            "end_line": 50
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/zeppelin.git"
+        }
+    ],
+    "31b6558aba3aeb04f1fd8a7593e6af97790e7c54": [
+        {
+            "location": "org.eclipse.egit.ui/src/org/eclipse/egit/ui/internal/preferences/GitDecoratorPreferencePage.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 244,
+                            "end_line": 323
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-egit/egit.git"
+        }
+    ],
+    "bc5c43450dddced02e61dc61cae1960c8132cd41": [
+        {
+            "location": "sentry-hdfs/sentry-hdfs-common/src/gen/thrift/gen-javabean/org/apache/sentry/hdfs/service/thrift/SentryHDFSService.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1004,
+                            "end_line": 1010
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-sentry.git"
+        }
+    ],
+    "7f123002cdd031fe8a821eb869fc83152539b6c5": [
+        {
+            "location": "sentry-binding/sentry-binding-hive-v2/src/main/java/org/apache/sentry/binding/hive/v2/authorizer/DefaultSentryAccessController.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 479,
+                            "end_line": 515
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-sentry.git"
+        }
+    ],
+    "7354f870b2bff7b5f0451a792cb06d2eee00ff38": [
+        {
+            "location": "common/src/main/java/org/apache/falcon/entity/FeedHelper.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 932,
+                            "end_line": 934
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/falcon.git"
+        }
+    ],
+    "3fc734dc8cd5e6e7c3869353e6cac7bd20a4d4aa": [
+        {
+            "location": "jre_emul/android/platform/external/icu/android_icu4j/src/main/java/android/icu/util/VTimeZone.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1661,
+                            "end_line": 1695
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/j2objc.git"
+        }
+    ],
+    "5afdcc5f7b8d0d9805430c7ed3ed3f8a72bfe8d6": [
+        {
+            "location": "bundles/com.amazonaws.eclipse.simpledb/src/com/amazonaws/eclipse/datatools/enablement/simpledb/internal/driver/JdbcStatement.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 432,
+                            "end_line": 502
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/aws/aws-toolkit-eclipse.git"
+        }
+    ],
+    "4d8ad6b23af41e6c89574c3eae5e954f93e01f6f": [
+        {
+            "location": "debugtools/DDR_VM/src/com/ibm/j9ddr/vm29/tools/ddrinteractive/LinearDumper.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 277,
+                            "end_line": 297
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/openj9.git"
+        }
+    ],
+    "87b3d0fff47de3e25251a0b667050a8ffc36f615": [
+        {
+            "location": "core/src/main/java/org/apache/oozie/sla/SLACalculatorMemory.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 540,
+                            "end_line": 560
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/oozie.git"
+        }
+    ],
+    "71f72c59537711399dc5496136dd6b867acc6d77": [
+        {
+            "location": "library/core/src/main/java/com/google/android/exoplayer2/text/ttml/TtmlDecoder.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 311,
+                            "end_line": 434
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/ExoPlayer.git"
+        }
+    ],
+    "adb2a34306d67559ee81db155826dc67a02cc85e": [
+        {
+            "location": "broker-core/src/main/java/org/apache/qpid/server/queue/QueueEntryImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 336,
+                            "end_line": 353
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/qpid-broker-j.git"
+        }
+    ],
+    "7884dc92a0c6dfb2fac8150298806b0697de7668": [
+        {
+            "location": "broker-plugins/access-control/src/main/java/org/apache/qpid/server/security/access/config/AclFileParser.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 113,
+                            "end_line": 249
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/qpid-broker-j.git"
+        },
+        {
+            "location": "broker-core/src/main/java/org/apache/qpid/server/virtualhost/SynchronousMessageStoreRecoverer.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 63,
+                            "end_line": 151
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/qpid-broker-j.git"
+        }
+    ],
+    "226f9e5d74062ab464e5773b49baa77532fa0673": [
+        {
+            "location": "framework/org.eclipse.concierge/src/org/eclipse/concierge/Resources.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 626,
+                            "end_line": 640
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/concierge.git"
+        }
+    ],
+    "0f8353d0b1dac29c9a96696df7051abd5a283152": [
+        {
+            "location": "substratevm/src/com.oracle.svm.hosted/src/com/oracle/svm/hosted/NativeImageGenerator.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 487,
+                            "end_line": 632
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/oracle/graal.git"
+        }
+    ],
+    "1fa96ffe33b2c5b021d2278a1009ea1010c5a1cc": [
+        {
+            "location": "caliper-runner/src/main/java/com/google/caliper/runner/target/LocalDevice.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 105,
+                            "end_line": 120
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/caliper.git"
+        }
+    ],
+    "b5b177b84d6e02fe88054699b6e2c2dca2852289": [
+        {
+            "location": "src/java/org/apache/ivy/plugins/parser/xml/XmlModuleDescriptorWriter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 209,
+                            "end_line": 227
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ant-ivy.git"
+        }
+    ],
+    "3526120dc284d866e3d85ef5c3632b159a2966a9": [
+        {
+            "location": "spi-fly/spi-fly-static-tool/src/main/java/org/apache/aries/spifly/statictool/Main.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 173,
+                            "end_line": 223
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/aries.git"
+        }
+    ],
+    "62058f670482ecfac12df2e3f0d6fb1137bfb4fd": [
+        {
+            "location": "org.eclipse.xtext.common.types/src/org/eclipse/xtext/common/types/access/reflect/ReflectionTypeFactory.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 618,
+                            "end_line": 646
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/xtext-extras.git"
+        }
+    ],
+    "d382c6f4cb75427bd74719308c22630d6f905ff2": [
+        {
+            "location": "org.eclipse.xtext.xbase/src-gen/org/eclipse/xtext/xbase/annotations/parser/antlr/internal/InternalXbaseWithAnnotationsParser.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 22612,
+                            "end_line": 22671
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/xtext-extras.git"
+        }
+    ],
+    "4fcb60ba96fe15ee4d1ad9edf7fca640258bf33d": [
+        {
+            "location": "ldap/model/src/main/java/org/apache/directory/api/ldap/model/schema/registries/ImmutableComparatorRegistry.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 148,
+                            "end_line": 152
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/directory-ldap-api.git"
+        }
+    ],
+    "9cbe4519b06d94d1d5232dac80f5012f4bdd36d5": [
+        {
+            "location": "artemis-server/src/main/java/org/apache/activemq/artemis/core/server/impl/MessageReferenceImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 137,
+                            "end_line": 140
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/activemq-artemis.git"
+        }
+    ],
+    "afb42ed4c9772d81cc5f5c768ae02d0bb4ab67a6": [
+        {
+            "location": "cayenne-server/src/main/java/org/apache/cayenne/ashwood/WeightedAshwoodEntitySorter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 42,
+                            "end_line": 46
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cayenne.git"
+        }
+    ],
+    "e1cd8bc4b2072a524291e13d231229b4e342ad77": [
+        {
+            "location": "cayenne-server/src/main/java/org/apache/cayenne/exp/parser/ASTEqual.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 76,
+                            "end_line": 97
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cayenne.git"
+        }
+    ],
+    "a6474c5a732f3eaf0a8a772c80a4932a7bf2d937": [
+        {
+            "location": "exec/java-exec/src/main/java/org/apache/drill/exec/physical/rowSet/project/RequestedTupleImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 260,
+                            "end_line": 291
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/drill.git"
+        }
+    ],
+    "9b7afd8a0341f4712031abd322ab8669f07f5c5b": [
+        {
+            "location": "jetty-websocket/websocket-common/src/main/java/org/eclipse/jetty/websocket/common/util/ReflectUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 189,
+                            "end_line": 225
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/jetty.project.git"
+        }
+    ],
+    "23ed654726149c859c51cdadfb8b3329e1464553": [
+        {
+            "location": "phoenix-core/src/main/java/org/apache/phoenix/hbase/index/write/IndexWriter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 87,
+                            "end_line": 100
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/phoenix.git"
+        }
+    ],
+    "96133bca4298b740f8fa46830854f7a5329fe8f3": [
+        {
+            "location": "rt/rs/security/jose-parent/jose/src/main/java/org/apache/cxf/rs/security/jose/jwk/JwkUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 448,
+                            "end_line": 469
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cxf.git"
+        }
+    ],
+    "751e63ac9fdf5752ae3956b84925ec91ea6e0253": [
+        {
+            "location": "services/wsn/wsn-api/src/main/java/org/apache/cxf/wsn/client/CreatePullPoint.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 58,
+                            "end_line": 64
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cxf.git"
+        }
+    ],
+    "b4da20027b9d6206b690a1e89399b193017ad55e": [
+        {
+            "location": "src/java.xml/share/classes/com/sun/org/apache/xml/internal/dtm/ref/DTMNodeProxy.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 619,
+                            "end_line": 656
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/SAP/SapMachine.git"
+        }
+    ],
+    "3ca4bf650d5a3d30bccdc6299aed0fb57a987592": [
+        {
+            "location": "src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1154,
+                            "end_line": 1211
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/SAP/SapMachine.git"
+        }
+    ],
+    "74e9bb9f1b50c93e75f90e4edc20ea65151cdf35": [
+        {
+            "location": "src/java.xml.crypto/share/classes/com/sun/org/apache/xml/internal/security/c14n/ClassLoaderUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 66,
+                            "end_line": 83
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/SAP/SapMachine.git"
+        }
+    ],
+    "fe9ce4878eb2fe64911e18f798746e457351db14": [
+        {
+            "location": "src/jdk.management.jfr/share/classes/jdk/management/jfr/ConfigurationInfo.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 63,
+                            "end_line": 70
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/SAP/SapMachine.git"
+        }
+    ],
+    "355efd92dbd341ac9ed66b303b62798542e307fe": [
+        {
+            "location": "src/java.base/windows/classes/sun/nio/fs/WindowsSecurity.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 39,
+                            "end_line": 45
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/SAP/SapMachine.git"
+        }
+    ],
+    "88b87a6aeb94458260d66e6aa6f1df7ba6b6a702": [
+        {
+            "location": "qmui/src/main/java/com/qmuiteam/qmui/widget/QMUITopBarLayout.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 136,
+                            "end_line": 138
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/Tencent/QMUI_Android.git"
+        }
+    ],
+    "6bfef5f0a2971d1136b7c1152f5f2393368a4a34": [
+        {
+            "location": "jax-rs.whiteboard/src/main/java/org/apache/aries/jax/rs/whiteboard/internal/AriesJaxrsServiceRuntime.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 943,
+                            "end_line": 1037
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/aries-jax-rs-whiteboard.git"
+        }
+    ],
+    "2daa055062a8c6e947e8964743df67904167263b": [
+        {
+            "location": "bmc-budget/src/main/java/com/oracle/bmc/budget/model/CreateBudgetDetails.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 103,
+                            "end_line": 116
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/oracle/oci-java-sdk.git"
+        }
+    ],
+    "26577eefc84dbb3a9f434fbc4143de24864a7956": [
+        {
+            "location": "modules/indexing/src/main/java/org/apache/ignite/internal/processors/query/h2/sys/view/SqlSystemViewNodeMetrics.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 105,
+                            "end_line": 200
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ignite.git"
+        }
+    ],
+    "42143c22b6b73334489fef683cea61991d30ae64": [
+        {
+            "location": "gremlin-core/src/main/java/org/apache/tinkerpop/gremlin/process/traversal/util/TraversalUtil.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 99,
+                            "end_line": 103
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/tinkerpop.git"
+        }
+    ],
+    "546e9a77e0e3dc68d6cd2e82570ddf1f19c7c3e7": [
+        {
+            "location": "flink-libraries/flink-gelly/src/main/java/org/apache/flink/graph/types/valuearray/DoubleValueArray.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 179,
+                            "end_line": 186
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/flink.git"
+        }
+    ],
+    "d21e8f03499c93939b0a618ce96a026eef940ca2": [
+        {
+            "location": "spring-integration-ws/src/main/java/org/springframework/integration/ws/config/WebServiceOutboundGatewayParser.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 47,
+                            "end_line": 51
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/spring-projects/spring-integration.git"
+        }
+    ],
+    "2d921038f77c25caed664db9e29261fb11e9004f": [
+        {
+            "location": "source/com.microsoft.tfs.client.common.ui/src/com/microsoft/tfs/client/common/ui/controls/wit/FileAttachmentsControl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 469,
+                            "end_line": 486
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/Microsoft/team-explorer-everywhere.git"
+        }
+    ],
+    "b9a3117f19dd19abd2ea8b789c42c3e86fe4c488": [
+        {
+            "location": "components/camel-disruptor/src/main/java/org/apache/camel/component/disruptor/DisruptorComponent.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 64,
+                            "end_line": 108
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/camel.git"
+        }
+    ],
+    "ad4ed02728a9bbb1624f490bf6eabd59922981a9": [
+        {
+            "location": "openjpa-jdbc/src/main/java/org/apache/openjpa/jdbc/sql/DBDictionary.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 2243,
+                            "end_line": 2350
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/openjpa.git"
+        }
+    ],
+    "54351a5c75d8902d1d4c2eb2f6590bcf126348d4": [
+        {
+            "location": "processing/src/main/java/org/apache/druid/segment/IndexIO.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 124,
+                            "end_line": 179
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-druid.git"
+        }
+    ],
+    "fe69da0d95a361708923fbe5b82ded0d461aa495": [
+        {
+            "location": "processing/src/main/java/org/apache/druid/segment/virtual/ExpressionSelectors.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 311,
+                            "end_line": 327
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-druid.git"
+        }
+    ],
+    "1c99fd7388193878b5f4038dd82013659be88458": [
+        {
+            "location": "utils/src/main/java/com/cloud/utils/UriUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 198,
+                            "end_line": 210
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cloudstack.git"
+        }
+    ],
+    "58466c89540aeb643abf47dacb2fe249eca48479": [
+        {
+            "location": "server/src/main/java/org/apache/cloudstack/ha/HAManagerImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 337,
+                            "end_line": 374
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cloudstack.git"
+        }
+    ],
+    "5bccf662d3290f0f64adfa5c888a8a4b656f6369": [
+        {
+            "location": "geode-core/src/main/java/org/apache/geode/admin/jmx/internal/MailManager.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 80,
+                            "end_line": 150
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/geode.git"
+        }
+    ],
+    "aeb93cd35d8c8e7b5d64ab239e2e3faba9db5aac": [
+        {
+            "location": "tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/filters/TargetPlatformFilterEvaluator.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 287,
+                            "end_line": 291
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/tycho.git"
+        }
+    ],
+    "c8987c33ea5b731864bf1cb027d549d8041e0c2d": [
+        {
+            "location": "src/com/google/caja/lexer/ExternalReference.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 84,
+                            "end_line": 87
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/caja.git"
+        }
+    ],
+    "f229d1cdf3c257121aa53f35206cd3eaf900210a": [
+        {
+            "location": "plugins/org.eclipse.elk.alg.radial/src/org/eclipse/elk/alg/radial/options/AnnulusWedgeCriteria.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 37,
+                            "end_line": 47
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/elk.git"
+        }
+    ],
+    "c4f915cfd77f281009f0a1ddd20f879022824233": [
+        {
+            "location": "java/sage/LinuxUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 51,
+                            "end_line": 108
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/sagetv.git"
+        }
+    ],
+    "a6b621973d06fb14ee23433782b7f2671d4da6f0": [
+        {
+            "location": "java/sage/MiniPlayer.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 2879,
+                            "end_line": 2884
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/sagetv.git"
+        }
+    ],
+    "f274fb268362c29f1b32ff6e12fa90b96d09c2c1": [
+        {
+            "location": "java/org/apache/tomcat/util/descriptor/web/WebXml.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 1961,
+                            "end_line": 1987
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/tomcat.git"
+        }
+    ],
+    "01fce2f545f885e458013caba9b8c2e34b425b90": [
+        {
+            "location": "java/org/apache/catalina/ha/session/DeltaSession.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 412,
+                            "end_line": 418
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/tomcat.git"
+        }
+    ],
+    "db210eff5a6e6ddc58c966d6486c0d203baf54e2": [
+        {
+            "location": "gobblin-utility/src/main/java/org/apache/gobblin/util/AvroUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 615,
+                            "end_line": 634
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-gobblin.git"
+        }
+    ],
+    "f2a1f38833610f882a645917c202bd126f4d10fd": [
+        {
+            "location": "bundles/io/org.eclipse.smarthome.io.net/src/main/java/org/eclipse/smarthome/io/net/http/HttpUtil.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 127,
+                            "end_line": 133
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/smarthome.git"
+        },
+        {
+            "location": "bundles/model/org.eclipse.smarthome.model.script/src/org/eclipse/smarthome/model/script/actions/BusEvent.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 153,
+                            "end_line": 172
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/smarthome.git"
+        }
+    ],
+    "a598c40cba327ca31737c65cabb76ab1c112d19f": [
+        {
+            "location": "server/src/main/net/com/alibaba/cobar/net/NIOReactor.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 166,
+                            "end_line": 172
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/alibaba/cobar.git"
+        }
+    ],
+    "4a513fa99f638cb65e0cae59bfdf7af410c0327a": [
+        {
+            "location": "lucene/codecs/src/java/org/apache/lucene/codecs/blocktreeords/OrdsSegmentTermsEnum.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 174,
+                            "end_line": 208
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        }
+    ],
+    "f80e8e11672d31c6e12069d2bd12a28b92e5a336": [
+        {
+            "location": "solr/solrj/src/java/org/apache/solr/client/solrj/impl/Krb5HttpClientBuilder.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 124,
+                            "end_line": 130
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        }
+    ],
+    "6bdf4f12c125b636189a4de55260df5a71775f2e": [
+        {
+            "location": "bundles/org.eclipse.swt/Eclipse SWT/cocoa/org/eclipse/swt/graphics/Cursor.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 172,
+                            "end_line": 238
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-platform/eclipse.platform.swt.git"
+        }
+    ],
+    "07263f1e30089689d71b057f747a44a29283e3c4": [
+        {
+            "location": "ide/che-core-ide-ui/src/main/java/org/eclipse/che/ide/ui/smartTree/NodeStorage.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 626,
+                            "end_line": 628
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/che.git"
+        }
+    ],
+    "ab6284519fd80b9a5d8ed1b5a6554892c3cf985a": [
+        {
+            "location": "ide/commons-gwt/src/main/java/org/eclipse/che/ide/util/dom/DomUtils.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 171,
+                            "end_line": 180
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/che.git"
+        }
+    ],
+    "6a95b6d74a7a592b082180f5e343e29de2519532": [
+        {
+            "location": "ide/commons-gwt/src/main/java/org/eclipse/che/ide/ui/tree/Tree.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 732,
+                            "end_line": 736
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/che.git"
+        }
+    ],
+    "41f3b6b73a5d8dc42669ee2150d5cf7d575ca061": [
+        {
+            "location": "wsagent/che-core-api-languageserver/src/main/java/org/eclipse/che/api/languageserver/InitializeParamsProvider.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 73,
+                            "end_line": 114
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/che.git"
+        }
+    ],
+    "3a77439d1fd6e01780b3fbbe731f01b5dc6d3c05": [
+        {
+            "location": "src/main/java/com/amazonaws/kinesisvideo/parser/examples/lambda/KinesisVideoRekognitionLambdaExample.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 236,
+                            "end_line": 295
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/aws/amazon-kinesis-video-streams-parser-library.git"
+        }
+    ],
+    "8a3588a22f719f5fcb74b64e4d38989cf8fe5037": [
+        {
+            "location": "src/main/java/com/esri/samples/featurelayers/feature_layer_rendering_mode_map/FeatureLayerRenderingModeMapSample.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 45,
+                            "end_line": 114
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/Esri/arcgis-runtime-samples-java.git"
+        }
+    ],
+    "ad1f2fb666a2d98b05c56119c1e1ae8cc5fd2e7d": [
+        {
+            "location": "nifi-nar-bundles/nifi-framework-bundle/nifi-framework/nifi-web/nifi-web-api/src/main/java/org/apache/nifi/web/api/dto/DtoFactory.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 3110,
+                            "end_line": 3185
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/nifi.git"
+        }
+    ],
+    "2834fa4ce477014dfad8c96b6d326d0f1f06a23e": [
+        {
+            "location": "nifi-nar-bundles/nifi-aws-bundle/nifi-aws-processors/src/main/java/org/apache/nifi/processors/aws/dynamodb/PutDynamoDB.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 100,
+                            "end_line": 188
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/nifi.git"
+        }
+    ],
+    "dadd1dda24d4fec26963aa66daeb3c0a2b4f07d7": [
+        {
+            "location": "src/org/apache/xpath/compiler/OpMap.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 185,
+                            "end_line": 188
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/xalan-j.git"
+        }
+    ],
+    "affe1eb1308554d4df8fcdd6308e9fa4e3f3787a": [
+        {
+            "location": "visualvm/libs.profiler/profiler.snaptracer/src/org/graalvm/visualvm/lib/profiler/snaptracer/impl/timeline/TimelineXYPainter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 145,
+                            "end_line": 158
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/oracle/visualvm.git"
+        }
+    ],
+    "b17ced208c50ad6986080392455c6330e1712680": [
+        {
+            "location": "core/src/main/java/com/google/googlejavaformat/Doc.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 753,
+                            "end_line": 758
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/google-java-format.git"
+        }
+    ],
+    "f344a3c565b6a67233de1d1169104a728136e7a3": [
+        {
+            "location": "lib/server-tecsvc/src/main/java/org/apache/olingo/server/tecsvc/data/DataCreator.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 158,
+                            "end_line": 221
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/olingo-odata4.git"
+        }
+    ],
+    "15a837c3e6aa25f50c8d5af6855ef1019fd09bdd": [
+        {
+            "location": "plugins/org.eclipse.n4js.ui/src/org/eclipse/n4js/ui/binaries/IllegalBinaryStateDialog.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 97,
+                            "end_line": 160
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/n4js.git"
+        }
+    ],
+    "15f6d612dba9b946b2c6137f1d462151d195368d": [
+        {
+            "location": "chart/org.eclipse.birt.chart.ui.extension/src/org/eclipse/birt/chart/ui/swt/wizard/format/popup/series/LineSeriesMarkerSheet.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 402,
+                            "end_line": 440
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/birt.git"
+        }
+    ],
+    "1bf49f2c551a55e16159713b7d2a555ee32a08df": [
+        {
+            "location": "UI/org.eclipse.birt.report.designer.ui.preview.web/src/org/eclipse/birt/report/designer/ui/ide/navigator/GenerateDocumentAction.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 39,
+                            "end_line": 87
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/birt.git"
+        }
+    ],
+    "7d874f21619d3d648f117b3223efe57a4199e028": [
+        {
+            "location": "core/org.eclipse.birt.core/src/org/eclipse/birt/core/fs/LocalFile.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 80,
+                            "end_line": 84
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/birt.git"
+        }
+    ],
+    "976d2a98c31b51e6295bf997c6ca945932417e55": [
+        {
+            "location": "proxy/src/main/java/org/apache/accumulo/proxy/thrift/AccumuloProxy.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 126206,
+                            "end_line": 126230
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/accumulo.git"
+        }
+    ],
+    "8c9a4e147f4284af1d02948f8f44d6e3bce3804b": [
+        {
+            "location": "server/base/src/main/java/org/apache/accumulo/server/util/ListVolumesUsed.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 61,
+                            "end_line": 75
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/accumulo.git"
+        }
+    ],
+    "0c411b9af40939a8bc9bb3f93210c1a6049c0203": [
+        {
+            "location": "server/mailrepository/mailrepository-cassandra/src/main/java/org/apache/james/mailrepository/cassandra/CassandraMailRepositoryMailDAO.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 257,
+                            "end_line": 265
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/james-project.git"
+        }
+    ],
+    "328c4046d88629d1d7d484e88cb4293541bc1141": [
+        {
+            "location": "src/main/java/org/apache/commons/net/discard/DiscardUDPClient.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 63,
+                            "end_line": 71
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/commons-net.git"
+        }
+    ],
+    "acf9de41716bd17d9085759d53c5a14c8e4f3376": [
+        {
+            "location": "xml/bundles/org.eclipse.wst.xml.core/src/org/eclipse/wst/xml/core/internal/commentelement/impl/BasicCommentElementHandler.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 95,
+                            "end_line": 128
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-sourceediting/sourceediting.git"
+        },
+        {
+            "location": "xml/bundles/org.eclipse.wst.xsd.ui/src-adt-xsd/org/eclipse/wst/xsd/ui/internal/adapters/XSDWildcardAdapter.java",
+            "technicalDebts": [
+                {
+                    "type": "feature envy",
+                    "locations": [
+                        {
+                            "start_line": 46,
+                            "end_line": 66
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-sourceediting/sourceediting.git"
+        }
+    ]
+}

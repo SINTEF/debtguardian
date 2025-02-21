@@ -3049,23 +3049,6 @@
             "repository": "https://github.com/eclipse/xtext-idea.git"
         }
     ],
-    "d2adefd7410cae0c76d5143c4bc7b6f9e1d1539c": [
-        {
-            "location": "src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java",
-            "technicalDebts": [
-                {
-                    "type": "feature envy",
-                    "locations": [
-                        {
-                            "start_line": 2358,
-                            "end_line": 2367
-                        }
-                    ]
-                }
-            ],
-            "repository": "https://github.com/apache/maven-javadoc-plugin.git"
-        }
-    ],
     "a95ba0bcf9eb348e17430153e82d788c8d18a312": [
         {
             "location": "plugins/org.eclipse.acceleo.compatibility/src-gen/org/eclipse/acceleo/compatibility/model/mt/statements/impl/TextImpl.java",

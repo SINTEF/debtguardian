@@ -8,6 +8,36 @@ from collections import Counter, defaultdict
 from settings import ROOT_DIR, LOG_DIR, RESULT_DIR
 from typing import Dict, List, Tuple, Set
 
+
+def split_ground_truth_by_type(input_file):
+    with open(input_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    split_data = defaultdict(dict)
+    
+    # Iterate over the data
+    for key, items in data.items():
+        for item in items:
+            for debt in item.get("technicalDebts", []):
+                debt_type = debt["type"]
+                
+                # Copy item and keep only relevant "technicalDebts"
+                filtered_item = item.copy()
+                filtered_item["technicalDebts"] = [debt]
+                
+                if key not in split_data[debt_type]:
+                    split_data[debt_type][key] = []
+                split_data[debt_type][key].append(filtered_item)
+    
+    # Save each split file
+    base_name, ext = os.path.splitext(input_file)
+    for debt_type, split_content in split_data.items():
+        output_file = f"{base_name}_{debt_type.replace(' ', '_')}{ext}"
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(split_content, f, indent=4)
+        print(f"Created: {output_file}")
+
+
 # %%
 def sanitize_filename(repo_url):
     """Extract meaningful repository name and format it as a filename."""
