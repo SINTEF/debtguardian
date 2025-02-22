@@ -12727,23 +12727,6 @@
             "repository": "https://github.com/eclipse/birt.git"
         }
     ],
-    "ba6d5e100aff11177e09b5285e42de58f435144a": [
-        {
-            "location": "core/src/main/java/org/apache/accumulo/core/clientImpl/OfflineIterator.java",
-            "technicalDebts": [
-                {
-                    "type": "data class",
-                    "locations": [
-                        {
-                            "start_line": 70,
-                            "end_line": 143
-                        }
-                    ]
-                }
-            ],
-            "repository": "https://github.com/apache/accumulo.git"
-        }
-    ],
     "976d2a98c31b51e6295bf997c6ca945932417e55": [
         {
             "location": "proxy/src/main/java/org/apache/accumulo/proxy/thrift/AccumuloProxy.java",
