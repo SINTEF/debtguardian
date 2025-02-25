@@ -19,7 +19,7 @@ from settings import ROOT_DIR, DATA_DIR, LOG_DIR
 from utils.file_utils import initialize_file_for_all_repos
 from analysis.commit_analysis import analyze_commits_mlcq, analyze_modifications_mlcq
 #from evaluation import evaluate_results
-from evaluation.evaluate_results import evaluate_results
+#from evaluation.evaluate_results import evaluate_results
 from utils.mlcq_dataset_utils import extract_unique_repo_commits, extract_repo_commits_from_file
 #import config
 
