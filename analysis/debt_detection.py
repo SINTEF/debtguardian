@@ -2,7 +2,7 @@
 import logging
 import json
 #import config
-from .model_interface import call_with_guardrails_openai, call_with_guardrails_ollama
+from .model_interface import call_with_guardrails_ollama
 import guardrails as gd
 
 def debtDetect(code_changes, guard, model_type):
@@ -21,7 +21,7 @@ def debtDetect(code_changes, guard, model_type):
     # Get the model type from config
     #model_type = config.model_type
     logging.info("with %s", model_type)
-
+    """
     try:
         call_llm = call_with_guardrails_openai if model_type == 'OPENAI' else call_with_guardrails_ollama
         
@@ -34,6 +34,17 @@ def debtDetect(code_changes, guard, model_type):
         logging.debug("Debt detection completed")
         #logging.info(f"Raw LLM output: {res.raw_llm_output}")
         #logging.info(f"Validated output: {res.validated_output}")
+        
+        return res.validated_output
+    """
+    try:
+        res = guard(
+            lambda prompt, *args, **kwargs: call_with_guardrails_ollama(prompt, model_type=model_type, *args, **kwargs),
+            prompt_params={"code_changes": code_changes},
+            num_reasks=5,
+            temperature=0,
+        )
+        logging.debug("Debt detection completed")
         
         return res.validated_output
 

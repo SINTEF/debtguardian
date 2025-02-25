@@ -11,15 +11,17 @@ Contact: aleksander.aaboen@stinef.no,  sagar.sen@sintef.no
 import argparse
 import logging
 import os 
+import datetime
+from pathlib import Path
 
-from settings import ROOT_DIR, DATA_DIR
-from loggers import setup_logging, initialize_neptune
-from utils.file_utils import initialize_file, initialize_file_for_all_repos
-from analysis.commit_analysis import analyze_commits, analyze_commits_mlcq, analyze_modifications_mlcq
+from settings import ROOT_DIR, DATA_DIR, LOG_DIR
+#from loggers import setup_logging, initialize_neptune
+from utils.file_utils import initialize_file_for_all_repos
+from analysis.commit_analysis import analyze_commits_mlcq, analyze_modifications_mlcq
 #from evaluation import evaluate_results
 from evaluation.evaluate_results import evaluate_results
 from utils.mlcq_dataset_utils import extract_unique_repo_commits, extract_repo_commits_from_file
-import config
+#import config
 
 
 def main(model_type, eval_mode='file_level', ground_truth=None, resume=False, schema='Few-shot_p4_Java_MLCQ.xml'):
@@ -49,6 +51,25 @@ def main(model_type, eval_mode='file_level', ground_truth=None, resume=False, sc
     #run["model"] = model_type
     #run["repository"] = repo_url
     #run["schema"] = schema
+
+    Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
+    
+    # Generate the log file name based on current timestamp
+    now_time = datetime.datetime.now()
+    date_str = now_time.strftime('%Y%m%d%H%M%S')
+    log_file_name = f'{date_str}.log'
+    
+    # Full log file path
+    app_log_file_path = os.path.join(LOG_DIR, log_file_name)
+    
+    # Configure the logging settings
+    logging.basicConfig(filename=app_log_file_path,
+                        filemode='a',
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        datefmt='%d-%b-%y %H:%M:%S',
+                        level=logging.INFO,
+                        force=True)
+    logging.info("Logging setup complete.")  # Test log message
 
     # If ground_truth is not provided by the user, set a default value
     if ground_truth is None:
