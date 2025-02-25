@@ -1,7 +1,7 @@
 
 import logging
 import json
-import config
+#import config
 from .model_interface import call_with_guardrails_openai, call_with_guardrails_ollama
 import guardrails as gd
 
@@ -19,7 +19,7 @@ def debtDetect(code_changes, guard, model_type):
     """
     logging.info("Detecting debts in code changes")
     # Get the model type from config
-    model_type = config.model_type
+    #model_type = config.model_type
     logging.info("with %s", model_type)
 
     try:

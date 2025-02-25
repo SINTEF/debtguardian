@@ -3,7 +3,7 @@ import datetime
 import logging
 import os
 import json
-import config
+#import config
 from pathlib import Path
 from settings import ROOT_DIR, RESULT_DIR
 
@@ -24,7 +24,7 @@ def initialize_file(repo_url, model_type, resume=False):
     now_time = datetime.datetime.now()
     date_str = now_time.strftime('%Y%m%d%H%M%S')
 
-    schema = config.schema
+    #schema = config.schema
     logging.info(f'Model(initialize_file): {model_type}')
 
     debt_file_name =  f'{date_str}_' + url_to_filename(repo_url) + f'_debts_{model_type}' + '.json'

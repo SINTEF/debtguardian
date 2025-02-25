@@ -34,21 +34,21 @@ def main(model_type, eval_mode='file_level', ground_truth=None, resume=False, sc
     :param schema: Schema configuration file
     """
     # Model type
-    config.model_type = model_type
-    logging.info(f"MODEL_TYPE has been set to: {model_type}")
+    #config.model_type = model_type
+    #logging.info(f"MODEL_TYPE has been set to: {model_type}")
 
     #config.repo_url = repo_url
     #logging.info(f"REPO_URL has been set to: {repo_url}")
 
-    config.schema = schema
-    logging.info(f"Schema has been set to: {schema}")
+    #config.schema = schema
+    #logging.info(f"Schema has been set to: {schema}")
 
-    setup_logging()
+    #setup_logging()
     # Initialize Neptune run
-    run = initialize_neptune()
-    run["model"] = model_type
+    #run = initialize_neptune()
+    #run["model"] = model_type
     #run["repository"] = repo_url
-    run["schema"] = schema
+    #run["schema"] = schema
 
     # If ground_truth is not provided by the user, set a default value
     if ground_truth is None:
