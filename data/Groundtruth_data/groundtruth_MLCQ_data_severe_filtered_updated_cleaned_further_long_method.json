@@ -1,0 +1,1692 @@
+{
+    "4cd954856eb8bdbe651338e7a1e3a61dd13d4fa2": [
+        {
+            "location": "org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/pack/PackWriter.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 1777,
+                            "end_line": 1995
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-jgit/jgit.git"
+        }
+    ],
+    "b0df8fe1e10e63aa2b268e126d109cc61ea2d33c": [
+        {
+            "location": "zookeeper-contrib/zookeeper-contrib-loggraph/src/main/java/org/apache/zookeeper/graph/JsonGenerator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 75,
+                            "end_line": 213
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/zookeeper.git"
+        }
+    ],
+    "05ed92cfe54925466c75fb1af5569c589c2bd54f": [
+        {
+            "location": "rpm/org.eclipse.linuxtools.rpm.ui.editor/src/org/eclipse/linuxtools/internal/rpm/ui/editor/preferences/PreferenceInitializer.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 25,
+                            "end_line": 59
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-linuxtools/org.eclipse.linuxtools.git"
+        }
+    ],
+    "ff4622b463d20efb59d43694c8b68ab8413fff02": [
+        {
+            "location": "console/module/device/src/main/java/org/eclipse/kapua/app/console/module/device/client/device/bundles/DeviceTabBundles.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 111,
+                            "end_line": 132
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/kapua.git"
+        }
+    ],
+    "eca1a4bfe952fc184fe90dde50bac9b0e5293568": [
+        {
+            "location": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/tools/offlineImageViewer/OfflineImageReconstructor.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 184,
+                            "end_line": 229
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hadoop.git"
+        }
+    ],
+    "9e59da7fd96d8af0587efa2f34c89f56320d4c91": [
+        {
+            "location": "hoodie-client/src/main/java/com/uber/hoodie/HoodieWriteClient.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 928,
+                            "end_line": 957
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-hudi.git"
+        }
+    ],
+    "0d98d05ef670dcf8359681b384de1d78734f6657": [
+        {
+            "location": "kudu/src/main/java/org/apache/apex/malhar/kudu/AbstractKuduOutputOperator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 234,
+                            "end_line": 347
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/apex-malhar.git"
+        }
+    ],
+    "160afdc3d271188886913a59d976076e79c6112f": [
+        {
+            "location": "src/com/facebook/buck/cli/AuditRulesCommand.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 90,
+                            "end_line": 148
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/facebook/buck.git"
+        }
+    ],
+    "234fe3fadfa9dbacf3e3d438a08f69d6460167eb": [
+        {
+            "location": "src-gen/com/facebook/buck/distributed/thrift/FetchRuleKeyLogsRequest.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 547,
+                            "end_line": 608
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/facebook/buck.git"
+        }
+    ],
+    "3015747f3d0ddce9287035ccba6609f497865eaf": [
+        {
+            "location": "fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/data/DepositProductDataValidator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 413,
+                            "end_line": 547
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/fineract.git"
+        }
+    ],
+    "cb9ca97531eddee2cd312654bf13b0905cb3ef6e": [
+        {
+            "location": "hyracks-fullstack/hyracks/hyracks-dataflow-std/src/main/java/org/apache/hyracks/dataflow/std/join/NestedLoopJoin.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 60,
+                            "end_line": 97
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/asterixdb.git"
+        }
+    ],
+    "41adf7c449c4b89370c0c400397924d492f44daf": [
+        {
+            "location": "asterixdb/asterix-transactions/src/main/java/org/apache/asterix/transaction/management/service/logging/LogManager.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 440,
+                            "end_line": 466
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/asterixdb.git"
+        }
+    ],
+    "5afc74bbcd1a550e37e1a54d2ac5e6c0fd31252b": [
+        {
+            "location": "bundles/org.eclipse.orion.server.cf/src/org/eclipse/orion/server/cf/loggregator/LoggregatorMessage.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 651,
+                            "end_line": 716
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/orion.server.git"
+        }
+    ],
+    "cbd628460a186991f8cf2c391657eb5891c2ab82": [
+        {
+            "location": "ambari-server/src/main/java/org/apache/ambari/server/controller/AmbariManagementControllerImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 4555,
+                            "end_line": 4614
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ambari.git"
+        }
+    ],
+    "e2f10b03cd2f61354edc0ec1f9006f41bb0d6d2a": [
+        {
+            "location": "ql/src/java/org/apache/hadoop/hive/ql/exec/TopNHash.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 213,
+                            "end_line": 262
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "f404b0ddf9b0432429177351818da7649edf48bd": [
+        {
+            "location": "ql/src/java/org/apache/hadoop/hive/ql/optimizer/calcite/cost/HiveOnTezCostModel.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 414,
+                            "end_line": 464
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "5258c67e9558bd2d98e4887d3dd8e3eb8aa5d763": [
+        {
+            "location": "standalone-metastore/metastore-common/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/WMTrigger.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 733,
+                            "end_line": 798
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "71dfd1d11f239caf8f16bc29db0f959e566f7659": [
+        {
+            "location": "standalone-metastore/metastore-common/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/ThriftHiveMetastore.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 65076,
+                            "end_line": 65111
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "cbb9233a3b39ab8489d777fc76f0758c49b69bef": [
+        {
+            "location": "ql/src/java/org/apache/hadoop/hive/ql/exec/SMBMapJoinOperator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 102,
+                            "end_line": 166
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hive.git"
+        }
+    ],
+    "3a9795f66f223e726c36ff444626e819eea69aa2": [
+        {
+            "location": "src/contrib/eclipse-plugin/src/java/org/apache/hadoop/eclipse/view/servers/ServerView.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 369,
+                            "end_line": 410
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hadoop-mapreduce.git"
+        }
+    ],
+    "351f2531435d88ce54f28337c267bdf88ef3dc5c": [
+        {
+            "location": "jdbm-partition/src/main/java/org/apache/directory/server/core/partition/impl/btree/jdbm/DupsCursor.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 174,
+                            "end_line": 247
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/directory-server.git"
+        }
+    ],
+    "f4d1e4111bca7f626e871e7fde018722e147288f": [
+        {
+            "location": "src/oracle/json/parser/PathParser.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 138,
+                            "end_line": 239
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/oracle/soda-for-java.git"
+        }
+    ],
+    "d3da67c03dc7d19782d60d82fdf8fc7c7895280e": [
+        {
+            "location": "weaver/src/main/java/org/aspectj/weaver/bcel/AtAjAttributes.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 526,
+                            "end_line": 584
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/org.aspectj.git"
+        }
+    ],
+    "01be71f629baedd6cc0018b8b4305093c6c91c8a": [
+        {
+            "location": "tests/bugs1611/pr336880/Second.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 4,
+                            "end_line": 9
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/org.aspectj.git"
+        }
+    ],
+    "f8e08ca721bd7e887a6ef7f595c680a4735ecbd1": [
+        {
+            "location": "plugins/org.eclipse.acceleo.ide.ui/src/org/eclipse/acceleo/internal/ide/ui/editors/template/AcceleoCompletionProcessor.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 365,
+                            "end_line": 383
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-acceleo/acceleo.git"
+        }
+    ],
+    "372b3f9383d4ebee2776b684f8d2e61fe781ee9c": [
+        {
+            "location": "plugins/org.eclipse.acceleo.ide.ui/src/org/eclipse/acceleo/internal/ide/ui/natures/AcceleoToggleNatureAction.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 150,
+                            "end_line": 218
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-acceleo/acceleo.git"
+        }
+    ],
+    "ae0198084c3910575fd8c8f7d838421cd754246e": [
+        {
+            "location": "hbase-backup/src/main/java/org/apache/hadoop/hbase/backup/impl/IncrementalTableBackupClient.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 115,
+                            "end_line": 201
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/hbase.git"
+        }
+    ],
+    "31b6558aba3aeb04f1fd8a7593e6af97790e7c54": [
+        {
+            "location": "org.eclipse.egit.ui/src/org/eclipse/egit/ui/internal/preferences/GitDecoratorPreferencePage.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 244,
+                            "end_line": 323
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-egit/egit.git"
+        }
+    ],
+    "4da9dc22efc312719397a67448d78fee88f05a13": [
+        {
+            "location": "sentry-provider/sentry-provider-db/src/gen/thrift/gen-javabean/org/apache/sentry/provider/db/service/thrift/TListSentryPrivilegesRequest.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 360,
+                            "end_line": 401
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-sentry.git"
+        }
+    ],
+    "6b44ee2a2c78e7bf3d3649726c1bb465b95cf05b": [
+        {
+            "location": "jre_emul/android/platform/libcore/ojluni/src/main/java/sun/security/x509/X509CertInfo.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 292,
+                            "end_line": 354
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/j2objc.git"
+        }
+    ],
+    "277e7dcb5d90374ca61920b39f6dcc17250d3c03": [
+        {
+            "location": "xalan/third_party/android/platform/external/apache-xml/src/main/java/org/apache/xml/dtm/ref/sax2dtm/SAX2DTM2.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 1658,
+                            "end_line": 1719
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/j2objc.git"
+        }
+    ],
+    "6993b658be09295611f1ce64a14022540edb26cd": [
+        {
+            "location": "jre_emul/android/platform/libcore/ojluni/src/main/java/java/util/Base64.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 391,
+                            "end_line": 438
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/j2objc.git"
+        }
+    ],
+    "a488260cfd9651cf4f5d47b2b91912c4d0aa4910": [
+        {
+            "location": "jre_emul/android/platform/libcore/ojluni/src/main/java/sun/security/provider/certpath/ReverseState.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 284,
+                            "end_line": 348
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/j2objc.git"
+        }
+    ],
+    "5afdcc5f7b8d0d9805430c7ed3ed3f8a72bfe8d6": [
+        {
+            "location": "bundles/com.amazonaws.eclipse.simpledb/src/com/amazonaws/eclipse/datatools/enablement/simpledb/internal/driver/JdbcStatement.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 432,
+                            "end_line": 502
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/aws/aws-toolkit-eclipse.git"
+        }
+    ],
+    "7884dc92a0c6dfb2fac8150298806b0697de7668": [
+        {
+            "location": "broker-plugins/access-control/src/main/java/org/apache/qpid/server/security/access/config/AclFileParser.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 113,
+                            "end_line": 249
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/qpid-broker-j.git"
+        },
+        {
+            "location": "broker-core/src/main/java/org/apache/qpid/server/virtualhost/SynchronousMessageStoreRecoverer.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 63,
+                            "end_line": 151
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/qpid-broker-j.git"
+        }
+    ],
+    "3526120dc284d866e3d85ef5c3632b159a2966a9": [
+        {
+            "location": "spi-fly/spi-fly-static-tool/src/main/java/org/apache/aries/spifly/statictool/Main.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 173,
+                            "end_line": 223
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/aries.git"
+        }
+    ],
+    "dc67d6bc0fbd02986cd0aca4a2e5edf930159d6e": [
+        {
+            "location": "wtk/src/org/apache/pivot/wtk/skin/ContainerSkin.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 57,
+                            "end_line": 118
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/pivot.git"
+        }
+    ],
+    "8d241399d81dea6dca0ccab18bfca303ce23ea59": [
+        {
+            "location": "ldap/schema/data/src/main/java/org/apache/directory/api/ldap/schema/loader/SchemaEntityFactory.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 514,
+                            "end_line": 623
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/directory-ldap-api.git"
+        }
+    ],
+    "3527333fbea1e2e51089d78db2cd53812d2e8548": [
+        {
+            "location": "ldap/model/src/main/java/org/apache/directory/api/ldap/model/schema/syntaxCheckers/DseTypeSyntaxChecker.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 133,
+                            "end_line": 273
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/directory-ldap-api.git"
+        }
+    ],
+    "f6eb1a0911958a120a10e13ff17d4e3ffad91cbf": [
+        {
+            "location": "ldap/model/src/main/java/org/apache/directory/api/ldap/model/message/SearchRequestImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 373,
+                            "end_line": 409
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/directory-ldap-api.git"
+        }
+    ],
+    "4684567b4fe5d683e648f578e3d61fdb7b5b30cf": [
+        {
+            "location": "vxquery-core/src/main/java/org/apache/vxquery/runtime/functions/type/SequenceTypeMatcher.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 156,
+                            "end_line": 184
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/vxquery.git"
+        }
+    ],
+    "98e5de3b5af862779244bac8329852b3c9a901df": [
+        {
+            "location": "exec/java-exec/src/main/java/org/apache/drill/exec/store/easy/text/compliant/TextReader.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 226,
+                            "end_line": 300
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/drill.git"
+        }
+    ],
+    "19ca943ee59a1835762d98e25f4fa808fb0ad50a": [
+        {
+            "location": "xalan-2.7.2/src/main/java/org/apache/xalan/xsltc/runtime/ObjectFactory.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 477,
+                            "end_line": 529
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/servicemix-bundles.git"
+        }
+    ],
+    "aa49ef3707a519a618860a99f57581d713b45701": [
+        {
+            "location": "core/src/main/java/com/google/errorprone/bugpatterns/inject/InjectOnMemberAndConstructor.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 72,
+                            "end_line": 128
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/error-prone.git"
+        }
+    ],
+    "adabffc3369e5ed8b02bb3eace6bb2251c6869eb": [
+        {
+            "location": "bundles/org.eclipse.rap.ui.workbench/Eclipse UI/org/eclipse/ui/internal/dialogs/CustomizePerspectiveDialog.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 2900,
+                            "end_line": 3001
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-rap/org.eclipse.rap.git"
+        }
+    ],
+    "6053ee63a4faa3ef5bd1f7cbeb8c9787efcbb41c": [
+        {
+            "location": "phoenix-core/src/it/java/org/apache/phoenix/end2end/BaseAggregateIT.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 386,
+                            "end_line": 427
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/phoenix.git"
+        }
+    ],
+    "5ed9fb4367908cf380f1191a55f479ae335d1c87": [
+        {
+            "location": "src/java.desktop/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageMetadataFormat.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 43,
+                            "end_line": 338
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/SAP/SapMachine.git"
+        }
+    ],
+    "6bfef5f0a2971d1136b7c1152f5f2393368a4a34": [
+        {
+            "location": "jax-rs.whiteboard/src/main/java/org/apache/aries/jax/rs/whiteboard/internal/AriesJaxrsServiceRuntime.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 943,
+                            "end_line": 1037
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/aries-jax-rs-whiteboard.git"
+        }
+    ],
+    "40c15bbab73f52238c63408df2772e45075ef921": [
+        {
+            "location": "tinker-android/tinker-android-loader/src/main/java/com/tencent/tinker/loader/shareutil/ShareOatUtil.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 48,
+                            "end_line": 139
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/Tencent/tinker.git"
+        }
+    ],
+    "26577eefc84dbb3a9f434fbc4143de24864a7956": [
+        {
+            "location": "modules/indexing/src/main/java/org/apache/ignite/internal/processors/query/h2/sys/view/SqlSystemViewNodeMetrics.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 105,
+                            "end_line": 200
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ignite.git"
+        }
+    ],
+    "9e35993c0e7e5f2b032d5543c02cdd3401c64a6a": [
+        {
+            "location": "modules/indexing/src/main/java/org/apache/ignite/internal/processors/query/h2/H2ResultSetIterator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 101,
+                            "end_line": 137
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ignite.git"
+        }
+    ],
+    "a63a81a51418a8ae1dadff019d9e5eace38e1631": [
+        {
+            "location": "modules/core/src/main/java/org/apache/ignite/internal/processors/cache/transactions/TxLocksResponse.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 272,
+                            "end_line": 317
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/ignite.git"
+        }
+    ],
+    "e31ac36e441051f6eb889445c7a7ba890a92e323": [
+        {
+            "location": "src/main/java/ru/yandex/market/graphouse/retention/ClickHouseRetentionProvider.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 51,
+                            "end_line": 62
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/yandex/graphouse.git"
+        }
+    ],
+    "2252fb1938a4fd578f88c64eb444c74777c46212": [
+        {
+            "location": "flume-ng-core/src/main/java/org/apache/flume/channel/MultiplexingChannelSelector.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 83,
+                            "end_line": 145
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/flume.git"
+        }
+    ],
+    "583f3448031cd3112a6ed16ed54dbd4b59071de8": [
+        {
+            "location": "src/main/java/org/apache/sysml/utils/Explain.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 1103,
+                            "end_line": 1141
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/systemml.git"
+        }
+    ],
+    "869636375c9fba3ba9fcc9c52e42c047d79c922a": [
+        {
+            "location": "jspwiki-main/src/main/java/org/apache/wiki/providers/VersioningFileProvider.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 540,
+                            "end_line": 631
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/jspwiki.git"
+        }
+    ],
+    "ad4ed02728a9bbb1624f490bf6eabd59922981a9": [
+        {
+            "location": "openjpa-jdbc/src/main/java/org/apache/openjpa/jdbc/sql/DBDictionary.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 2243,
+                            "end_line": 2350
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/openjpa.git"
+        }
+    ],
+    "893a88d225276e45f12f9490e6af2c94a81c2965": [
+        {
+            "location": "plugins/network-elements/juniper-contrail/src/main/java/org/apache/cloudstack/network/contrail/management/ServerDBSyncImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 129,
+                            "end_line": 174
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cloudstack.git"
+        },
+        {
+            "location": "api/src/main/java/org/apache/cloudstack/api/command/admin/storage/AddImageStoreS3CMD.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 99,
+                            "end_line": 147
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cloudstack.git"
+        }
+    ],
+    "58466c89540aeb643abf47dacb2fe249eca48479": [
+        {
+            "location": "server/src/main/java/org/apache/cloudstack/ha/HAManagerImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 337,
+                            "end_line": 374
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/cloudstack.git"
+        }
+    ],
+    "c3f90581522d85a5e012690fad32f44939acd4a0": [
+        {
+            "location": "src/main/java/com/google/security/zynamics/reil/translators/arm/ARMSmlsdTranslator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 31,
+                            "end_line": 113
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/google/binnavi.git"
+        }
+    ],
+    "4dd76dbde7534aadc303d1013adae9c12f1ea508": [
+        {
+            "location": "java/common/src/main/java/org/apache/shindig/common/uri/Uri.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 205,
+                            "end_line": 289
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/shindig.git"
+        }
+    ],
+    "5bccf662d3290f0f64adfa5c888a8a4b656f6369": [
+        {
+            "location": "geode-core/src/main/java/org/apache/geode/admin/jmx/internal/MailManager.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 80,
+                            "end_line": 150
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/geode.git"
+        }
+    ],
+    "4998f4b087a2a4cc94dfa94ad5fb7a994128c7fc": [
+        {
+            "location": "plugins/org.eclipse.elk.core.meta.ui/src-gen/org/eclipse/elk/core/meta/ide/contentassist/antlr/internal/InternalMetaDataParser.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 22554,
+                            "end_line": 22599
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/elk.git"
+        },
+        {
+            "location": "plugins/org.eclipse.elk.core.meta.ui/src-gen/org/eclipse/elk/core/meta/ide/contentassist/antlr/internal/InternalMetaDataParser.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 22554,
+                            "end_line": 22599
+                        },
+                        {
+                            "start_line": 45156,
+                            "end_line": 45191
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/elk.git"
+        }
+    ],
+    "38678ea75db6687450400356e54651cde41fa3c9": [
+        {
+            "location": "spring-data-oracle/src/main/java/org/springframework/data/jdbc/config/oracle/PoolingDataSourceBeanDefinitionParser.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 341,
+                            "end_line": 388
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/spring-projects/spring-data-jdbc-ext.git"
+        }
+    ],
+    "1c49a9bbbc8e7c95bd23106c3dc58560c5af7488": [
+        {
+            "location": "crawler/src/main/java/org/apache/oodt/cas/crawl/ProductCrawler.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 79,
+                            "end_line": 124
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/oodt.git"
+        }
+    ],
+    "a598c40cba327ca31737c65cabb76ab1c112d19f": [
+        {
+            "location": "server/src/main/server/com/alibaba/cobar/server/parser/ServerParseSet.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 192,
+                            "end_line": 226
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/alibaba/cobar.git"
+        }
+    ],
+    "b8d569aff0c4417b0f9cd52d54455ab9b66236a1": [
+        {
+            "location": "solr/core/src/java/org/apache/solr/handler/component/SearchHandler.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 211,
+                            "end_line": 248
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        },
+        {
+            "location": "solr/core/src/java/org/apache/solr/handler/component/SearchHandler.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 211,
+                            "end_line": 248
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        }
+    ],
+    "e5455614da8c4fd95d3eef8dff9e997d5765248a": [
+        {
+            "location": "lucene/analysis/common/src/java/org/tartarus/snowball/ext/ItalianStemmer.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 257,
+                            "end_line": 401
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        },
+        {
+            "location": "lucene/analysis/common/src/java/org/tartarus/snowball/ext/ItalianStemmer.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 257,
+                            "end_line": 401
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        }
+    ],
+    "3b67b17493216f6b0c81a981073fd5f61eace6f4": [
+        {
+            "location": "lucene/analysis/phonetic/src/java/org/apache/lucene/analysis/phonetic/DoubleMetaphoneFilter.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 51,
+                            "end_line": 108
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        },
+        {
+            "location": "lucene/analysis/phonetic/src/java/org/apache/lucene/analysis/phonetic/DoubleMetaphoneFilter.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 51,
+                            "end_line": 108
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        }
+    ],
+    "5b7866b0851eff66cb7e929beef5249e3c72ac36": [
+        {
+            "location": "solr/core/src/java/org/apache/solr/update/processor/DistributedZkUpdateProcessor.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 953,
+                            "end_line": 1007
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lucene-solr.git"
+        }
+    ],
+    "f16c46cbdd5be8dd9bdcee935ec1f68970146478": [
+        {
+            "location": "java/org.apache.derby.engine/org/apache/derby/impl/sql/compile/SubqueryNode.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 606,
+                            "end_line": 926
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/derby.git"
+        }
+    ],
+    "6733fe121f5ca8983ea80807c190f6bd389ad504": [
+        {
+            "location": "tests/org.eclipse.swt.tests.gtk/ManualTests/org/eclipse/swt/tests/gtk/snippets/Bug499850_VirtualTableHang.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 34,
+                            "end_line": 85
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-platform/eclipse.platform.swt.git"
+        }
+    ],
+    "6bdf4f12c125b636189a4de55260df5a71775f2e": [
+        {
+            "location": "bundles/org.eclipse.swt/Eclipse SWT/cocoa/org/eclipse/swt/graphics/Cursor.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 172,
+                            "end_line": 238
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-platform/eclipse.platform.swt.git"
+        }
+    ],
+    "fa8208b3e6dae200303783dbf7c84e5654cff1cf": [
+        {
+            "location": "examples/org.eclipse.swt.snippets/src/org/eclipse/swt/snippets/Snippet305.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 32,
+                            "end_line": 81
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-platform/eclipse.platform.swt.git"
+        }
+    ],
+    "3a77439d1fd6e01780b3fbbe731f01b5dc6d3c05": [
+        {
+            "location": "src/main/java/com/amazonaws/kinesisvideo/parser/examples/lambda/KinesisVideoRekognitionLambdaExample.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 236,
+                            "end_line": 295
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/aws/amazon-kinesis-video-streams-parser-library.git"
+        }
+    ],
+    "ad1f2fb666a2d98b05c56119c1e1ae8cc5fd2e7d": [
+        {
+            "location": "nifi-nar-bundles/nifi-framework-bundle/nifi-framework/nifi-web/nifi-web-api/src/main/java/org/apache/nifi/web/api/dto/DtoFactory.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 3110,
+                            "end_line": 3185
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/nifi.git"
+        }
+    ],
+    "2834fa4ce477014dfad8c96b6d326d0f1f06a23e": [
+        {
+            "location": "nifi-nar-bundles/nifi-aws-bundle/nifi-aws-processors/src/main/java/org/apache/nifi/processors/aws/dynamodb/PutDynamoDB.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 100,
+                            "end_line": 188
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/nifi.git"
+        }
+    ],
+    "4c787799ff7d971eb924df1e496da8338e6ab192": [
+        {
+            "location": "nifi-nar-bundles/nifi-media-bundle/nifi-media-processors/src/main/java/org/apache/nifi/processors/media/ExtractMediaMetadata.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 210,
+                            "end_line": 255
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/nifi.git"
+        }
+    ],
+    "f60585a9b6df6b3b28be1eb80a0a60deac6c0493": [
+        {
+            "location": "nifi-commons/nifi-site-to-site-client/src/main/java/org/apache/nifi/remote/protocol/http/HttpClientTransaction.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 110,
+                            "end_line": 176
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/nifi.git"
+        }
+    ],
+    "cb5162c5a7fc60a2847c39d2750003ada7e80ff7": [
+        {
+            "location": "org.grails.ide.eclipse.editor.groovy/src/org/grails/ide/eclipse/editor/actions/UrlMappingHyperlinkDetector.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 319,
+                            "end_line": 360
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/spring-projects/grails-ide.git"
+        }
+    ],
+    "8fea2cff05267b3eb54beed6701e3e8192ccae9a": [
+        {
+            "location": "model/src/org/eclipse/ceylon/model/loader/TypeParser.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 431,
+                            "end_line": 505
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/ceylon.git"
+        }
+    ],
+    "28eaaca4bcd89fbf5437a0c637574754b8fdd36d": [
+        {
+            "location": "compiler-java/src/org/eclipse/ceylon/compiler/java/loader/CeylonEnter.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 203,
+                            "end_line": 255
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/ceylon.git"
+        }
+    ],
+    "7a74df4bc9295377ab35ea53eacb8204698cd425": [
+        {
+            "location": "jbatch/src/main/java/org/apache/batchee/container/impl/controller/chunk/ChunkStepController.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 1015,
+                            "end_line": 1042
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/incubator-batchee.git"
+        }
+    ],
+    "2a8ff251ba46204602e20dcb006451d98d3b33d1": [
+        {
+            "location": "rocketmq-console/src/main/java/org/apache/rocketmq/console/service/impl/ConsumerServiceImpl.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 208,
+                            "end_line": 251
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/rocketmq-externals.git"
+        }
+    ],
+    "901f4aa81ccb9596ea46dac23bd7d82aba2cfaa2": [
+        {
+            "location": "storm-client/src/jvm/org/apache/storm/generated/SupervisorInfo.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 969,
+                            "end_line": 1059
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/storm.git"
+        }
+    ],
+    "4b1f5d099fa23571edd03bef9d0ec61e3470f0d5": [
+        {
+            "location": "examples/org.eclipse.jface.snippets/Eclipse JFace Snippets/org/eclipse/jface/snippets/viewers/Snippet031TableViewerCustomTooltipsMultiSelection.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 216,
+                            "end_line": 271
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-platform/eclipse.platform.ui.git"
+        }
+    ],
+    "f344a3c565b6a67233de1d1169104a728136e7a3": [
+        {
+            "location": "lib/server-tecsvc/src/main/java/org/apache/olingo/server/tecsvc/data/DataCreator.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 158,
+                            "end_line": 221
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/olingo-odata4.git"
+        }
+    ],
+    "6440b7f64877b80fed0fc226843d158f0c865805": [
+        {
+            "location": "src/main/java/org/apache/commons/math4/stat/correlation/KendallsCorrelation.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 154,
+                            "end_line": 261
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/commons-math.git"
+        }
+    ],
+    "990752a7990a3c3d84690da8afa0b8bc18239a1f": [
+        {
+            "location": "discovery/local/src/main/java/org/apache/aries/rsa/discovery/endpoint/PropertiesMapper.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 233,
+                            "end_line": 280
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/aries-rsa.git"
+        }
+    ],
+    "ae83caae54102af1923af46f4e8ca6640368ed34": [
+        {
+            "location": "lens-cube/src/main/java/org/apache/lens/cube/metadata/FactPartition.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 148,
+                            "end_line": 195
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/lens.git"
+        }
+    ],
+    "15a837c3e6aa25f50c8d5af6855ef1019fd09bdd": [
+        {
+            "location": "plugins/org.eclipse.n4js.ui/src/org/eclipse/n4js/ui/binaries/IllegalBinaryStateDialog.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 97,
+                            "end_line": 160
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse/n4js.git"
+        }
+    ],
+    "0d434cdba4eb08bd1a0f394866b40345bec880b5": [
+        {
+            "location": "tajo-thirdparty/asm/src/main/java/org/apache/tajo/org/objectweb/asm/MethodWriter.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 2145,
+                            "end_line": 2559
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/apache/tajo.git"
+        }
+    ],
+    "f3439f80d7f62bc444f2bfbe960e8559a6396e32": [
+        {
+            "location": "core/plugins/org.eclipse.dltk.ui/src/org/eclipse/dltk/internal/ui/wizards/buildpath/newsourcepage/BuildpathModifierQueries.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 213,
+                            "end_line": 244
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-dltk/dltk.core.git"
+        },
+        {
+            "location": "core/plugins/org.eclipse.dltk.core/search/org/eclipse/dltk/core/search/SearchPattern.java",
+            "technicalDebts": [
+                {
+                    "type": "long method",
+                    "locations": [
+                        {
+                            "start_line": 1427,
+                            "end_line": 1478
+                        }
+                    ]
+                }
+            ],
+            "repository": "https://github.com/eclipse-dltk/dltk.core.git"
+        }
+    ]
+}
