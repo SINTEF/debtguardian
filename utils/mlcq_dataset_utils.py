@@ -491,3 +491,71 @@ def extract_unique_repo_commits(json_file):
     return {repo: {commit: list(files) for commit, files in commit_dict.items()} for repo, commit_dict in repo_data.items()}
 
 
+def extract_commit_repo_pairs_from_log_file(log_file_path):
+    """
+    Extracts commit hashes and repository URLs from a log file where commits have no modified files.
+
+    :param log_file_path: Path to the log file
+    :return: List of (commit_hash, repository_url) tuples
+    """
+    pattern = re.compile(
+        r"Commit (\b[a-fA-F0-9]{40}\b) in (https?://github\.com/\S+?\.git) has no modified files!"
+    )
+
+    commit_repo_pairs = []
+
+    with open(log_file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            match = pattern.search(line)
+            if match:
+                commit_hash, repo_url = match.groups()
+                commit_repo_pairs.append((commit_hash, repo_url))
+
+    print(f"\nTotal number of extracted commit-repository pairs: {len(commit_repo_pairs)}")
+
+    return commit_repo_pairs
+
+
+def remove_entries_from_ground_truth(ground_truth_file, commit_repo_pairs):
+    """
+    Removes entries from the ground truth file that match the given commit-repository pairs.
+
+    :param ground_truth_file: Path to the ground truth JSON file
+    :param commit_repo_pairs: List of (commit_hash, repository_url) tuples
+    :return: Path to the new ground truth file after removal
+    """
+
+    with open(ground_truth_file, "r", encoding="utf-8") as file:
+        ground_truth_data = json.load(file)
+
+    
+    original_entry_count = len(ground_truth_data)
+    print(f"Original number of entries in ground truth file: {original_entry_count}")
+
+    commit_repo_set = set(commit_repo_pairs)
+
+    # Filter out matching entries
+    filtered_data = {
+        commit: [
+            entry for entry in entries if entry["repository"] not in 
+            {repo_url for (commit_hash, repo_url) in commit_repo_set if commit_hash == commit}
+        ]
+        for commit, entries in ground_truth_data.items()
+    }
+
+    # Remove any empty lists from the dictionary
+    filtered_data = {commit: entries for commit, entries in filtered_data.items() if entries}
+    
+    filtered_entry_count = len(filtered_data)
+    print(f"Number of entries in new ground truth file after removal: {filtered_entry_count}")
+
+    base, ext = os.path.splitext(ground_truth_file)
+    new_file_path = f"{base}_further{ext}"
+
+    with open(new_file_path, "w", encoding="utf-8") as file:
+        json.dump(filtered_data, file, indent=4)
+
+    print(f"New ground truth file saved as: {new_file_path}")
+
+    return new_file_path
+
