@@ -1,0 +1,84 @@
+{
+    "915d90dd03a98d7e7a01d4643bbb8f202dd44b9d": [
+        {
+            "snippet_functionality": "This code snippet defines a simple Java class `Product` with properties for id and description, along with their getter and setter methods.",
+            "number_of_lines": 24,
+            "technicalDebts": [
+                {
+                    "type": "data class",
+                    "symptom": "Primarily consists of fields (attributes) and lacks meaningful behavior (methods) beyond simple getters and setters.",
+                    "affected_area": [
+                        {
+                            "start_line": 24,
+                            "end_line": 43
+                        }
+                    ],
+                    "suggested_repair": "The class can be considered a Data Class as it primarily consists of fields without any meaningful behavior. To address this, you could add more methods to encapsulate additional functionality or move the current getters and setters into a separate utility class."
+                }
+            ],
+            "location": "distribution/src/main/release/samples/jax_rs/spring_security/src/main/java/demo/jaxrs/service/Product.java",
+            "repository": "https://github.com/apache/cxf.git"
+        }
+    ],
+    "4fe1ec39a246c2f7531c84712b183c8827e00823": [
+        {
+            "snippet_functionality": "None",
+            "number_of_lines": 27,
+            "technicalDebts": [
+                {
+                    "type": "data class",
+                    "symptom": "The class primarily consists of fields (attributes) and lacks meaningful behavior (methods) beyond simple getters and setters.",
+                    "affected_area": [
+                        {
+                            "start_line": 8,
+                            "end_line": 27
+                        }
+                    ],
+                    "suggested_repair": "Enrich the class by adding relevant behaviors into it or using more cohesive design strategies to distribute responsibilities."
+                }
+            ],
+            "location": "jpa/deferred/src/main/java/example/model/Customer1149.java",
+            "repository": "https://github.com/spring-projects/spring-data-examples.git"
+        },
+        {
+            "snippet_functionality": "None",
+            "number_of_lines": 27,
+            "technicalDebts": [
+                {
+                    "type": "data class",
+                    "symptom": "The class primarily consists of fields (attributes) and lacks meaningful behavior (methods) beyond simple getters and setters.",
+                    "affected_area": [
+                        {
+                            "start_line": 8,
+                            "end_line": 27
+                        }
+                    ],
+                    "suggested_repair": "The class should be enriched by moving relevant behaviors into it or using more cohesive design strategies to distribute responsibilities."
+                }
+            ],
+            "location": "jpa/deferred/src/main/java/example/model/Customer388.java",
+            "repository": "https://github.com/spring-projects/spring-data-examples.git"
+        }
+    ],
+    "6abd07e48537e9a0479e1c51f9189eb06a5added": [
+        {
+            "snippet_functionality": "This code snippet defines a JPA entity class named Car2 representing a car with properties numberPlate, colour, engineSize, and numberOfSeats.",
+            "number_of_lines": 68,
+            "technicalDebts": [
+                {
+                    "type": "data class",
+                    "symptom": "The class primarily consists of fields (attributes) with only basic getters and setters without any meaningful behavior.",
+                    "affected_area": [
+                        {
+                            "start_line": 25,
+                            "end_line": 68
+                        }
+                    ],
+                    "suggested_repair": "The class should be enriched by moving relevant behaviors into it or using more cohesive design strategies to distribute responsibilities. For example, you could add methods for operations related to the car like start(), stop(), accelerate() etc."
+                }
+            ],
+            "location": "itests/jpa-container-testbundle-eclipselink/src/main/java/org/apache/aries/jpa/container/itest/eclipselink/entities/Car2.java",
+            "repository": "https://github.com/apache/aries-jpa.git"
+        }
+    ]
+}
