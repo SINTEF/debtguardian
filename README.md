@@ -1,5 +1,7 @@
 # DebtGuardian
 
+NOTE: The newer version, agentic DebtGuardian codebase can be found here https://github.com/SINTEF-9012/DebtGuardianAgent
+
 <img src="assets/logo_DebtGuardianAI.png" alt="debtguardian Logo" width="200"/>
 
 
