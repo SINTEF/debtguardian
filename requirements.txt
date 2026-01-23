@@ -108,7 +108,7 @@ pip==24.2
 platformdirs==4.3.6
 prompt_toolkit==3.0.48
 propcache==0.2.0
-protobuf==4.25.5
+protobuf==7.34.0rc1
 psutil==5.9.0
 ptyprocess==0.7.0
 pure_eval==0.2.3
