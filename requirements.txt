@@ -56,7 +56,7 @@ ipython==8.28.0
 iso8601==2.1.0
 isoduration==20.11.0
 jedi==0.19.1
-Jinja2==3.1.4
+Jinja2==3.1.5
 jiter==0.6.1
 jmespath==1.0.1
 joblib==1.4.2
