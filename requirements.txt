@@ -86,7 +86,7 @@ multidict==6.1.0
 mypy-extensions==1.0.0
 neptune==1.12.0
 nest_asyncio==1.6.0
-nltk==3.8.1
+nltk==3.9.4
 numpy==1.26.4
 oauthlib==3.2.2
 openai==1.51.2
