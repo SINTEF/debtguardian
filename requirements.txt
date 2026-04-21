@@ -121,7 +121,7 @@ Pygments==2.18.0
 PyJWT==2.9.0
 pyrsistent==0.20.0
 python-dateutil==2.9.0
-python-dotenv==1.0.1
+python-dotenv==1.2.2
 pytz==2024.2
 PyYAML==6.0.2
 pyzmq==25.1.2
