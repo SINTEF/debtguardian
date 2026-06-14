@@ -74,7 +74,7 @@ langchain-community==0.0.38
 langsmith==0.1.135
 #litellm==1.49.6
 lizard==1.17.10
-lxml==4.9.4
+lxml==6.1.0
 markdown-it-py==3.0.0
 MarkupSafe==3.0.1
 marshmallow==3.22.0
